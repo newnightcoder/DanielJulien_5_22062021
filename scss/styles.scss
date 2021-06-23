@@ -1,35 +1,17 @@
-$body-bg: #f3ebf3;
-$footer-bg: #7c747c;
-$color-text: #000000;
+@use "globals.scss";
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 16px;
-}
-
-body {
-  background-color: $body-bg;
-  height: 100vh;
-}
 .content {
   border: 1px solid black;
   width: 80%;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  margin: 0 auto;
   //   display: grid;
   //   grid-template-columns: repeat(auto-fill, calc(100% / 3));
   //   grid-auto-flow: dense;
   //   place-items: center;
   //   grid-row-gap: 50px;
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
-  margin: 0 auto;
 }
 
 .product {
@@ -42,7 +24,7 @@ body {
   padding: 10px;
   outline: none;
   text-decoration: none;
-  color: $color-text;
+  color: globals.$color-text;
   border: 1px solid black;
   &__img {
     margin-right: 20px;
@@ -53,11 +35,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border: 1px solid red;
+    padding: 5px;
+    border: 1px solid lightgray;
   }
-}
-
-footer {
-  height: 15vh;
-  background-color: $footer-bg;
 }

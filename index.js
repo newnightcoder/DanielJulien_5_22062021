@@ -2,8 +2,11 @@ const content = document.querySelector(".content");
 const API_URL = "http://localhost:3000/api/cameras";
 let cameras = [];
 
+export const storage =
+  JSON.parse(localStorage.getItem("selectedProduct")) || [];
+
 // let's get the cameras from the API and store the data in the cameras array.
-const getCameras = async () => {
+export const getCameras = async () => {
   try {
     const results = await fetch(API_URL);
     const data = await results.json();
@@ -14,15 +17,21 @@ const getCameras = async () => {
   return cameras;
 };
 
-const toPageProduct = (e) => {
-  const link = e;
-  console.log(link);
+const selectProduct = () => {
+  let selectedProduct;
+  content.childNodes.forEach((item, i) => {
+    item.addEventListener("click", () => {
+      selectedProduct = i;
+      console.log(selectedProduct);
+      localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
+    });
+  });
 };
 
 //let's display the data once it is fetched
-displayProducts = () => {
+const displayProducts = () => {
   cameras.map((item) => {
-    const product = `<a  class="product" onClick="toPageProduct()">
+    const product = `<a href="produit.html" class="product" >
       <div class="product__img">
       <img height="200"  width="300" src="${item.imageUrl}"/>
       </div>
@@ -32,7 +41,7 @@ displayProducts = () => {
         <p class="product__info--description">${item.description} </p>
       </div>
     </a>`;
-    content.insertAdjacentHTML("afterBegin", product);
+    content.insertAdjacentHTML("beforeEnd", product);
   });
 };
 
@@ -41,4 +50,5 @@ const init = (async () => {
   cameras = await getCameras();
   console.log("init cameras", cameras);
   displayProducts();
+  selectProduct();
 })();

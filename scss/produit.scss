@@ -1,0 +1,24 @@
+@use 'globals.scss';
+
+main {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid red;
+}
+
+.detail {
+  height: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid grey;
+}
+
+.back-btn {
+  text-decoration: none;
+  color: globals.$color-text;
+  margin: 0 auto;
+}

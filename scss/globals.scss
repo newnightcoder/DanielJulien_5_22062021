@@ -1,0 +1,35 @@
+$body-bg: #f3ebf3;
+$footer-bg: #7c747c;
+$color-text: #000000;
+$header-height: 10vh;
+$main-height: max-content;
+$footer-height: 15vh;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background-color: $body-bg;
+  min-height: 100vh;
+}
+main {
+  height: $main-height;
+}
+
+header {
+  height: $header-height;
+}
+
+footer {
+  height: $footer-height;
+  width: 100%;
+  background-color: $footer-bg;
+}

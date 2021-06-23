@@ -12,7 +12,21 @@ html {
 
 body {
   background-color: #f3ebf3;
-  height: 100vh;
+  min-height: 100vh;
+}
+
+main {
+  height: max-content;
+}
+
+header {
+  height: 10vh;
+}
+
+footer {
+  height: 15vh;
+  width: 100%;
+  background-color: #7c747c;
 }
 
 .content {
@@ -46,12 +60,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  border: 1px solid red;
-}
-
-footer {
-  height: 15vh;
-  background-color: #7c747c;
+  padding: 5px;
+  border: 1px solid lightgray;
 }
 
 /*# sourceMappingURL=styles.css.map */
