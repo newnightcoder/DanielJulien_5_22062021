@@ -1,6 +1,7 @@
 $body-bg: #f3ebf3;
 $header-bg: #281826;
 $footer-bg: #7c747c;
+$cart-number-bg: #9059ff;
 $color-text: #000000;
 $header-height: 70px;
 $main-height: max-content;
@@ -15,6 +16,10 @@ $footer-height: 100px;
 
 a {
   text-decoration: none;
+}
+
+button {
+  cursor: pointer;
 }
 
 html {
@@ -35,6 +40,35 @@ nav {
   // border: 1px solid white;
   a {
     color: $body-bg;
+    i {
+      font-size: 1.5rem;
+    }
+    .cart {
+      height: 50px;
+      width: 50px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      // border: 1px solid white;
+
+      .cart-number {
+        height: 20px;
+        min-width: 20px;
+        border-radius: 50%;
+        padding: 3px;
+        position: absolute;
+        top: 0;
+        right: -5px;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        background-color: $cart-number-bg;
+        z-index: -1;
+        font-size: 1rem;
+      }
+    }
   }
 }
 

@@ -1,6 +1,11 @@
 import { storage, getCameras } from "/index.js";
 const content = document.querySelector(".detail");
 const select = document.querySelector("select");
+const orderBtn = document.querySelector(".order-btn");
+const cart = document.querySelector(".cart-number");
+const orderModal = document.querySelector(".modal");
+const modalContinueBtn = document.querySelector(".btn-continuer");
+let cartNumber = 0;
 
 const displayDetail = async () => {
   const items = await getCameras();
@@ -27,3 +32,17 @@ const displayDetail = async () => {
   }
 };
 displayDetail();
+
+const addToCart = () => {
+  orderBtn.addEventListener("click", () => {
+    cartNumber++;
+    cart.innerHTML = cartNumber;
+    cart.style.display = "flex";
+    orderModal.style.display = "flex";
+  });
+};
+addToCart();
+
+modalContinueBtn.addEventListener("click", () => {
+  orderModal.style.display = "none";
+});

@@ -81,41 +81,4 @@ footer {
   background-color: #7c747c;
 }
 
-.content {
-  width: 80%;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  margin: 0 auto;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-  padding: 30px 0 100px;
-}
-
-.product {
-  height: 100%;
-  max-width: 800px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 20px;
-  padding: 10px;
-  outline: none;
-  text-decoration: none;
-  color: #000000;
-  border: 1px solid black;
-}
-.product__img {
-  margin-right: 20px;
-}
-.product__info {
-  height: inherit;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  padding: 5px;
-  border: 1px solid lightgray;
-}
-
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=panier.css.map */
