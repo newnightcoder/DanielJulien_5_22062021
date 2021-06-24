@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 16px;
 }
@@ -15,41 +19,92 @@ body {
   min-height: 100vh;
 }
 
+nav {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.25rem;
+}
+nav a {
+  color: #f3ebf3;
+}
+
 main {
   height: max-content;
 }
 
 header {
-  height: 10vh;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #281826;
 }
 
 footer {
-  height: 15vh;
+  height: 100px;
   width: 100%;
   background-color: #7c747c;
 }
 
 main {
-  height: 75vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  height: calc(100vh - 70px - 100px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   border: 1px solid red;
 }
 
 .detail {
-  height: 90%;
+  grid-column: 2;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid grey;
+  background-color: white;
+  border: 1px solid yellow;
+}
+.detail .product {
+  border: 1px solid black;
 }
 
-.back-btn {
-  text-decoration: none;
-  color: #000000;
-  margin: 0 auto;
+.back {
+  height: 100%;
+  width: 15%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+}
+.back .back-btn {
+  font-size: 1rem;
+  color: white;
+}
+
+aside {
+  height: calc(100% - 70px - 100px);
+  width: 20vw;
+  position: absolute;
+  right: 5vw;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+}
+aside select {
+  width: 200px;
+  height: 50px;
+}
+aside select option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=produit.css.map */

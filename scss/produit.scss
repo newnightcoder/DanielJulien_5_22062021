@@ -1,24 +1,59 @@
 @use 'globals.scss';
 
 main {
-  height: 75vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  height: calc(100vh - #{globals.$header-height} - #{globals.$footer-height});
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   border: 1px solid red;
 }
 
 .detail {
-  height: 90%;
+  grid-column: 2;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid grey;
+  background-color: white;
+  border: 1px solid yellow;
+  .product {
+    border: 1px solid black;
+  }
 }
 
-.back-btn {
-  text-decoration: none;
-  color: globals.$color-text;
-  margin: 0 auto;
+.back {
+  height: 100%;
+  width: 15%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid white;
+
+  .back-btn {
+    font-size: 1rem;
+    color: white;
+  }
+}
+
+aside {
+  height: calc(100% - #{globals.$header-height} - #{globals.$footer-height});
+  width: 20vw;
+  position: absolute;
+  right: 5vw;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  select {
+    width: 200px;
+    height: 50px;
+    option {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }

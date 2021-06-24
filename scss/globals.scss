@@ -1,15 +1,20 @@
 $body-bg: #f3ebf3;
+$header-bg: #281826;
 $footer-bg: #7c747c;
 $color-text: #000000;
-$header-height: 10vh;
+$header-height: 70px;
 $main-height: max-content;
-$footer-height: 15vh;
+$footer-height: 100px;
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
 }
 
 html {
@@ -20,12 +25,31 @@ body {
   background-color: $body-bg;
   min-height: 100vh;
 }
+
+nav {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.25rem;
+  // border: 1px solid white;
+  a {
+    color: $body-bg;
+  }
+}
+
 main {
   height: $main-height;
 }
 
 header {
   height: $header-height;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: $header-bg;
 }
 
 footer {

@@ -2,8 +2,7 @@ const content = document.querySelector(".content");
 const API_URL = "http://localhost:3000/api/cameras";
 let cameras = [];
 
-export const storage =
-  JSON.parse(localStorage.getItem("selectedProduct")) || [];
+export const storage = JSON.parse(localStorage.getItem("selectedProduct"));
 
 // let's get the cameras from the API and store the data in the cameras array.
 export const getCameras = async () => {
@@ -31,7 +30,7 @@ const selectProduct = () => {
 //let's display the data once it is fetched
 const displayProducts = () => {
   cameras.map((item) => {
-    const product = `<a href="produit.html" class="product" >
+    const product = `<a href="produit.html" class="product">
       <div class="product__img">
       <img height="200"  width="300" src="${item.imageUrl}"/>
       </div>
