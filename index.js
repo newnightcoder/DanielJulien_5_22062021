@@ -1,4 +1,4 @@
-// import { cartStorage, displayCartNumber } from "/produit.js";
+// import { displayCartStorage } from "/produit.js";
 
 const content = document.querySelector(".content");
 const cart = document.querySelector(".cart-number");
@@ -7,6 +7,13 @@ const API_URL = "http://localhost:3000/api/cameras";
 let cameras = [];
 
 export const storage = JSON.parse(localStorage.getItem("selectedProduct"));
+const cartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+
+const displayCartStorage = () => {
+  cartStorage
+    ? ((cart.innerHTML = cartStorage), (cart.style.display = "flex"))
+    : (cart.style.display = "none");
+};
 
 // let's get the cameras from the API and store the data in the cameras array.
 export const getCameras = async () => {
@@ -49,11 +56,10 @@ const displayProducts = () => {
 };
 
 //launch
-const init = async () => {
+const init = (async () => {
   cameras = await getCameras();
   console.log("init cameras", cameras);
   displayProducts();
   selectProduct();
-  // displayCartNumber();
-};
-init();
+  displayCartStorage();
+})();
