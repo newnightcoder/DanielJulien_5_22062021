@@ -16,18 +16,34 @@
   <body>
     <header class="header">
       <nav class="nav">
-        <ol>
+        <ul>
           <li>Mon panier</li>
           <li>Mes infos</li>
           <li>Paiement</li>
           <li>Confirmation</li>
-        </ol>
+        </ul>
       </nav>
     </header>
     <main>
       <a href="index.html">continuer mes achats</a>
       <section class="content">
         <h1>Mon panier</h1>
+        <div class="recap"></div>
+        <div class="form-container">
+          <form action="confirmation.html" method="post">
+            <label for="name">Nom</label>
+            <input type="text" id="name" />
+            <label for="prenom">Pr&eacute;nom</label>
+            <input type="text" id="prenom" />
+            <label for="adresse">Adresse</label>
+            <input type="text" id="adresse" />
+            <label for="ville">Ville</label>
+            <input type="text" id="ville" />
+            <label for="code-postal">Code postal</label
+            ><input type="text" id="code-postal" />
+            <button type="submit">valider</button>
+          </form>
+        </div>
       </section>
     </main>
     <footer></footer>

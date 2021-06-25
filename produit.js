@@ -1,4 +1,5 @@
 import { storage, getCameras } from "/index.js";
+
 const content = document.querySelector(".detail");
 const select = document.querySelector("select");
 const orderBtn = document.querySelector(".order-btn");
@@ -6,11 +7,12 @@ const cart = document.querySelector(".cart-number");
 const orderModal = document.querySelector(".modal");
 const modalContinueBtn = document.querySelector(".btn-continuer");
 let cartNumber = 0;
+export const cartStorage = JSON.parse(localStorage.getItem("cartStorage")) | [];
 
 const displayDetail = async () => {
   const items = await getCameras();
   for (let i = 0; i < items.length; i++) {
-    console.log(storage, i);
+    // console.log(storage, i);
     if (storage === i) {
       console.log(`camera ${i} is selected`);
       const detail = `<div class="product">
@@ -31,18 +33,35 @@ const displayDetail = async () => {
     }
   }
 };
-displayDetail();
+
+export const displayCartNumber = () => {
+  // console.log("cartstorage", cartStorage);
+  if (cartStorage !== []) {
+    cart.innerHTML = cartNumber;
+    cart.style.display = "flex";
+  } else return;
+};
 
 const addToCart = () => {
   orderBtn.addEventListener("click", () => {
     cartNumber++;
-    cart.innerHTML = cartNumber;
-    cart.style.display = "flex";
+    localStorage.setItem("cartStorage", JSON.stringify(cartNumber));
     orderModal.style.display = "flex";
+    displayCartNumber();
   });
 };
-addToCart();
 
-modalContinueBtn.addEventListener("click", () => {
-  orderModal.style.display = "none";
-});
+const continueAchats = () => {
+  modalContinueBtn.addEventListener("click", () => {
+    orderModal.style.display = "none";
+  });
+};
+
+const init = () => {
+  displayDetail();
+  addToCart();
+  continueAchats();
+  // displayCartNumber();
+};
+
+init();

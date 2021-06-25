@@ -1,4 +1,8 @@
+// import { cartStorage, displayCartNumber } from "/produit.js";
+
 const content = document.querySelector(".content");
+const cart = document.querySelector(".cart-number");
+
 const API_URL = "http://localhost:3000/api/cameras";
 let cameras = [];
 
@@ -45,9 +49,11 @@ const displayProducts = () => {
 };
 
 //launch
-const init = (async () => {
+const init = async () => {
   cameras = await getCameras();
   console.log("init cameras", cameras);
   displayProducts();
   selectProduct();
-})();
+  // displayCartNumber();
+};
+init();
