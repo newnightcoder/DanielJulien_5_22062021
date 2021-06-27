@@ -1,7 +1,7 @@
 // import { displayCartStorage } from "/produit.js";
 
 const content = document.querySelector(".content");
-const cart = document.querySelector(".cart-number");
+const cart = document.querySelector(".badge");
 
 const API_URL = "http://localhost:3000/api/cameras";
 let cameras = [];
@@ -11,7 +11,7 @@ const cartStorage = JSON.parse(localStorage.getItem("cartStorage"));
 
 const displayCartStorage = () => {
   cartStorage
-    ? ((cart.innerHTML = cartStorage), (cart.style.display = "flex"))
+    ? ((cart.innerHTML = cartStorage), (cart.style.display = "block"))
     : (cart.style.display = "none");
 };
 
@@ -41,16 +41,37 @@ const selectProduct = () => {
 //let's display the data once it is fetched
 const displayProducts = () => {
   cameras.map((item) => {
-    const product = `<a href="produit.html" class="product">
-      <div class="product__img">
-      <img height="200"  width="300" src="${item.imageUrl}"/>
+    const product = `
+    <div class="card mb-3" style="max-width: 800px;">
+    <a class="product" href="produit.html" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="${item.imageUrl}" class=" img img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body text-dark ">
+        <h5 class="card-title">${item.name}</h5>
+        <span class="card-text">${item.price} </span>
+        <p class="card-text">${item.description}</p>
+        <div class="d-grid justify-content-md-end"><button class="btn btn-sm btn-dark justify-right" type="button">Ajouter au panier</button></div>
       </div>
-      <div class="product__info">
-        <h3 class="product__info--name">${item.name}</h3>
-        <span class="product__info--price">${item.price} </span>
-        <p class="product__info--description">${item.description} </p>
-      </div>
-    </a>`;
+    </div>
+  </div>
+  </a>
+</div>
+`;
+
+    // `<a href="produit.html" class="product">
+    //   <div class="product__img">
+    //   <img height="200"  width="300" src="${item.imageUrl}"/>
+    //   </div>
+    //   <div class="product__info">
+    //     <h3 class="product__info--name">${item.name}</h3>
+    //     <span class="product__info--price">${item.price} </span>
+    //     <p class="product__info--description">${item.description} </p>
+    //   </div>
+    // </a>`;
+
     content.insertAdjacentHTML("beforeEnd", product);
   });
 };

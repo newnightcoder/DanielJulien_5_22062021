@@ -30,6 +30,7 @@ plus();
 
 const moins = () => {
   document.querySelector(".moins").addEventListener("click", () => {
+    if (number === 0) return;
     number--;
     localStorage.setItem("cartStorage", JSON.stringify(number));
     console.log(number);

@@ -4,32 +4,113 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
+    <!-- <script
       async
       src="https://kit.fontawesome.com/9209397972.js"
       crossorigin="anonymous"
+    ></script> -->
+    <script
+      defer
+      src="/node_modules/bootstrap/dist/js/bootstrap.min.js"
     ></script>
-    <script src="index.js" type="module" defer></script>
+    <script defer src="index.js" type="module"></script>
     <link rel="stylesheet" href="/css/styles.css" />
     <title>Orinoco | Accueil</title>
   </head>
 
   <body>
     <header>
-      <nav>
-        <a href="#">Catégories</a>
-        <a href="#">Produits</a>
-        <a href="#">Mon compte</a>
-        <a href="panier.html">
-          <div class="cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-number"></span>
+      <nav
+        class="navbar navbar-expand-md bg-dark navbar-dark text-white fixed-top"
+      >
+        <div class="container">
+          <span class="navbar-brand h1 mb-0">Orinoco</span>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+          >
+            <i class="navbar-toggler-icon"></i>
+          </button>
+
+          <div id="menu" class="collapse navbar-collapse pt-2">
+            <div class="navbar-nav ms-auto">
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Catégories</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Produits</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Mon compte</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="panier.html"
+              >
+                <div class="cart">
+                  <i
+                    class="bi bi-cart3 position-relative align-middle"
+                    style="font-size: 1.5rem"
+                  >
+                    <span
+                      class="
+                        badge
+                        position-absolute
+                        top-0
+                        bg-light
+                        start-100
+                        text-dark
+                        p-1
+                        translate-middle-y
+                      "
+                      style="font-size: 0.75rem"
+                    ></span
+                  ></i>
+                </div>
+              </a>
+            </div>
           </div>
-        </a>
+        </div>
       </nav>
     </header>
     <main>
-      <section class="content"></section>
+      <section class="content container py-5"></section>
     </main>
     <footer></footer>
   </body>

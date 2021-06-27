@@ -1,89 +1,23 @@
+@use "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
 $body-bg: #f3ebf3;
+$body-bg: lightgray;
 $header-bg: #281826;
 $footer-bg: #7c747c;
 $cart-number-bg: #9059ff;
 $color-text: #000000;
-$header-height: 70px;
 $main-height: max-content;
 $footer-height: 100px;
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-html {
-  font-size: 16px;
-}
 
 body {
-  background-color: $body-bg;
-  min-height: 100vh;
-}
-
-nav {
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  font-size: 1.25rem;
-  // border: 1px solid white;
-  a {
-    color: $body-bg;
-    i {
-      font-size: 1.5rem;
-    }
-    .cart {
-      height: 50px;
-      width: 50px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2;
-      // border: 1px solid white;
-
-      .cart-number {
-        height: 20px;
-        min-width: 20px;
-        border-radius: 50%;
-        padding: 3px;
-        position: absolute;
-        top: 0;
-        right: -5px;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        background-color: $cart-number-bg;
-        z-index: -1;
-        font-size: 1rem;
-      }
-    }
+  // background-color: $body-bg;
+  height: 100%;
+  &::before {
+    content: "";
+    height: 70px;
+    display: block;
   }
-}
-
-main {
-  height: $main-height;
-}
-
-header {
-  height: $header-height;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  background-color: $header-bg;
 }
 
 footer {

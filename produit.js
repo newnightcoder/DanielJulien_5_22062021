@@ -1,4 +1,4 @@
-import { storage, getCameras } from "/index.js";
+import { getCameras } from "/index.js";
 
 const content = document.querySelector(".detail");
 const select = document.querySelector("select");
@@ -7,13 +7,18 @@ const cart = document.querySelector(".cart-number");
 const orderModal = document.querySelector(".modal");
 const modalContinueBtn = document.querySelector(".btn-continuer");
 const cartStorage = JSON.parse(localStorage.getItem("cartStorage"));
+const selectedProduct = JSON.parse(localStorage.getItem("selectedProduct"));
+let models = [];
+let modelStorage = JSON.parse(localStorage.getItem("modelStorage"));
 
-const displayDetail = async () => {
+const displayProductDetail = async () => {
   const items = await getCameras();
   for (let i = 0; i < items.length; i++) {
     // console.log(storage, i);
-    if (storage === i) {
+    if (selectedProduct === i) {
       console.log(`camera ${i} is selected`);
+      models.push(items[i]);
+      localStorage.setItem("modelStorage", JSON.stringify(models));
       const detail = `<div class="product">
       <div class="product__img">
       <img height="350"  width="500" src="${items[i].imageUrl}"/>
@@ -58,7 +63,7 @@ const continueAchats = () => {
 };
 
 const init = (() => {
-  displayDetail();
+  displayProductDetail();
   addToCart();
   continueAchats();
   displayCartStorage();
