@@ -13,6 +13,10 @@
       defer
       src="/node_modules/bootstrap/dist/js/bootstrap.min.js"
     ></script>
+    <script
+      defer
+      src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
+    ></script>
     <script defer src="index.js" type="module"></script>
     <link rel="stylesheet" href="/css/styles.css" />
     <title>Orinoco | Accueil</title>
@@ -110,7 +114,34 @@
       </nav>
     </header>
     <main>
-      <section class="content container py-5"></section>
+      <section class="content container py-5 position-relative">
+        <nav
+          aria-label="Page navigation example"
+          class="position-absolute bottom-0 start-50 translate-middle-x"
+        >
+          <ul class="pagination justify-content-center">
+            <li class="page-item">
+              <a class="page-link link-dark" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link link-dark" href="#">1</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link link-dark" href="#">2</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link link-dark" href="#">3</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link link-dark" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
     </main>
     <footer></footer>
   </body>

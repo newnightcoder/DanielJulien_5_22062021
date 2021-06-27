@@ -4,52 +4,190 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
+    <!-- <script
       async
       src="https://kit.fontawesome.com/9209397972.js"
       crossorigin="anonymous"
-    ></script>
+      ></script> -->
+
     <script src="produit.js" type="module" defer></script>
+    <script
+      defer
+      src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
+    ></script>
+    <script
+      defer
+      src="/node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
     <link rel="stylesheet" href="/css/produit.css" />
     <title>Détail Produit | Orinoco</title>
   </head>
   <body>
     <header>
-      <div class="back"><a href="index.html" class="back-btn">retour</a></div>
-      <nav>
-        <a href="#">Catégories</a>
-        <a href="#">Produits</a>
-        <a href="#">Mon compte</a>
-        <a href="panier.html">
-          <div class="cart">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-number"></span>
+      <nav
+        class="mx-3"
+        style="--bs-breadcrumb-divider: '&gg;'"
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb" style="font-size: 0.8rem">
+          <li class="breadcrumb-item">
+            <a href="index.html" class="link-secondary">Accueil</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="index.html" class="link-secondary">Appareils photos</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
+      </nav>
+      <!-- <div class="back"><a href="index.html" class="back-btn">retour</a></div> -->
+      <nav
+        class="navbar navbar-expand-md bg-dark navbar-dark text-white fixed-top"
+      >
+        <div class="container">
+          <span class="navbar-brand h1 mb-0">Orinoco</span>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+          >
+            <i class="navbar-toggler-icon"></i>
+          </button>
+
+          <div id="menu" class="collapse navbar-collapse pt-2">
+            <div class="navbar-nav ms-auto">
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Catégories</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Produits</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Mon compte</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="panier.html"
+              >
+                <div class="cart">
+                  <i
+                    class="bi bi-cart3 position-relative align-middle"
+                    style="font-size: 1.5rem"
+                  >
+                    <span
+                      class="
+                        badge
+                        position-absolute
+                        top-0
+                        bg-light
+                        start-100
+                        text-dark
+                        p-1
+                        translate-middle-y
+                      "
+                      style="font-size: 0.75rem"
+                    ></span
+                  ></i>
+                </div>
+              </a>
+            </div>
           </div>
-        </a>
+        </div>
       </nav>
     </header>
-    <main>
-      <section class="detail"></section>
-      <aside>
-        <!-- <label for="select-options">Choisir un objectif:</label> -->
-        <select name="options" id="select-options">
-          <option value="Choisir un objectif" selected>
-            Sélectioner l'objectif
-          </option>
-        </select>
-        <button class="btn order-btn">Ajouter au panier</button>
-      </aside>
+
+    <main class="container">
+      <section class="detail row mt-5">
+        <aside class="col border-start ps-4">
+          <select
+            name="options"
+            class="form-select mb-2 mt-5"
+            id="select-options"
+          >
+            <option value="Choisir un objectif" selected>
+              Sélectioner l'objectif
+            </option>
+          </select>
+          <button
+            type="button"
+            class="btn order-btn"
+            data-bs-toggle="modal"
+            data-bs-target="#modal"
+          >
+            Ajouter au panier
+          </button>
+        </aside>
+      </section>
     </main>
     <footer></footer>
-    <div class="modal">
-      <div class="modal__content">
-        <h1>Votre article a été ajouté au panier</h1>
-        <div class="modal__content--recap"></div>
-        <div class="modal__content--btn-container">
-          <button class="btn btn-continuer">Continuer mes achats</button>
-          <a href="panier.html" class="btn btn-commander"
-            >Terminer ma commande</a
-          >
+    <div
+      class="modal fade"
+      id="modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <i class="bi bi-check-lg">&nbsp;</i>Votre article a été ajouté au
+              panier
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer justify-content-between">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Continuer mes achats
+            </button>
+            <a href="panier.html" class="btn btn-primary"
+              >Terminer ma commande</a
+            >
+          </div>
         </div>
       </div>
     </div>

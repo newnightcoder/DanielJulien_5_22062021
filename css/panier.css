@@ -10756,6 +10756,10 @@ body::before {
   display: block;
 }
 
+.btn {
+  text-transform: uppercase;
+}
+
 footer {
   height: 100px;
   width: 100%;

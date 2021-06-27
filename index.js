@@ -29,10 +29,11 @@ export const getCameras = async () => {
 
 const selectProduct = () => {
   let selectedProduct;
-  content.childNodes.forEach((item, i) => {
-    item.addEventListener("click", () => {
+  document.querySelectorAll(".product").forEach((item, i) => {
+    console.log(item, i);
+    item.addEventListener("click", (e) => {
       selectedProduct = i;
-      console.log(selectedProduct);
+      console.log("fonction select product", selectedProduct);
       localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
     });
   });
@@ -42,37 +43,32 @@ const selectProduct = () => {
 const displayProducts = () => {
   cameras.map((item) => {
     const product = `
-    <div class="card mb-3" style="max-width: 800px;">
-    <a class="product" href="produit.html" >
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="${item.imageUrl}" class=" img img-fluid rounded-start" alt="...">
+    <div class="product card mb-3">
+      <a class="link-dark link-product" href="produit.html" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="${
+              item.imageUrl
+            }" class=" img img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body text-dark ">
+              <h5 class="card-title">${item.name}</h5>
+              <p class="card-text text-end" style="font-weight:700">${numeral(
+                item.price
+              )
+                .divide(100)
+                .format("0,0.00")}€ </p>
+              <p class="card-text">${item.description}</p>
+              <div class="text-end"><button class="btn btn-sm btn-info justify-right" type="button">Voir ce produit</button></div>
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
-    <div class="col-md-8">
-      <div class="card-body text-dark ">
-        <h5 class="card-title">${item.name}</h5>
-        <span class="card-text">${item.price} </span>
-        <p class="card-text">${item.description}</p>
-        <div class="d-grid justify-content-md-end"><button class="btn btn-sm btn-dark justify-right" type="button">Ajouter au panier</button></div>
-      </div>
-    </div>
-  </div>
-  </a>
-</div>
 `;
 
-    // `<a href="produit.html" class="product">
-    //   <div class="product__img">
-    //   <img height="200"  width="300" src="${item.imageUrl}"/>
-    //   </div>
-    //   <div class="product__info">
-    //     <h3 class="product__info--name">${item.name}</h3>
-    //     <span class="product__info--price">${item.price} </span>
-    //     <p class="product__info--description">${item.description} </p>
-    //   </div>
-    // </a>`;
-
-    content.insertAdjacentHTML("beforeEnd", product);
+    content.insertAdjacentHTML("beforeend", product);
   });
 };
 

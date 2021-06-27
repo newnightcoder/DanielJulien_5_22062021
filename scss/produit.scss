@@ -1,102 +1,19 @@
 @use 'globals.scss';
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.bi-check-lg {
+  color: $teal-600;
+}
 
 .btn {
-  height: 50px;
-  min-width: 200px;
-  padding: 0 10px;
-  color: globals.$body-bg;
-  text-transform: uppercase;
-  background-color: globals.$header-bg;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
+  background-color: black;
+  border-color: black;
+  color: white;
 }
 
+.dispo {
+  color: $green-500;
+}
 main {
-  height: calc(100vh - #{globals.$header-height} - #{globals.$footer-height});
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border: 1px solid red;
-}
-
-.detail {
-  grid-column: 2;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border: 1px solid yellow;
-  .product {
-    border: 1px solid black;
-  }
-}
-
-.back {
-  height: 100%;
-  width: 15%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 1px solid white;
-
-  .back-btn {
-    font-size: 1rem;
-    color: white;
-  }
-}
-
-aside {
-  height: calc(100vh - #{globals.$header-height} - #{globals.$footer-height});
-  // width: 200px;
-  // position: absolute;
-  // right: 5vw;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid black;
-  select {
-    width: 200px;
-    height: 50px;
-    &:hover {
-      cursor: pointer;
-    }
-    option {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-}
-
-.modal {
-  height: 100vh;
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.6);
-  &__content {
-    height: 300px;
-    width: 500px;
-    padding: 10px;
-    background-color: white;
-    &--recap {
-      height: 190px;
-      border: 1px solid black;
-    }
-    &--btn-container {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
+  height: calc(100vh - 70px);
 }

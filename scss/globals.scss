@@ -11,13 +11,17 @@ $main-height: max-content;
 $footer-height: 100px;
 
 body {
-  // background-color: $body-bg;
   height: 100%;
+  // background-color: $body-bg;
   &::before {
     content: "";
     height: 70px;
     display: block;
   }
+}
+
+.btn {
+  text-transform: uppercase;
 }
 
 footer {
