@@ -21517,9 +21517,29 @@ textarea.form-control-lg {
   color: #1aa179;
 }
 
-.btn {
+.order-btn {
   background-color: black;
   border-color: black;
+  color: white;
+  font-size: 0.8rem;
+}
+.order-btn:hover {
+  background-color: #59359a;
+  border-color: #59359a;
+  color: white;
+}
+.order-btn:hover:active {
+  outline-color: #6f42c1;
+}
+
+.btn-terminer {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
+  color: white;
+}
+.btn-terminer:hover {
+  background-color: #59359a;
+  border-color: #59359a;
   color: white;
 }
 

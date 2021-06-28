@@ -111,12 +111,12 @@
                     <span
                       class="
                         badge
+                        rounded-pill
                         position-absolute
                         top-0
                         bg-light
                         start-100
                         text-dark
-                        p-1
                         translate-middle-y
                       "
                       style="font-size: 0.75rem"
@@ -139,7 +139,7 @@
             id="select-options"
           >
             <option value="Choisir un objectif" selected>
-              Sélectioner l'objectif
+              Choisir l'objectif
             </option>
           </select>
           <button
@@ -179,14 +179,14 @@
           <div class="modal-footer justify-content-between">
             <button
               type="button"
-              class="btn btn-secondary"
+              class="btn btn-sm btn-secondary ps-1"
               data-bs-dismiss="modal"
             >
-              Continuer mes achats
+              <i class="bi bi-chevron-left"></i>&nbsp;Continuer mes achats
             </button>
-            <a href="panier.html" class="btn btn-primary"
-              >Terminer ma commande</a
-            >
+            <a href="panier.html" class="btn btn-sm btn-terminer pe-1"
+              >Terminer ma commande&nbsp;<i class="bi bi-chevron-right"></i
+            ></a>
           </div>
         </div>
       </div>

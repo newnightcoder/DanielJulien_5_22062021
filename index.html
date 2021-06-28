@@ -24,13 +24,12 @@
 
   <body>
     <header>
-      <nav
-        class="navbar navbar-expand-md bg-dark navbar-dark text-white fixed-top"
-      >
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+        <span class="navbar-brand h1 mb-0 ms-5">Orinoco</span>
+
         <div class="container">
-          <span class="navbar-brand h1 mb-0">Orinoco</span>
           <button
-            class="navbar-toggler"
+            class="navbar-toggler position-absolute"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#menu"
@@ -39,6 +38,22 @@
           </button>
 
           <div id="menu" class="collapse navbar-collapse pt-2">
+            <div class="input-group mb-3 me-5 mt-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Rechercher un produit..."
+                aria-label="Rechercher un produit"
+                aria-describedby="button-addon2"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
             <div class="navbar-nav ms-auto">
               <a
                 class="
@@ -95,12 +110,12 @@
                     <span
                       class="
                         badge
+                        rounded-pill
                         position-absolute
                         top-0
                         bg-light
                         start-100
                         text-dark
-                        p-1
                         translate-middle-y
                       "
                       style="font-size: 0.75rem"
