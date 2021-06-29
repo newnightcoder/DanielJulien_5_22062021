@@ -12,7 +12,7 @@ $footer-height: 100px;
 
 body {
   height: 100%;
-  // background-color: $body-bg;
+  overflow-x: hidden;
   &::before {
     content: "";
     height: 70px;

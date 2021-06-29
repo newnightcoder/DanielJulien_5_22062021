@@ -10749,6 +10749,7 @@ textarea.form-control-lg {
 }
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 body::before {
   content: "";

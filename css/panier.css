@@ -10749,6 +10749,7 @@ textarea.form-control-lg {
 }
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 body::before {
   content: "";
@@ -10784,6 +10785,27 @@ footer {
   width: 100%;
   background-color: #7c747c;
   position: relative;
+  bottom: 0;
+}
+
+.navbar-nav {
+  width: 100%;
+}
+
+.i-nav {
+  font-size: 2rem;
+  position: relative;
+}
+.i-nav .i-pseudo {
+  font-size: 1.7rem;
+  position: absolute;
+  right: -10px;
+  top: -7px;
+  color: rgba(255, 255, 255, 0.5);
+}
+.i-nav .m {
+  top: auto;
+  right: -15px;
   bottom: 0;
 }
 
@@ -10835,25 +10857,19 @@ footer {
   height: 4px;
 }
 
-.i-nav {
-  font-size: 2rem;
-  position: relative;
-}
-.i-nav .i-pseudo {
-  font-size: 1.7rem;
-  position: absolute;
-  right: -10px;
-  top: -7px;
-  color: rgba(255, 255, 255, 0.5);
-}
-.i-nav .m {
-  top: auto;
-  right: -15px;
-  bottom: 0;
-}
-
 main {
   padding-bottom: 90px;
+}
+
+.link-achats {
+  position: relative;
+}
+.link-achats::before {
+  content: "«";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-48%);
 }
 
 /*# sourceMappingURL=panier.css.map */

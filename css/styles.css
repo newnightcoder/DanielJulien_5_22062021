@@ -10749,6 +10749,7 @@ textarea.form-control-lg {
 }
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 body::before {
   content: "";
@@ -21547,12 +21548,12 @@ textarea.form-control-lg {
   object-fit: cover;
 }
 
-.btn-info {
+.btn-voir {
   background-color: #6f42c1;
   border-color: #6f42c1;
   color: white;
 }
-.btn-info:hover {
+.btn-voir:hover {
   background-color: #59359a;
   border-color: #59359a;
   color: white;

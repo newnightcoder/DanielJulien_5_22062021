@@ -23,49 +23,40 @@
   </head>
   <body>
     <header>
-      <nav class="navbar bg-dark navbar-dark text-light fixed-top">
+      <nav
+        class="navbar navbar-expand bg-dark navbar-dark text-light fixed-top"
+      >
         <span class="navbar-brand h1 mb-0 ms-5">Orinoco</span>
         <div class="container">
-          <i class="i-nav bi bi-credit-card"
-            ><i class="i-pseudo bi bi-lock-fill"></i
-          ></i>
-          <i class="i-nav bi bi-box-seam"
-            ><i class="i-pseudo m bi bi-arrow-left-right"></i
-          ></i>
-          <i class="i-nav bi bi-truck"></i>
+          <div class="navbar-nav justify-content-evenly">
+            <i class="i-nav bi bi-credit-card"
+              ><i class="i-pseudo bi bi-lock-fill"></i
+            ></i>
+            <i class="i-nav bi bi-box-seam"
+              ><i class="i-pseudo m bi bi-arrow-left"></i
+            ></i>
+            <i class="i-nav bi bi-truck"></i>
+          </div>
         </div>
       </nav>
-      <ul class="progres">
+      <ul class="progres mt-3 mb-4">
         <li class="progres-done">Mon panier</li>
         <li class="progres-active">Mes infos</li>
         <li>Paiement</li>
         <li>Confirmation</li>
       </ul>
-      <a class="ms-5" href="index.html">continuer mes achats</a>
     </header>
     <main>
-      <section class="content container row align-items-center m-auto">
+      <section class="content container row align-items-start m-auto">
         <div class="recap col">
           <h1>Mon panier</h1>
+          <a href="index.html">
+            <span class="link-achats">continuer mes achats</span></a
+          >
         </div>
         <div class="container col">
           <form class="col g-3">
-            <div class="col mb-2">
-              <label for="validationDefaultUsername" class="form-label mb-0"
-                >Email:</label
-              >
-              <div class="input-group">
-                <span class="input-group-text" id="inputGroupPrepend2">@</span>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="validationDefaultUsername"
-                  aria-describedby="inputGroupPrepend2"
-                  required
-                />
-              </div>
-            </div>
-            <div class="col mb-3">
+            <div class="col-5 mb-3">
               <label for="validationDefault04" class="form-label mb-0"
                 >Civilité:</label
               >
@@ -75,6 +66,18 @@
                 <option>Monsieur</option>
                 <option>Autre</option>
               </select>
+            </div>
+            <div class="col mb-3">
+              <label for="validationDefault02" class="form-label mb-0"
+                >Nom:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationDefault02"
+                value="Otto"
+                required
+              />
             </div>
             <div class="col mb-3">
               <label for="validationDefault01" class="form-label mb-0"
@@ -88,15 +91,14 @@
                 required
               />
             </div>
-            <div class="col mb-3">
-              <label for="validationDefault02" class="form-label mb-0"
-                >Nom:</label
+            <div class="col-md mb-3">
+              <label for="validationDefault03" class="form-label mb-0"
+                >Adresse:</label
               >
               <input
                 type="text"
                 class="form-control"
-                id="validationDefault02"
-                value="Otto"
+                id="validationDefault03"
                 required
               />
             </div>
@@ -123,6 +125,40 @@
                 required
               />
             </div>
+            <div class="row">
+              <div class="col-8 mb-2">
+                <label for="validationDefaultUsername" class="form-label mb-0"
+                  >Email:</label
+                >
+                <div class="input-group">
+                  <span class="input-group-text" id="inputGroupPrepend2"
+                    >@</span
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationDefaultUsername"
+                    aria-describedby="inputGroupPrepend2"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="col-4 mb-2">
+                <label for="validationDefaultUsername" class="form-label mb-0"
+                  >Téléphone:</label
+                >
+                <div class="input-group">
+                  <!-- <span class="input-group-text" id="inputGroupPrepend2">@</span> -->
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="validationDefaultUsername"
+                    aria-describedby="inputGroupPrepend2"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
             <div class="col-12 mb-3">
               <div class="form-check">
                 <input
@@ -139,7 +175,7 @@
               </div>
             </div>
             <div class="col-12">
-              <button disabled class="btn btn-primary" type="submit">
+              <button disabled class="btn btn-primary mt-3" type="submit">
                 Valider
               </button>
             </div>

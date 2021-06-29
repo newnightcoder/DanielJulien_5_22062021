@@ -10749,6 +10749,7 @@ textarea.form-control-lg {
 }
 body {
   height: 100%;
+  overflow-x: hidden;
 }
 body::before {
   content: "";
@@ -21538,6 +21539,14 @@ textarea.form-control-lg {
   color: #1aa179;
 }
 
+.dispo {
+  color: #198754;
+}
+
+main {
+  height: calc(100vh - 90px);
+}
+
 .order-btn {
   background-color: black;
   border-color: black;
@@ -21553,6 +21562,10 @@ textarea.form-control-lg {
   outline-color: #6f42c1;
 }
 
+table {
+  border: none;
+}
+
 .btn-terminer {
   background-color: #6f42c1;
   border-color: #6f42c1;
@@ -21562,14 +21575,6 @@ textarea.form-control-lg {
   background-color: #59359a;
   border-color: #59359a;
   color: white;
-}
-
-.dispo {
-  color: #198754;
-}
-
-main {
-  height: calc(100vh - 90px);
 }
 
 /*# sourceMappingURL=produit.css.map */

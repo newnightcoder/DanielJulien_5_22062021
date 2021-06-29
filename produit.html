@@ -10,11 +10,11 @@
       crossorigin="anonymous"
       ></script> -->
 
-    <script src="produit.js" type="module" defer></script>
     <script
       defer
       src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
     ></script>
+    <script src="produit.js" type="module" defer></script>
     <script
       defer
       src="/node_modules/bootstrap/dist/js/bootstrap.min.js"
@@ -146,23 +146,21 @@
     <main class="container">
       <section class="detail row mt-5">
         <aside class="col border-start ps-4">
-          <select
-            name="options"
-            class="form-select mb-2 mt-5"
-            id="select-options"
-          >
-            <option selected disabled value="Choisir un objectif">
-              Choisir l'objectif
-            </option>
-          </select>
-          <button
-            type="button"
-            class="btn order-btn"
-            data-bs-toggle="modal"
-            data-bs-target="#modal"
-          >
-            Ajouter au panier
-          </button>
+          <div class="container mt-5">
+            <select name="options" class="form-select mb-3" id="select-options">
+              <option selected disabled value="Choisir un objectif">
+                Choisir l'objectif
+              </option>
+            </select>
+            <button
+              type="button"
+              class="btn order-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#modal"
+            >
+              Ajouter au panier
+            </button>
+          </div>
         </aside>
       </section>
     </main>
@@ -188,7 +186,7 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body"></div>
           <div class="modal-footer justify-content-between">
             <button
               type="button"

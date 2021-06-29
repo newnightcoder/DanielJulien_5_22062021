@@ -1,22 +1,20 @@
-// import { displayCartStorage } from "/produit.js";
-
 const content = document.querySelector(".content");
 const cart = document.querySelector(".badge");
 
 const API_URL = "http://localhost:3000/api/cameras";
 let cameras = [];
 
-export const storage = JSON.parse(localStorage.getItem("selectedProduct"));
-const cartStorage = JSON.parse(localStorage.getItem("cartStorage"));
-
-const displayCartStorage = () => {
-  cartStorage
-    ? ((cart.innerHTML = cartStorage), (cart.style.display = "block"))
+const storage = JSON.parse(localStorage.getItem("selectedProduct"));
+const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
+console.log(typeof storage);
+const displayCartNumberStorage = () => {
+  cartNumberStorage
+    ? ((cart.innerHTML = cartNumberStorage), (cart.style.display = "block"))
     : (cart.style.display = "none");
 };
 
 // let's get the cameras from the API and store the data in the cameras array.
-export const getCameras = async () => {
+const getCameras = async () => {
   try {
     const results = await fetch(API_URL);
     const data = await results.json();
@@ -28,12 +26,20 @@ export const getCameras = async () => {
 };
 
 const selectProduct = () => {
+  let productIndex;
   let selectedProduct;
-  document.querySelectorAll(".product").forEach((item, i) => {
+  document.querySelectorAll(".btn-voir").forEach((item, i) => {
     console.log(item, i);
-    item.addEventListener("click", (e) => {
-      selectedProduct = i;
-      console.log("fonction select product", selectedProduct);
+    item.addEventListener("click", () => {
+      // e.preventDefault();
+      productIndex = i;
+      // pour changer un peu des for loop! 😋 (for of loop avec recherche de l'index)
+      for (const [i, item] of cameras.entries()) {
+        if (productIndex === i) {
+          selectedProduct = [1, item];
+        }
+      }
+      console.log(selectedProduct);
       localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
     });
   });
@@ -58,7 +64,7 @@ const displayProducts = () => {
             .divide(100)
             .format("0 0.00")}€ </p>
           <p class="card-text">${item.description}</p>
-          <div class="text-end"><a href="produit.html" class="btn btn-sm btn-info" type="button">Voir ce produit</a></div>
+          <div class="text-end"><a href="produit.html" class="btn btn-sm btn-voir" type="button">Voir ce produit</a></div>
         </div>
       </div>
     </div>
@@ -69,11 +75,10 @@ const displayProducts = () => {
   });
 };
 
-//launch
-const init = (async () => {
+const initPage = (async () => {
   cameras = await getCameras();
   console.log("init cameras", cameras);
   displayProducts();
   selectProduct();
-  displayCartStorage();
+  displayCartNumberStorage();
 })();
