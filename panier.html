@@ -22,50 +22,37 @@
     <title>Mon panier | Orinoco</title>
   </head>
   <body>
-    <header class="header container">
-      <nav class="nav">
-        <ul>
-          <li>Mon panier</li>
-          <li>Mes infos</li>
-          <li>Paiement</li>
-          <li>Confirmation</li>
-        </ul>
+    <header>
+      <nav class="navbar bg-dark navbar-dark text-light fixed-top">
+        <span class="navbar-brand h1 mb-0 ms-5">Orinoco</span>
+        <div class="container">
+          <i class="i-nav bi bi-credit-card"
+            ><i class="i-pseudo bi bi-lock-fill"></i
+          ></i>
+          <i class="i-nav bi bi-box-seam"
+            ><i class="i-pseudo m bi bi-arrow-left-right"></i
+          ></i>
+          <i class="i-nav bi bi-truck"></i>
+        </div>
       </nav>
-      <a href="index.html">continuer mes achats</a>
+      <ul class="progres">
+        <li class="progres-done">Mon panier</li>
+        <li class="progres-active">Mes infos</li>
+        <li>Paiement</li>
+        <li>Confirmation</li>
+      </ul>
+      <a class="ms-5" href="index.html">continuer mes achats</a>
     </header>
     <main>
-      <section class="content container">
-        <h1>Mon panier</h1>
-        <div class="recap"></div>
-        <div class="container">
-          <form class="row g-3">
-            <div class="col-md-4">
-              <label for="validationDefault01" class="form-label"
-                >First name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="validationDefault01"
-                value="Mark"
-                required
-              />
-            </div>
-            <div class="col-md-4">
-              <label for="validationDefault02" class="form-label"
-                >Last name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="validationDefault02"
-                value="Otto"
-                required
-              />
-            </div>
-            <div class="col-md-4">
-              <label for="validationDefaultUsername" class="form-label"
-                >Username</label
+      <section class="content container row align-items-center m-auto">
+        <div class="recap col">
+          <h1>Mon panier</h1>
+        </div>
+        <div class="container col">
+          <form class="col g-3">
+            <div class="col mb-2">
+              <label for="validationDefaultUsername" class="form-label mb-0"
+                >Email:</label
               >
               <div class="input-group">
                 <span class="input-group-text" id="inputGroupPrepend2">@</span>
@@ -78,8 +65,45 @@
                 />
               </div>
             </div>
-            <div class="col-md-6">
-              <label for="validationDefault03" class="form-label">City</label>
+            <div class="col mb-3">
+              <label for="validationDefault04" class="form-label mb-0"
+                >Civilité:</label
+              >
+              <select class="form-select" id="validationDefault04" required>
+                <option selected disabled value="">Sélectionnez</option>
+                <option>Madame</option>
+                <option>Monsieur</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="col mb-3">
+              <label for="validationDefault01" class="form-label mb-0"
+                >Prénom:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationDefault01"
+                value="Mark"
+                required
+              />
+            </div>
+            <div class="col mb-3">
+              <label for="validationDefault02" class="form-label mb-0"
+                >Nom:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="validationDefault02"
+                value="Otto"
+                required
+              />
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="validationDefault03" class="form-label mb-0"
+                >Ville:</label
+              >
               <input
                 type="text"
                 class="form-control"
@@ -87,15 +111,11 @@
                 required
               />
             </div>
-            <div class="col-md-3">
-              <label for="validationDefault04" class="form-label">State</label>
-              <select class="form-select" id="validationDefault04" required>
-                <option selected disabled value="">Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <label for="validationDefault05" class="form-label">Zip</label>
+
+            <div class="col-md-3 mb-3">
+              <label for="validationDefault05" class="form-label mb-0"
+                >Code postal:</label
+              >
               <input
                 type="text"
                 class="form-control"
@@ -103,7 +123,7 @@
                 required
               />
             </div>
-            <div class="col-12">
+            <div class="col-12 mb-3">
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -113,12 +133,15 @@
                   required
                 />
                 <label class="form-check-label" for="invalidCheck2">
-                  Agree to terms and conditions
+                  J&apos;ai lu et j&apos;accepte les conditions
+                  g&eacute;n&eacute;rales de vente
                 </label>
               </div>
             </div>
             <div class="col-12">
-              <button class="btn btn-primary" type="submit">Submit form</button>
+              <button disabled class="btn btn-primary" type="submit">
+                Valider
+              </button>
             </div>
           </form>
         </div>

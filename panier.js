@@ -6,12 +6,12 @@ const recap = storage
   ? `<div> <span class="quantité"></span> articles dans mon panier</div>
 <div>vider mon panier</div>
 <div>modifier la quantité
-<button class="plus">+</button>
-<button class="moins">-</button>
-<button class="suppr">tout supprimer</button>
+<button class="btn btn-dark plus">+</button>
+<button class="btn btn-dark moins">-</button>
+<button class="btn btn-dark suppr">tout supprimer</button>
 </div>`
   : "Panier vide";
-content.insertAdjacentHTML("afterBegin", recap);
+content.insertAdjacentHTML("beforeEnd", recap);
 
 const displayQuantity = () => {
   document.querySelector(".quantité").innerHTML = storage;

@@ -1,4 +1,4 @@
-@use "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
 @import "../node_modules/bootstrap-icons/font/bootstrap-icons.css";
 
 $body-bg: #f3ebf3;
@@ -19,13 +19,32 @@ body {
     display: block;
   }
 }
+.navbar-toggler {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.bi-cart3 {
+  z-index: 2;
+}
+.badge {
+  z-index: -1;
+  background-color: $purple-500 !important;
+}
 
 .btn {
   text-transform: uppercase;
+}
+
+a {
+  white-space: nowrap;
 }
 
 footer {
   height: $footer-height;
   width: 100%;
   background-color: $footer-bg;
+  position: relative;
+  bottom: 0;
 }

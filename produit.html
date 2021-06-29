@@ -25,26 +25,10 @@
   <body>
     <header>
       <nav
-        class="mx-3"
-        style="--bs-breadcrumb-divider: '&gg;'"
-        aria-label="breadcrumb"
-      >
-        <ol class="breadcrumb" style="font-size: 0.8rem">
-          <li class="breadcrumb-item">
-            <a href="index.html" class="link-secondary">Accueil</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="index.html" class="link-secondary">Appareils photos</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page"></li>
-        </ol>
-      </nav>
-      <!-- <div class="back"><a href="index.html" class="back-btn">retour</a></div> -->
-      <nav
         class="navbar navbar-expand-md bg-dark navbar-dark text-white fixed-top"
       >
+        <span class="navbar-brand h1 mb-0 ms-5">Orinoco</span>
         <div class="container">
-          <span class="navbar-brand h1 mb-0">Orinoco</span>
           <button
             class="navbar-toggler"
             type="button"
@@ -54,7 +38,23 @@
             <i class="navbar-toggler-icon"></i>
           </button>
 
-          <div id="menu" class="collapse navbar-collapse pt-2">
+          <div id="menu" class="collapse navbar-collapse py-2">
+            <div class="input-group me-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Rechercher un produit..."
+                aria-label="Rechercher un produit"
+                aria-describedby="button-addon2"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
             <div class="navbar-nav ms-auto">
               <a
                 class="
@@ -114,9 +114,7 @@
                         rounded-pill
                         position-absolute
                         top-0
-                        bg-light
-                        start-100
-                        text-dark
+                        start-50
                         translate-middle-y
                       "
                       style="font-size: 0.75rem"
@@ -128,6 +126,21 @@
           </div>
         </div>
       </nav>
+      <nav
+        class="ms-5 mt-3"
+        style="--bs-breadcrumb-divider: '&gg;'"
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb" style="font-size: 0.8rem">
+          <li class="breadcrumb-item">
+            <a href="index.html" class="link-secondary">Accueil</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="index.html" class="link-secondary">Appareils photos</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
+      </nav>
     </header>
 
     <main class="container">
@@ -138,7 +151,7 @@
             class="form-select mb-2 mt-5"
             id="select-options"
           >
-            <option value="Choisir un objectif" selected>
+            <option selected disabled value="Choisir un objectif">
               Choisir l'objectif
             </option>
           </select>
