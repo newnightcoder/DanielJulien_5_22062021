@@ -9,10 +9,11 @@ const modal = document.querySelector(".modal-body");
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 const selectedProduct = JSON.parse(localStorage.getItem("selectedProduct"));
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
+// console.log(finalCartStorage[0]);
 
 const detail =
   selectedProduct &&
-  `<div class="col-8">
+  `<div class="col-lg-8">
     <h3 class="">${selectedProduct[1].name}</h3>
     <div class="">
     <img height="350"  width="500" src="${selectedProduct[1].imageUrl}"/>
@@ -28,7 +29,7 @@ const prix =
     <span class="price col-4" style="color:red;font-size:1.75rem">
     ${numeral(selectedProduct[1].price).divide(100).format("0 0.00")}€
     </span> 
-    <span class="dispo col-4"> <i class="bi bi-check2"></i>disponible</span>
+    <span class="dispo col-4" style="white-space:nowrap"> <i class="bi bi-check2"></i>disponible</span>
    </div>`;
 
 const modalContent =
@@ -62,7 +63,7 @@ const displayProductPage = () => {
   modal.insertAdjacentHTML("afterbegin", modalContent);
 };
 
-let finalCart = [];
+let finalCart = [...selectedProduct];
 
 const addToCart = () => {
   //ajouter au nombre total d'items dans le cart (storage + view)
@@ -72,19 +73,28 @@ const addToCart = () => {
     localStorage.setItem("cartNumberStorage", JSON.stringify(cartNumber));
     cart.innerHTML = cartNumber;
     cart.style.display = "block";
+  });
+};
 
+const addToStorage = () => {
+  orderBtn.addEventListener("click", () => {
     //ajouter au storage détaillé (item + quantité)
-    if (finalCart.length === 0) finalCart.push(selectedProduct);
+    if (!finalCartStorage)
+      localStorage.setItem("finalCartStorage", JSON.stringify([finalCart]));
     else {
-      for (let i = 0; i < finalCart.length; i++) {
-        if (selectedProduct[1]._id === finalCart[i][1]._id) finalCart[i][0]++;
-        else {
-          finalCart.push(selectedProduct);
+      let storageCopy = [...finalCartStorage];
+      for (let i = 0; i < storageCopy.length; i++) {
+        if (selectedProduct[1]._id === storageCopy[i][1]._id) {
+          storageCopy[i][0]++;
+          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+          console.log("yay");
+          return;
+        } else {
+          let storageCopy = [...finalCartStorage, selectedProduct];
+          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
         }
       }
     }
-    console.log(finalCart);
-    localStorage.setItem("finalCartStorage", JSON.stringify(finalCart));
   });
 };
 
@@ -97,5 +107,6 @@ const displayCartNumberStorage = () => {
 const initPage = (() => {
   displayProductPage();
   addToCart();
+  addToStorage();
   displayCartNumberStorage();
 })();
