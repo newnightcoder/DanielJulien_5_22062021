@@ -33,7 +33,7 @@ const selectProduct = () => {
     item.addEventListener("click", () => {
       // e.preventDefault();
       productIndex = i;
-      // pour changer un peu des for loop! 😋 (for of loop avec recherche de l'index)
+      // pour changer un peu des for loop! (for of loop avec recherche de l'index)
       for (const [i, item] of cameras.entries()) {
         if (productIndex === i) {
           selectedProduct = [1, item];

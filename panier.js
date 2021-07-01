@@ -4,38 +4,39 @@ const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 const recapContent = document.querySelector(".recap-content");
 let number = cartNumberStorage;
 
-const recap = `<div class="container mt-2 mb-5"> 
+const recap = `<div class="recap-line container mt-2 mb-5 text-end"> 
                 <span class="quantité"></span> 
                 <span class="msg-articles">articles</span> dans mon panier
-                <button class="btn btn-sm btn-danger ms-3">vider le panier</button>
-              </div>`;
+                <button class="btn btn-sm btn-dark ms-3">vider le panier</button>
+               </div>`;
 
 const displayRecap = () => {
   if (!finalCartStorage) return;
   else {
     for (let i = 0; i < finalCartStorage.length; i++) {
-      const recapTable =
+      const recapRow =
         finalCartStorage &&
         `<tr class="modal-row align-middle border">
-    <td><img class="img-fluid" width="150" src="${
-      finalCartStorage[i][1].imageUrl
-    }"/></td>
-    <td><span style="white-space:nowrap; text-transform:uppercase; font-weight:600">${
-      finalCartStorage[i][1].name
-    }</span><br><span style="font-size:.9rem; text-align:left">Quantité : ${
+            <td><img class="img-fluid" width="150" src="${
+              finalCartStorage[i][1].imageUrl
+            }"/></td>
+            <td><span style="white-space:nowrap; text-transform:uppercase; font-weight:600">${
+              finalCartStorage[i][1].name
+            }</span><br><span style="font-size:.9rem">Quantité : ${
           finalCartStorage[i][0]
         }</span>
-    <div>
-      <button class="btn btn-sm btn-dark moins">-</button>
-      <button class="btn btn-sm btn-dark plus">+</button>
-      <button class="btn btn-sm btn-dark suppr">supprimer</button>
-    </div></td>
-    <td style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${
-      numeral(finalCartStorage[i][1].price).divide(100).format("0 0.00") *
-      finalCartStorage[i][0]
-    }€</td>
-   </tr>`;
-      recapContent.insertAdjacentHTML("afterbegin", recapTable);
+            <div class="mt-1">
+              <button class="btn btn-sm btn-outline-dark moins">-</button>
+              <button class="btn btn-sm btn-outline-dark plus">+</button>
+              <button class="btn btn-sm btn-outline-dark suppr">supprimer</button>
+            </div></td>
+            <td style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${
+              numeral(finalCartStorage[i][1].price)
+                .divide(100)
+                .format("0 0.00") * finalCartStorage[i][0]
+            }€</td>
+         </tr>`;
+      recapContent.insertAdjacentHTML("afterbegin", recapRow);
     }
   }
 };
@@ -48,9 +49,9 @@ const displayQuantity = () => {
         "afterBegin",
         `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`
       );
-  if (cartNumberStorage === 1) {
-    document.querySelector(".msg-articles").textContent = "article";
-  }
+  // if (cartNumberStorage === 1) {
+  //   document.querySelector(".msg-articles").textContent = "article";
+  // }
 };
 
 const plus = () => {
@@ -73,13 +74,13 @@ const moins = () => {
     });
 };
 
-const clear = () => {
-  localStorage.clear();
-  recapContent.innerHTML = `<div style="text-transform:uppercase">Panier vide</div>`;
-};
 const suppr = () => {
   cartNumberStorage &&
-    document.querySelector(".btn-danger").addEventListener("click", clear);
+    document.querySelector(".btn-dark").addEventListener("click", () => {
+      localStorage.clear();
+      recapContent.innerHTML = `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
+      document.querySelector(".recap-line").innerHTML = "";
+    });
 };
 
 const initPage = (() => {

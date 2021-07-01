@@ -63,8 +63,6 @@ const displayProductPage = () => {
   modal.insertAdjacentHTML("afterbegin", modalContent);
 };
 
-let finalCart = [...selectedProduct];
-
 const addToCart = () => {
   //ajouter au nombre total d'items dans le cart (storage + view)
   let cartNumber = cartNumberStorage;
@@ -76,23 +74,36 @@ const addToCart = () => {
   });
 };
 
+let finalCart = [...selectedProduct];
+
 const addToStorage = () => {
   orderBtn.addEventListener("click", () => {
+    const finalCartStorage = JSON.parse(
+      localStorage.getItem("finalCartStorage")
+    );
     //ajouter au storage détaillé (item + quantité)
-    if (!finalCartStorage)
+    if (!finalCartStorage) {
       localStorage.setItem("finalCartStorage", JSON.stringify([finalCart]));
-    else {
+    } else {
       let storageCopy = [...finalCartStorage];
+
+      let idFound = null;
+
       for (let i = 0; i < storageCopy.length; i++) {
         if (selectedProduct[1]._id === storageCopy[i][1]._id) {
-          storageCopy[i][0]++;
-          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
-          console.log("yay");
-          return;
-        } else {
-          let storageCopy = [...finalCartStorage, selectedProduct];
-          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+          idFound = i;
+          break;
         }
+      }
+
+      if (idFound !== null) {
+        // idFound !== null ---> pour éviter l'index = 0 qui renvoit une falsy value
+        storageCopy[idFound][0]++;
+        localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+        // console.log("yay");
+      } else {
+        let storageCopy = [...finalCartStorage, selectedProduct];
+        localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
       }
     }
   });
