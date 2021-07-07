@@ -5,8 +5,10 @@ const recapContent = document.querySelector(".recap-content");
 let number = cartNumberStorage;
 
 const recap = `<div class="recap-line container mt-2 mb-5 text-end"> 
-                <span class="quantité"></span> 
-                <span class="msg-articles">articles</span> dans mon panier
+                <span class="quantité">${cartNumberStorage}</span> 
+                <span class="msg-articles">article${
+                  cartNumberStorage === 1 ? "" : "s"
+                }</span> dans mon panier
                 <button class="btn btn-sm btn-dark ms-3">vider le panier</button>
                </div>`;
 
@@ -34,7 +36,7 @@ const displayRecap = () => {
                 <button class="btn btn-sm btn-outline-dark suppr">supprimer</button>
               </div>
             </td>
-            <td style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${
+            <td class="price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${
               numeral(finalCartStorage[i][1].price)
                 .divide(100)
                 .format("0 0.00") * finalCartStorage[i][0]
@@ -47,15 +49,14 @@ const displayRecap = () => {
 
 const displayQuantity = () => {
   cartNumberStorage
-    ? (content.insertAdjacentHTML("beforeEnd", recap),
-      (document.querySelector(".quantité").innerHTML = cartNumberStorage))
+    ? content.insertAdjacentHTML("beforeEnd", recap)
     : recapContent.insertAdjacentHTML(
         "afterBegin",
         `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`
       );
 };
 
-let storageCopy = [...finalCartStorage];
+let storageCopy = finalCartStorage && [...finalCartStorage];
 
 const plus = () => {
   const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
@@ -65,12 +66,18 @@ const plus = () => {
       for (let i = 0; i < finalCartStorage.length; i++) {
         if (
           finalCartStorage[i][1].name ===
-          btn.parentElement.parentElement.firstChild.innerHTML
+          btn.parentElement.parentElement.firstChild.textContent
         ) {
           storageCopy[i][0]++;
           localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
           btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
             storageCopy[i][0];
+          // btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
+          //   storageCopy[i][0] * storageCopy[i][1].price;
+          btn.parentElement.parentElement.nextElementSibling.innerHTML =
+            numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
+              storageCopy[i][0] +
+            "€";
         }
       }
       //augmente le chiffre du cart global
@@ -90,12 +97,16 @@ const moins = () => {
       for (let i = 0; i < finalCartStorage.length; i++) {
         if (
           finalCartStorage[i][1].name ===
-          btn.parentElement.parentElement.firstChild.innerHTML
+          btn.parentElement.parentElement.firstChild.textContent
         ) {
           if (storageCopy[i][0] === 0) return;
           storageCopy[i][0]--;
           btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
             storageCopy[i][0];
+          btn.parentElement.parentElement.nextElementSibling.innerHTML =
+            numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
+              storageCopy[i][0] +
+            "€";
         }
       }
       localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
@@ -108,6 +119,30 @@ const moins = () => {
 };
 
 const suppr = () => {
+  document.querySelectorAll(".suppr").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      for (let i = 0; i < finalCartStorage.length; i++) {
+        if (
+          finalCartStorage[i][1].name ===
+          btn.parentElement.parentElement.firstChild.textContent
+        ) {
+          //retrancher du cartNumberStorage
+          number = number - finalCartStorage[i][0];
+          localStorage.setItem("cartNumberStorage", JSON.stringify(number));
+          document.querySelector(".quantité").innerHTML = number;
+
+          //supprimer l'élément du finalCartStorage
+          storageCopy.splice(i, 1);
+          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+        }
+      }
+      //supprime l'élément du DOM
+      btn.parentElement.parentElement.parentElement.innerHTML = "";
+    });
+  });
+};
+
+const vider = () => {
   cartNumberStorage &&
     document.querySelector(".btn-dark").addEventListener("click", () => {
       localStorage.clear();
@@ -119,7 +154,8 @@ const suppr = () => {
 const initPage = (() => {
   displayQuantity();
   displayRecap();
-  moins();
   plus();
+  moins();
   suppr();
+  vider();
 })();
