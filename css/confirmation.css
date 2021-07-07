@@ -10846,4 +10846,9 @@ footer {
   bottom: 0;
 }
 
-/*# sourceMappingURL=globals.css.map */
+.bi-check-circle-fill {
+  color: green;
+  font-size: 5rem;
+}
+
+/*# sourceMappingURL=confirmation.css.map */

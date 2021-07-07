@@ -18,6 +18,7 @@
       src="/node_modules/bootstrap/dist/js/bootstrap.min.js"
     ></script>
     <script src="panier.js" type="module" defer></script>
+    <script src="validation.js" type="module" defer></script>
     <link rel="stylesheet" href="/css/panier.css" />
     <title>Mon panier | Orinoco</title>
   </head>
@@ -26,15 +27,11 @@
       <nav
         class="navbar navbar-expand bg-dark navbar-dark text-light fixed-top"
       >
-        <span class="navbar-brand h1 mb-0 ms-5">Orinoco</span>
+        <a href="/index.html" class="navbar-brand h1 mb-0 ms-5">Orinoco</a>
         <div class="container">
           <div class="navbar-nav justify-content-evenly">
-            <i class="i-nav bi bi-credit-card"
-              ><i class="i-pseudo bi bi-lock-fill"></i
-            ></i>
-            <i class="i-nav bi bi-box-seam"
-              ><i class="i-pseudo m bi bi-arrow-left"></i
-            ></i>
+            <i class="i-nav bi bi-credit-card"></i>
+            <i class="i-nav bi bi-box-seam"></i>
             <i class="i-nav bi bi-truck"></i>
           </div>
         </div>
@@ -48,8 +45,8 @@
     </header>
     <main>
       <section class="content container row align-items-start m-auto">
-        <div class="recap row mt-4">
-          <h1>Mon panier</h1>
+        <div class="recap row mt-5">
+          <h2>Mon panier</h2>
           <a href="index.html">
             <span class="link-achats">continuer mes achats</span></a
           >
@@ -57,79 +54,84 @@
             <tbody class="recap-content"></tbody>
           </table>
         </div>
-        <div class="container row border-top align-items-center">
-          <form class="col g-3">
-            <div class="col-5 mb-3">
+        <div class="container row border-top align-items-center pt-4">
+          <h2>Mes infos</h2>
+          <form class="col g-3" action="/confirmation.html">
+            <div class="col-md-2 mb-3">
               <label for="validationDefault04" class="form-label mb-0"
                 >Civilité:</label
               >
-              <select class="form-select" id="validationDefault04" required>
+              <select class="form-select" id="validationDefault04">
                 <option selected disabled value="">Sélectionnez</option>
                 <option>Madame</option>
                 <option>Monsieur</option>
                 <option>Autre</option>
               </select>
+              <span class="error">error</span>
             </div>
-            <div class="col mb-3">
+            <div class="col-md-4 mb-3">
               <label for="validationDefault02" class="form-label mb-0"
-                >Nom:</label
-              >
+                >Nom:
+              </label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control lastname"
                 id="validationDefault02"
-                value="ex: Otto"
-                required
+                placeholder="Entrez votre nom"
               />
+              <span class="error">error</span>
             </div>
-            <div class="col mb-3">
+            <div class="col-md-4 mb-3">
               <label for="validationDefault01" class="form-label mb-0"
                 >Prénom:</label
               >
               <input
                 type="text"
-                class="form-control"
+                class="form-control firstname"
                 id="validationDefault01"
-                value="Mark"
-                required
+                placeholder="Entrez votre prénom"
               />
+              <span class="error">error</span>
             </div>
-            <div class="col-md mb-3">
+            <div class="col-md-8 mb-3">
               <label for="validationDefault03" class="form-label mb-0"
                 >Adresse:</label
               >
               <input
                 type="text"
-                class="form-control"
+                class="form-control address"
                 id="validationDefault03"
-                required
+                placeholder="Votre adresse"
               />
+              <span class="error">error</span>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-4 mb-3">
               <label for="validationDefault03" class="form-label mb-0"
                 >Ville:</label
               >
               <input
                 type="text"
-                class="form-control"
+                class="form-control city"
                 id="validationDefault03"
-                required
+                placeholder="Votre ville"
               />
+              <span class="error">error</span>
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-2 mb-3">
               <label for="validationDefault05" class="form-label mb-0"
                 >Code postal:</label
               >
               <input
                 type="text"
-                class="form-control"
+                class="form-control zip"
                 id="validationDefault05"
-                required
+                placeholder="Votre code postal"
               />
+              <span class="error">error</span>
             </div>
             <div class="row">
-              <div class="col-8 mb-2">
+              <div class="col-md-4 mb-2">
                 <label for="validationDefaultUsername" class="form-label mb-0"
                   >Email:</label
                 >
@@ -139,12 +141,13 @@
                   >
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control email"
                     id="validationDefaultUsername"
                     aria-describedby="inputGroupPrepend2"
-                    required
+                    placeholder="Votre email"
                   />
                 </div>
+                <span class="error">error</span>
               </div>
               <div class="col-4 mb-2">
                 <label for="validationDefaultUsername" class="form-label mb-0"
@@ -153,12 +156,13 @@
                 <div class="input-group">
                   <input
                     type="text"
-                    class="form-control"
+                    class="form-control phone"
                     id="validationDefaultUsername"
                     aria-describedby="inputGroupPrepend2"
-                    required
+                    placeholder="Votre numéro de téléphone"
                   />
                 </div>
+                <span class="error">error</span>
               </div>
             </div>
             <div class="col-12 mb-3 mt-3">
@@ -168,16 +172,16 @@
                   type="checkbox"
                   value=""
                   id="invalidCheck2"
-                  required
                 />
                 <label class="form-check-label" for="invalidCheck2">
                   J&apos;ai lu et j&apos;accepte les conditions
                   g&eacute;n&eacute;rales de vente
                 </label>
               </div>
+              <span class="error">error</span>
             </div>
             <div class="col-12 text-center">
-              <button disabled class="btn btn-primary mt-3" type="submit">
+              <button class="btn btn-primary mt-3" type="submit">
                 Valider
               </button>
             </div>

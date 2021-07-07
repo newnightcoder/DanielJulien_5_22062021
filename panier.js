@@ -72,8 +72,6 @@ const plus = () => {
           localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
           btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
             storageCopy[i][0];
-          // btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
-          //   storageCopy[i][0] * storageCopy[i][1].price;
           btn.parentElement.parentElement.nextElementSibling.innerHTML =
             numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
               storageCopy[i][0] +
@@ -100,6 +98,7 @@ const moins = () => {
           btn.parentElement.parentElement.firstChild.textContent
         ) {
           if (storageCopy[i][0] === 0) return;
+
           storageCopy[i][0]--;
           btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
             storageCopy[i][0];
@@ -107,6 +106,15 @@ const moins = () => {
             numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
               storageCopy[i][0] +
             "€";
+          // au cas où on arrive à 0 :
+          if (storageCopy[i][0] === 0 && storageCopy.length === 1) {
+            document.querySelector(".recap-line").innerHTML = "";
+            recapContent.innerHTML = `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
+          }
+          if (storageCopy[i][0] === 0) {
+            storageCopy.splice(i, 1);
+            btn.parentElement.parentElement.parentElement.innerHTML = "";
+          }
         }
       }
       localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
