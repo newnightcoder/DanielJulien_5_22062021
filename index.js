@@ -29,9 +29,7 @@ const selectProduct = () => {
   let productIndex;
   let selectedProduct;
   document.querySelectorAll(".btn-voir").forEach((item, i) => {
-    console.log(item, i);
     item.addEventListener("click", () => {
-      // e.preventDefault();
       productIndex = i;
       // pour changer un peu des for loop! (for of loop avec recherche de l'index)
       for (const [i, item] of cameras.entries()) {

@@ -19,17 +19,21 @@ const displayRecap = () => {
         `<tr class="modal-row align-middle border">
             <td><img class="img-fluid" width="150" src="${
               finalCartStorage[i][1].imageUrl
-            }"/></td>
+            }"/>
+            </td>
             <td><span style="white-space:nowrap; text-transform:uppercase; font-weight:600">${
               finalCartStorage[i][1].name
-            }</span><br><span style="font-size:.9rem">Quantité : ${
-          finalCartStorage[i][0]
-        }</span>
-            <div class="mt-1">
-              <button class="btn btn-sm btn-outline-dark moins">-</button>
-              <button class="btn btn-sm btn-outline-dark plus">+</button>
-              <button class="btn btn-sm btn-outline-dark suppr">supprimer</button>
-            </div></td>
+            }</span><br>
+            <div style="font-size:.9rem">Quantité : <span class="item-quantity">${
+              finalCartStorage[i][0]
+            }</span>
+              </div>
+              <div class="mt-1">
+                <button class="btn btn-sm btn-outline-dark moins">-</button>
+                <button class="btn btn-sm btn-outline-dark plus">+</button>
+                <button class="btn btn-sm btn-outline-dark suppr">supprimer</button>
+              </div>
+            </td>
             <td style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${
               numeral(finalCartStorage[i][1].price)
                 .divide(100)
@@ -49,29 +53,58 @@ const displayQuantity = () => {
         "afterBegin",
         `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`
       );
-  // if (cartNumberStorage === 1) {
-  //   document.querySelector(".msg-articles").textContent = "article";
-  // }
 };
 
+let storageCopy = [...finalCartStorage];
+
 const plus = () => {
-  cartNumberStorage &&
-    document.querySelector(".plus").addEventListener("click", () => {
-      number++;
+  const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
+  document.querySelectorAll(".plus").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      //augmente la quantité du produit concerné
+      for (let i = 0; i < finalCartStorage.length; i++) {
+        if (
+          finalCartStorage[i][1].name ===
+          btn.parentElement.parentElement.firstChild.innerHTML
+        ) {
+          storageCopy[i][0]++;
+          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+          btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
+            storageCopy[i][0];
+        }
+      }
+      //augmente le chiffre du cart global
+      cartNumberStorage && number++;
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
       document.querySelector(".quantité").innerHTML = number;
     });
+  });
 };
 
 const moins = () => {
-  cartNumberStorage &&
-    document.querySelector(".moins").addEventListener("click", () => {
-      if (number === 0) return;
-      number--;
+  const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
+  // let storageCopy = [...finalCartStorage];
+  document.querySelectorAll(".moins").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      //diminue la quantité du produit concerné
+      for (let i = 0; i < finalCartStorage.length; i++) {
+        if (
+          finalCartStorage[i][1].name ===
+          btn.parentElement.parentElement.firstChild.innerHTML
+        ) {
+          if (storageCopy[i][0] === 0) return;
+          storageCopy[i][0]--;
+          btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
+            storageCopy[i][0];
+        }
+      }
+      localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+      //diminue le chiffre du cart global
+      cartNumberStorage && number--;
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
-      console.log(number);
       document.querySelector(".quantité").innerHTML = number;
     });
+  });
 };
 
 const suppr = () => {
