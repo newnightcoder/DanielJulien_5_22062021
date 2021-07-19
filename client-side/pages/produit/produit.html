@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <script
+      async
+      src="https://kit.fontawesome.com/9209397972.js"
+      crossorigin="anonymous"
+      ></script> -->
+
+    <script
+      defer
+      src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
+    ></script>
+    <script src="produit.js" type="module" defer></script>
+    <script
+      defer
+      src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
+    <link rel="stylesheet" href="../../css/produit.css" />
+    <title>Détail Produit | Orinoco</title>
+  </head>
+  <body>
+    <header>
+      <nav
+        class="navbar navbar-expand-md bg-dark navbar-dark text-white fixed-top"
+      >
+        <a href="../../../index.html" class="navbar-brand h1 mb-0 ms-5"
+          >Orinoco</a
+        >
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+          >
+            <i class="navbar-toggler-icon"></i>
+          </button>
+
+          <div id="menu" class="collapse navbar-collapse py-2">
+            <div class="input-group me-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Rechercher un produit..."
+                aria-label="Rechercher un produit"
+                aria-describedby="button-addon2"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <div class="navbar-nav ms-auto">
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Catégories</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Produits</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="#"
+                >Mon compte</a
+              >
+              <a
+                class="
+                  nav-link
+                  p-0
+                  mx-3
+                  justify-content-center
+                  align-items-center
+                  d-flex
+                "
+                href="../panier/panier.html"
+              >
+                <div class="cart">
+                  <i
+                    class="bi bi-cart3 position-relative align-middle"
+                    style="font-size: 1.5rem"
+                  >
+                    <span
+                      class="
+                        badge
+                        rounded-pill
+                        position-absolute
+                        top-0
+                        start-50
+                        translate-middle-y
+                      "
+                      style="font-size: 0.75rem"
+                    ></span
+                  ></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <nav
+        class="ms-5 mt-3"
+        style="--bs-breadcrumb-divider: '&gg;'"
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb pb-0" style="font-size: 0.8rem">
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="link-secondary"
+              >Accueil Orinoco</a
+            >
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../../index.html" class="link-secondary"
+              >Appareils photos</a
+            >
+          </li>
+          <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
+      </nav>
+    </header>
+
+    <main class="container ms-auto">
+      <section class="detail row mt-4">
+        <aside class="col border-start ps-4">
+          <div class="container mt-5">
+            <select name="options" class="form-select mb-3" id="select-options">
+              <option selected disabled value="Choisir un objectif">
+                Choisir l'objectif
+              </option>
+            </select>
+            <button
+              type="button"
+              class="btn order-btn"
+              data-bs-toggle="modal"
+              data-bs-target="#modal"
+            >
+              Ajouter au panier
+            </button>
+          </div>
+        </aside>
+      </section>
+    </main>
+    <footer></footer>
+    <div
+      class="modal fade"
+      id="modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <i class="bi bi-check-lg">&nbsp;</i>Votre article a été ajouté au
+              panier
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer justify-content-between">
+            <button
+              type="button"
+              class="btn btn-sm btn-secondary ps-1"
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-chevron-left"></i>&nbsp;Continuer mes achats
+            </button>
+            <a href="../panier/panier.html" class="btn btn-sm btn-terminer pe-1"
+              >Terminer ma commande&nbsp;<i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

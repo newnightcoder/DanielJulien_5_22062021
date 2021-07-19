@@ -1,0 +1,113 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.css";
+
+$body-bg: #f3ebf3;
+$body-bg: lightgray;
+$header-bg: #281826;
+$footer-bg: #7c747c;
+$cart-number-bg: #9059ff;
+$color-text: #000000;
+$main-height: max-content;
+$footer-height: 100px;
+
+body {
+  height: 100%;
+  overflow-x: hidden;
+  &::before {
+    content: "";
+    height: 70px;
+    display: block;
+  }
+}
+.navbar-toggler {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.bi-cart3 {
+  z-index: 2;
+}
+.badge {
+  z-index: -1;
+  background-color: $purple-500 !important;
+}
+
+.btn {
+  text-transform: uppercase;
+}
+
+a {
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.i-nav {
+  font-size: 2rem;
+  position: relative;
+}
+
+.navbar-nav {
+  width: 100%;
+}
+
+.progres {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style-type: none;
+  position: relative;
+  .progres-done {
+    &::before,
+    &::after {
+      background-color: grey;
+    }
+  }
+  .progres-active {
+    &::after {
+      background-color: grey;
+    }
+  }
+  li {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    &::before {
+      content: "";
+      height: 3px;
+      width: calc(100% + 16.5vw);
+      position: absolute;
+      bottom: -75%;
+      left: 50%;
+      background-color: #edeff0;
+    }
+    &::after {
+      content: "";
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background-color: #edeff0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, 75%);
+      z-index: 2;
+    }
+    &:nth-child(4)::before {
+      background-color: white;
+      z-index: 1;
+      height: 4px;
+    }
+  }
+}
+
+footer {
+  height: $footer-height;
+  width: 100%;
+  background-color: $footer-bg;
+  position: relative;
+  bottom: 0;
+}

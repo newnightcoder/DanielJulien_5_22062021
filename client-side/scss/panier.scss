@@ -1,0 +1,25 @@
+@use "globals";
+
+main {
+  padding-bottom: 90px;
+}
+.link-achats {
+  position: relative;
+  color: black;
+  width: min-content;
+  &:hover {
+    text-decoration: underline;
+  }
+  &::before {
+    content: "\00ab";
+    position: absolute;
+    left: -12px;
+    top: 50%;
+    transform: translateY(-48%);
+  }
+}
+
+.error {
+  color: red;
+  display: none;
+}
