@@ -14,22 +14,9 @@ const phone = document.querySelector(".phone");
 const checkbox = document.querySelector("[type=checkbox]");
 const submitBtn = document.querySelector("[type=submit]");
 
-///////////////////////
-//   FUNCTIONS
-///////////////////////
-
-const setError = (input, message) => {
-  const formControl = input.parentElement;
-  formControl.classList.add("fail");
-  const errorMsg = formControl.querySelector(".errorMsg");
-  errorMsg.innerHTML = message;
-};
-
-const setSuccess = (input) => {
-  const formControl = input.parentElement;
-  formControl.classList.remove("fail");
-  formControl.classList.add("success");
-};
+////////////////////////////////////
+//   ERROR MESSAGES
+///////////////////////////////////
 
 const errorMessages = {
   firstName: "Veuillez entrer votre prénom",
@@ -44,6 +31,27 @@ const errorMessages = {
   phoneRegex: "Votre numéro doit contenir 10 chiffres",
   checkbox: "Veuillez accepter les conditions générales",
 };
+
+////////////////////////////////////
+//   VALIDATION HELPER FUNCTIONS
+///////////////////////////////////
+
+const setError = (input, message) => {
+  const formControl = input.parentElement;
+  formControl.classList.add("fail");
+  const errorMsg = formControl.querySelector(".errorMsg");
+  errorMsg.innerHTML = message;
+};
+
+const setSuccess = (input) => {
+  const formControl = input.parentElement;
+  formControl.classList.remove("fail");
+  formControl.classList.add("success");
+};
+
+////////////////////////////////////
+//   VALIDATION FUNCTION
+///////////////////////////////////
 
 const checkFormControls = (event) => {
   // checkbox

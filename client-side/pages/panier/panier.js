@@ -1,190 +1,259 @@
-const content = document.querySelector(".recap");
+//////////////////////////////////////////////////////////
+//                DOM VARIABLES
+/////////////////////////////////////////////////////////
+
+const recapContainer = document.querySelector(".recap");
+const recapContent = document.querySelector(".recap-content");
+const recapHeader = document.querySelector("thead");
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
-const recapContent = document.querySelector(".recap-content");
+const finalPriceStorage = JSON.parse(localStorage.getItem("finalPriceStorage"));
 let number = cartNumberStorage;
 
-const recap = `
-    <th class="bg-dark text-white text-center" scope="row">TOTAL</th>
-<tr class="modal-row align-middle border text-center">
-<td>
-</td>
-<td>
-<div>
-<span class="quantité">${cartNumberStorage}</span> 
-<span class="msg-articles">article${
-  cartNumberStorage === 1 ? "" : "s"
-}</span> dans mon panier
-                </div>
-                <button class="btn btn-sm btn-dark my-1">vider le panier</button>
+//////////////////////////////////////////////////////////
+//                DYNAMIC CART RECAP
+//////////////////////////////////////////////////////////
 
-                </td>
-<td>
-                  <span style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">TOTAL: ???</span>
-                  </td>
-                  </tr>
-    <tr  class=" align-middle border-0 text-center mt-1 ms-auto modal-row">
-    <td class="border-0"></td>  
-    <td class="border-0"></td>  
-    <td class="border-0 text-end">
-        <button  class="btn btn-sm btn-primary mb-3">valider</button>
-      </td>
-    </tr>`;
-
-const displayRecap = () => {
+const displayRecapRow = () => {
   if (!finalCartStorage) return;
   else {
     for (let i = 0; i < finalCartStorage.length; i++) {
       const recapRow =
         finalCartStorage &&
         `<tr class="modal-row align-middle border text-center">
-            <td class="d-flex align-items-center justify-content-start ps-5" style="width:40%"><img class="img-fluid" width="150" src="${
+            <td class="d-flex align-items-center border-0 justify-content-start ms-5" style="width:40%"><img class="img" width="150" src="${
               finalCartStorage[i][1].imageUrl
-            }"/><span style="display:block; padding-left:1rem; white-space:nowrap; text-transform:uppercase; font-weight:600">${
+            }"/><span class="item-name" style="display:block; padding-left:1rem; white-space:nowrap; text-transform:uppercase; font-weight:600">${
           finalCartStorage[i][1].name
         }</span>
             </td>
             <td style="width:40%">
-            <div style="font-size:.9rem">Quantité : <span class="item-quantity">${
-              finalCartStorage[i][0]
-            }</span>
+              <div style="font-size:.9rem">Quantité : <span class="item-quantity">${
+                finalCartStorage[i][0]
+              }</span>
               </div>
-              <div class="mt-1">
-                <button class="btn btn-sm btn-outline-dark moins">-</button>
-                <button class="btn btn-sm btn-outline-dark plus">+</button>
-                <button class="btn btn-sm btn-outline-dark suppr">supprimer</button>
+              <div class="mt-1 d-flex justify-content-center align-items-center" >
+                <button class="btn btn-sm btn-dark btn-moins mx-2" style="font-size:1.25rem; width:40px; height:40px">-</button>
+                <button class="btn btn-sm btn-dark btn-plus mx-2" style="font-size:1.25rem; width:40px; height:40px">+</button>
+                <button class="btn btn-sm btn-dark btn-suppr mx-2 style="width:40px; height:40px"><i class="bi bi-trash" style="font-size:1.25rem"></i></button>
               </div>
             </td>
-            <td class="price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red; width:20%">${
+            <td class="item-price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; width:20%">${
               numeral(finalCartStorage[i][1].price)
                 .divide(100)
                 .format("0 0.00") * finalCartStorage[i][0]
-            }€</td>
+            } €</td>
          </tr>`;
       recapContent.insertAdjacentHTML("afterbegin", recapRow);
     }
   }
 };
 
-const displayQuantity = () => {
-  cartNumberStorage
-    ? recapContent.insertAdjacentHTML("afterbegin", recap)
-    : // content.insertAdjacentHTML("beforeEnd", recap)
-      (recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`);
+const displayRecapTotal = () => {
+  const recapTotal = `
+<tr class="modal-row align-middle border-0 text-center bg-dark text-white">
+    <td class="border-0">
+      <div class="recap-panier" style="font-size:1.25rem">Le panier contient 
+          <span class="total-quantity">${cartNumberStorage}</span> 
+          <span class="msg-articles"> article${
+            cartNumberStorage <= 1 ? "" : "s"
+          }</span>
+      </div>
+    </td>
+    <td class="border-0">
+        <button class="btn btn-sm btn-secondary my-1 btn-vider">vider le panier</button>
+    </td>
+    <td class="border-0">
+        <span class="prix-total" style="white-space:nowrap; text-transform:uppercase; text-decoration:underline; font-size:1.15rem; font-weight:700; color:white">TOTAL :&nbsp;&nbsp;${numeral(
+          totalPrice
+        ).format("0 0.00")} €</span>
+    </td>
+</tr>
+<tr  class=" align-middle border-0 text-center mt-1 ms-auto modal-row">
+    <td class="border-0"></td>  
+    <td class="border-0"></td>  
+</tr>`;
+  const btnValider = `<div class="container text-center"><button class="btn btn-md btn-primary mb-3 btn-valider-panier">valider mon panier</button></div>`;
+
+  if (cartNumberStorage >= 0) {
+    recapContent.insertAdjacentHTML("afterbegin", recapTotal);
+    recapContainer.insertAdjacentHTML("beforeend", btnValider);
+  } else {
+    recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
+    recapHeader.style.display = "none";
+  }
 };
 
 let storageCopy = finalCartStorage && [...finalCartStorage];
 
+//////////////////////////////////////////////////////////
+//         REDUCE METHOD TO CALCULATE TOTAL PRICE
+//////////////////////////////////////////////////////////
+
+const totalPrice = storageCopy.reduce((acc, current) => {
+  return acc + (current[1].price / 100) * current[0];
+}, 0);
+
+//////////////////////////////////////////////////////////
+//               INCREMENT SINGLE ITEM
+//////////////////////////////////////////////////////////
+
 const plus = () => {
   const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
-  document.querySelectorAll(".plus").forEach((btn) => {
+
+  document.querySelectorAll(".btn-plus").forEach((btn) => {
+    const item = btn.parentNode.parentNode.parentNode;
+    let itemName = item.querySelector(".item-name").innerHTML;
+    let itemQuantity = item.querySelector(".item-quantity");
+    let itemPrice = item.querySelector(".item-price");
+
     btn.addEventListener("click", () => {
-      //augmente la quantité du produit concerné
       for (let i = 0; i < finalCartStorage.length; i++) {
-        if (
-          finalCartStorage[i][1].name ===
-          btn.parentElement.parentElement.firstChild.textContent
-        ) {
+        if (finalCartStorage[i][1].name === itemName) {
+          console.log(itemName, itemQuantity, itemPrice);
+
+          // augmente la quantité du produit concerné dans storageCopy:
           storageCopy[i][0]++;
-          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
-          btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
-            storageCopy[i][0];
-          btn.parentElement.parentElement.nextElementSibling.innerHTML =
+          // update du DOM:
+          itemQuantity.innerHTML = storageCopy[i][0];
+          itemPrice.innerHTML =
             numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
               storageCopy[i][0] +
             "€";
+          localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
         }
       }
+      console.log(itemName);
       //augmente le chiffre du cart global
-      cartNumberStorage && number++;
+      cartNumberStorage !== null && number++;
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
-      document.querySelector(".quantité").innerHTML = number;
+      // update quantité globale à l'écran
+      document.querySelector(".total-quantity").innerHTML = number;
+      document.querySelector(".msg-articles").innerHTML = `article${
+        number <= 1 ? "" : "s"
+      }`;
+      // update le prix global:
+      const totalPrice = storageCopy.reduce((acc, current) => {
+        return acc + (current[1].price / 100) * current[0];
+      }, 0);
+      localStorage.setItem("finalPriceStorage", JSON.stringify(totalPrice));
+      document.querySelector(
+        ".prix-total"
+      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice).format(
+        "0 0.00"
+      )} €`;
     });
   });
 };
+
+//////////////////////////////////////////////////////////
+//             DECREMENT SINGLE ARTICLE
+//////////////////////////////////////////////////////////
 
 const moins = () => {
   const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
-  // let storageCopy = [...finalCartStorage];
-  document.querySelectorAll(".moins").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      //diminue la quantité du produit concerné
-      for (let i = 0; i < finalCartStorage.length; i++) {
-        if (
-          finalCartStorage[i][1].name ===
-          btn.parentElement.parentElement.firstChild.textContent
-        ) {
-          if (storageCopy[i][0] === 0) return;
 
+  document.querySelectorAll(".btn-moins").forEach((btn) => {
+    let item = btn.parentNode.parentNode.parentNode;
+    let itemName = item.querySelector(".item-name").innerHTML;
+    let itemQuantity = item.querySelector(".item-quantity");
+    let itemPrice = item.querySelector(".item-price");
+
+    btn.addEventListener("click", () => {
+      for (let i = 0; i < finalCartStorage.length; i++) {
+        if (finalCartStorage[i][1].name === itemName) {
+          // ne pas descendre en dessous de zéro
+          if (storageCopy[i][0] === 0) return;
+          // diminuer la quantité du produit concerné dans le storageCopy:
           storageCopy[i][0]--;
-          btn.parentElement.previousElementSibling.firstChild.nextSibling.innerHTML =
-            storageCopy[i][0];
-          btn.parentElement.parentElement.nextElementSibling.innerHTML =
+          // update du DOM
+          itemQuantity.innerHTML = storageCopy[i][0];
+          itemPrice.innerHTML =
             numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
               storageCopy[i][0] +
-            "€";
-          // au cas où on arrive à 0 :
-          if (storageCopy[i][0] === 0 && storageCopy.length === 1) {
-            // document.querySelector(".recap-line").innerHTML = "";
-            recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
-          } else if (storageCopy[i][0] === 0) {
-            storageCopy.splice(i, 1);
-            btn.parentElement.parentElement.parentElement.innerHTML = "";
-          }
+            " €";
         }
       }
+      // update du cartStorage:
       localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
-      //diminue le chiffre du cart global
+      // update du storage quantité totale:
       cartNumberStorage && number--;
+      if (number < 1) {
+        return;
+      }
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
-      document.querySelector(".quantité").innerHTML = number;
+      // update DOM quantité totale:
+      document.querySelector(".total-quantity").innerHTML = number;
+      document.querySelector(".msg-articles").innerHTML = `article${
+        number <= 1 ? "" : "s"
+      }`;
+      const totalPrice = storageCopy.reduce((acc, current) => {
+        return acc + (current[1].price / 100) * current[0];
+      }, 0);
+      localStorage.setItem("finalPriceStorage", JSON.stringify(totalPrice));
+      document.querySelector(
+        ".prix-total"
+      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice).format(
+        "0 0.00"
+      )} €`;
     });
   });
 };
 
+//////////////////////////////////////////////////////////
+//            DELETE SINGLE ARTICLE
+//////////////////////////////////////////////////////////
+
 const suppr = () => {
-  document.querySelectorAll(".suppr").forEach((btn) => {
+  document.querySelectorAll(".btn-suppr").forEach((btn) => {
+    let item = btn.parentNode.parentNode.parentNode;
+    let itemName = item.querySelector(".item-name").innerHTML;
+
     btn.addEventListener("click", () => {
       for (let i = 0; i < finalCartStorage.length; i++) {
-        if (
-          finalCartStorage[i][1].name ===
-          btn.parentElement.parentElement.firstChild.textContent
-        ) {
+        if (finalCartStorage[i][1].name === itemName) {
+          // supprime l'élément du DOM
+          item.innerHTML = "";
+          // supprime l'élément du storage
+          storageCopy.splice(i, 1);
+          if (storageCopy[i] == null && storageCopy.length < 1) {
+            console.log("yay nullll!!");
+            recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
+            recapHeader.style.display = "none";
+          }
           //retrancher du cartNumberStorage
           number = number - finalCartStorage[i][0];
           localStorage.setItem("cartNumberStorage", JSON.stringify(number));
-          document.querySelector(".quantité").innerHTML = number;
 
           //supprimer l'élément du finalCartStorage
-          storageCopy.splice(i, 1);
           localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
         }
-      }
-      //supprime l'élément du DOM
-      btn.parentElement.parentElement.parentElement.innerHTML = "";
-      if (storageCopy[i][0] === 0 && storageCopy.length === 1) {
-        // document.querySelector(".recap-line").innerHTML = "";
-        recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
-      } else if (storageCopy[i][0] === 0) {
-        storageCopy.splice(i, 1);
-        btn.parentElement.parentElement.parentElement.innerHTML = "";
       }
     });
   });
 };
 
+//////////////////////////////////////////////////////////
+//                VIDER LE PANIER
+//////////////////////////////////////////////////////////
+
 const vider = () => {
-  cartNumberStorage &&
-    document.querySelector(".btn-dark").addEventListener("click", () => {
+  cartNumberStorage >= 0 &&
+    document.querySelector(".btn-vider").addEventListener("click", () => {
       localStorage.clear();
       recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
-      document.querySelector(".recap-line").innerHTML = "";
+      recapHeader.style.display = "none";
+      document.querySelector(".btn-valider-panier").style.display = "none";
     });
 };
 
+//////////////////////////////////////////////////////////
+//                       INIT
+//////////////////////////////////////////////////////////
+
 const initPage = (() => {
-  displayQuantity();
-  displayRecap();
+  displayRecapTotal();
+  displayRecapRow();
   plus();
   moins();
   suppr();

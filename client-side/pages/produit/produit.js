@@ -100,7 +100,6 @@ const addToStorage = () => {
         // idFound !== null ---> pour éviter l'index = 0 qui renvoit une falsy value
         storageCopy[idFound][0]++;
         localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
-        // console.log("yay");
       } else {
         let storageCopy = [...finalCartStorage, selectedProduct];
         localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
