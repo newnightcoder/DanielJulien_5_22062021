@@ -10866,9 +10866,22 @@ main {
   transform: translateY(-48%);
 }
 
-.error {
-  color: red;
+.errorMsg {
   display: none;
+  width: min-content;
+  white-space: nowrap;
+}
+
+.success .form-control {
+  border: 1px solid grey;
+}
+
+.fail .form-control {
+  border: 1px solid red;
+}
+.fail .errorMsg {
+  display: block;
+  color: red;
 }
 
 /*# sourceMappingURL=panier.css.map */

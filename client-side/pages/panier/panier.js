@@ -4,13 +4,32 @@ const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 const recapContent = document.querySelector(".recap-content");
 let number = cartNumberStorage;
 
-const recap = `<div class="recap-line container mt-2 mb-5 text-end"> 
-                <span class="quantité">${cartNumberStorage}</span> 
-                <span class="msg-articles">article${
-                  cartNumberStorage === 1 ? "" : "s"
-                }</span> dans mon panier
-                <button class="btn btn-sm btn-dark ms-3">vider le panier</button>
-               </div>`;
+const recap = `
+    <th class="bg-dark text-white text-center" scope="row">TOTAL</th>
+<tr class="modal-row align-middle border text-center">
+<td>
+</td>
+<td>
+<div>
+<span class="quantité">${cartNumberStorage}</span> 
+<span class="msg-articles">article${
+  cartNumberStorage === 1 ? "" : "s"
+}</span> dans mon panier
+                </div>
+                <button class="btn btn-sm btn-dark my-1">vider le panier</button>
+
+                </td>
+<td>
+                  <span style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">TOTAL: ???</span>
+                  </td>
+                  </tr>
+    <tr  class=" align-middle border-0 text-center mt-1 ms-auto modal-row">
+    <td class="border-0"></td>  
+    <td class="border-0"></td>  
+    <td class="border-0 text-end">
+        <button  class="btn btn-sm btn-primary mb-3">valider</button>
+      </td>
+    </tr>`;
 
 const displayRecap = () => {
   if (!finalCartStorage) return;
@@ -18,14 +37,14 @@ const displayRecap = () => {
     for (let i = 0; i < finalCartStorage.length; i++) {
       const recapRow =
         finalCartStorage &&
-        `<tr class="modal-row align-middle border">
-            <td><img class="img-fluid" width="150" src="${
+        `<tr class="modal-row align-middle border text-center">
+            <td class="d-flex align-items-center justify-content-start ps-5" style="width:40%"><img class="img-fluid" width="150" src="${
               finalCartStorage[i][1].imageUrl
-            }"/>
+            }"/><span style="display:block; padding-left:1rem; white-space:nowrap; text-transform:uppercase; font-weight:600">${
+          finalCartStorage[i][1].name
+        }</span>
             </td>
-            <td><span style="white-space:nowrap; text-transform:uppercase; font-weight:600">${
-              finalCartStorage[i][1].name
-            }</span><br>
+            <td style="width:40%">
             <div style="font-size:.9rem">Quantité : <span class="item-quantity">${
               finalCartStorage[i][0]
             }</span>
@@ -36,7 +55,7 @@ const displayRecap = () => {
                 <button class="btn btn-sm btn-outline-dark suppr">supprimer</button>
               </div>
             </td>
-            <td class="price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${
+            <td class="price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red; width:20%">${
               numeral(finalCartStorage[i][1].price)
                 .divide(100)
                 .format("0 0.00") * finalCartStorage[i][0]
@@ -49,11 +68,9 @@ const displayRecap = () => {
 
 const displayQuantity = () => {
   cartNumberStorage
-    ? content.insertAdjacentHTML("beforeEnd", recap)
-    : recapContent.insertAdjacentHTML(
-        "afterBegin",
-        `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`
-      );
+    ? recapContent.insertAdjacentHTML("afterbegin", recap)
+    : // content.insertAdjacentHTML("beforeEnd", recap)
+      (recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`);
 };
 
 let storageCopy = finalCartStorage && [...finalCartStorage];
@@ -108,10 +125,9 @@ const moins = () => {
             "€";
           // au cas où on arrive à 0 :
           if (storageCopy[i][0] === 0 && storageCopy.length === 1) {
-            document.querySelector(".recap-line").innerHTML = "";
-            recapContent.innerHTML = `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
-          }
-          if (storageCopy[i][0] === 0) {
+            // document.querySelector(".recap-line").innerHTML = "";
+            recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
+          } else if (storageCopy[i][0] === 0) {
             storageCopy.splice(i, 1);
             btn.parentElement.parentElement.parentElement.innerHTML = "";
           }
@@ -146,6 +162,13 @@ const suppr = () => {
       }
       //supprime l'élément du DOM
       btn.parentElement.parentElement.parentElement.innerHTML = "";
+      if (storageCopy[i][0] === 0 && storageCopy.length === 1) {
+        // document.querySelector(".recap-line").innerHTML = "";
+        recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
+      } else if (storageCopy[i][0] === 0) {
+        storageCopy.splice(i, 1);
+        btn.parentElement.parentElement.parentElement.innerHTML = "";
+      }
     });
   });
 };
@@ -154,7 +177,7 @@ const vider = () => {
   cartNumberStorage &&
     document.querySelector(".btn-dark").addEventListener("click", () => {
       localStorage.clear();
-      recapContent.innerHTML = `<div style="text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
+      recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
       document.querySelector(".recap-line").innerHTML = "";
     });
 };

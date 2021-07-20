@@ -19,7 +19,23 @@ main {
   }
 }
 
-.error {
-  color: red;
+.errorMsg {
   display: none;
+  width: min-content;
+  white-space: nowrap;
+}
+
+.success {
+  .form-control {
+    border: 1px solid grey;
+  }
+}
+.fail {
+  .form-control {
+    border: 1px solid red;
+  }
+  .errorMsg {
+    display: block;
+    color: red;
+  }
 }
