@@ -75,7 +75,7 @@ const displayRecapTotal = () => {
 </tr>`;
   const btnValider = `<div class="container text-center"><button class="btn btn-md btn-primary mb-3 btn-valider-panier">valider mon panier</button></div>`;
 
-  if (cartNumberStorage >= 0) {
+  if (cartNumberStorage > 0) {
     recapContent.insertAdjacentHTML("afterbegin", recapTotal);
     recapContainer.insertAdjacentHTML("beforeend", btnValider);
   } else {
@@ -90,9 +90,11 @@ let storageCopy = finalCartStorage && [...finalCartStorage];
 //         REDUCE METHOD TO CALCULATE TOTAL PRICE
 //////////////////////////////////////////////////////////
 
-const totalPrice = storageCopy.reduce((acc, current) => {
-  return acc + (current[1].price / 100) * current[0];
-}, 0);
+const totalPrice =
+  finalCartStorage &&
+  storageCopy.reduce((acc, current) => {
+    return acc + (current[1].price / 100) * current[0];
+  }, 0);
 
 //////////////////////////////////////////////////////////
 //               INCREMENT SINGLE ITEM
@@ -178,7 +180,7 @@ const moins = () => {
       localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
       // update du storage quantité totale:
       cartNumberStorage && number--;
-      if (number < 1) {
+      if (number === null) {
         return;
       }
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
@@ -220,6 +222,8 @@ const suppr = () => {
             console.log("yay nullll!!");
             recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
             recapHeader.style.display = "none";
+            document.querySelector(".btn-valider-panier").style.display =
+              "none";
           }
           //retrancher du cartNumberStorage
           number = number - finalCartStorage[i][0];

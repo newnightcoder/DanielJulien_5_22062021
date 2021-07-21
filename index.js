@@ -1,19 +1,13 @@
+// DOM ELEMENTS VARIABLES
 const content = document.querySelector(".content");
 const cart = document.querySelector(".badge");
-
-const API_URL = "http://localhost:3000/api/cameras";
+// GLOBAL VARIABLES
 let cameras = [];
-
-const storage = JSON.parse(localStorage.getItem("selectedProduct"));
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
-console.log(typeof storage);
-const displayCartNumberStorage = () => {
-  cartNumberStorage
-    ? ((cart.innerHTML = cartNumberStorage), (cart.style.display = "block"))
-    : (cart.style.display = "none");
-};
 
-// let's get the cameras from the API and store the data in the cameras array.
+export const API_URL = "http://localhost:3000/api/cameras";
+
+// REQUÊTE GET LISTE DES PRODUITS + SAUVEGARDE DANS UN ARRAY "CAMERAS"
 const getCameras = async () => {
   try {
     const results = await fetch(API_URL);
@@ -25,25 +19,7 @@ const getCameras = async () => {
   return cameras;
 };
 
-const selectProduct = () => {
-  let productIndex;
-  let selectedProduct;
-  document.querySelectorAll(".btn-voir").forEach((item, i) => {
-    item.addEventListener("click", () => {
-      productIndex = i;
-      // pour changer un peu des for loop! (for of loop avec recherche de l'index)
-      for (const [i, item] of cameras.entries()) {
-        if (productIndex === i) {
-          selectedProduct = [1, item];
-        }
-      }
-      console.log(selectedProduct);
-      localStorage.setItem("selectedProduct", JSON.stringify(selectedProduct));
-    });
-  });
-};
-
-//let's display the data once it is fetched
+// AFFICHE LES PRODUITS À L'ÉCRAN
 const displayProducts = () => {
   cameras.map((item) => {
     const product = `
@@ -62,21 +38,31 @@ const displayProducts = () => {
             .divide(100)
             .format("0 0.00")}€ </p>
           <p class="card-text">${item.description}</p>
-          <div class="text-end"><a href="./client-side/pages/produit/produit.html" class="btn btn-sm btn-voir" type="button">Voir ce produit</a></div>
+          <div class="text-end">
+          <a href="/shop/produit/produit.html?${
+            item._id
+          }" class="btn btn-sm btn-voir" type="button">Voir ce produit</a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-`;
-
+  </div>`;
     content.insertAdjacentHTML("beforeend", product);
   });
 };
 
+// AFFICHE LE BADGE NOMBRE D'ARTICLES DANS LE PANIER (AU CAS OÙ LE PANIER CONTIENT DES ARTICLES)
+const displayCartNumberStorage = () => {
+  cartNumberStorage
+    ? ((cart.innerHTML = cartNumberStorage), (cart.style.display = "block"))
+    : (cart.style.display = "none");
+};
+
+// FONCTION GLOBALE - IIFE
 const initPage = (async () => {
   cameras = await getCameras();
   console.log("init cameras", cameras);
   displayProducts();
-  selectProduct();
+  // selectProduct();
   displayCartNumberStorage();
 })();

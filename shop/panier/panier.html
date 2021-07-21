@@ -10,7 +10,7 @@
     ></script>
     <script
       defer
-      src="../../../node_modules/bootstrap/dist/js/bootstrap.min.js"
+      src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"
     ></script>
     <script src="panier.js" type="module" defer></script>
     <script src="validation.js" type="module" defer></script>
@@ -20,9 +20,7 @@
   <body>
     <header class="fixed-top">
       <nav class="navbar navbar-expand bg-dark navbar-dark text-light">
-        <a href="../../../index.html" class="navbar-brand h1 mb-0 ms-5"
-          >Orinoco</a
-        >
+        <a href="../../index.html" class="navbar-brand h1 mb-0 ms-5">Orinoco</a>
         <div class="container">
           <div class="navbar-nav justify-content-evenly">
             <i class="i-nav bi bi-credit-card"></i>
@@ -42,7 +40,7 @@
       <section class="content row align-items-start px-5 mx-5">
         <div class="recap row mt-5">
           <h2>Mon panier</h2>
-          <a href="../../../index.html">
+          <a href="../../index.html">
             <span class="link-achats">continuer mes achats</span></a
           >
           <table
@@ -65,10 +63,7 @@
           class="container border-top row align-items-center pt-4 mt-5"
         >
           <h2>Mes infos</h2>
-          <form
-            class="row g-3"
-            action="/client-side/pages/confirmation/confirmation.html"
-          >
+          <form class="row g-3" action="/shop/confirmation/confirmation.html">
             <div class="col-md-2">
               <label for="inputState" class="form-label">Civilit&eacute;</label>
               <select id="inputState" class="form-select">
