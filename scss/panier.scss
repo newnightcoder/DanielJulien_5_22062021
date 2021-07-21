@@ -1,8 +1,22 @@
-@use "globals";
+@use "globals.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.bi-cart-check {
+  color: $teal-600;
+  font-size: 2rem;
+  border: 2px solid $teal-600;
+  border-radius: 50%;
+  padding: 10px 16px;
+}
+.bi-house-door-fill {
+  color: white;
+  font-size: 1rem;
+}
 
 main {
   padding-bottom: 90px;
 }
+
 .link-achats {
   position: relative;
   color: black;
@@ -17,6 +31,10 @@ main {
     top: 50%;
     transform: translateY(-48%);
   }
+}
+
+#form-section {
+  display: none;
 }
 
 .errorMsg {

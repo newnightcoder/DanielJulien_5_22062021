@@ -10,7 +10,8 @@ const modal = document.querySelector(".modal-body");
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 let API_URL = "http://localhost:3000/api/cameras";
-// GET THE ID PART OF THE URL 😉
+
+// GET THE ID PART OF THE URL😉
 const grabProductID = () => {
   const productId = location.search.split("").slice(1).join("");
   return productId;
@@ -66,7 +67,6 @@ ${numeral(product.price).divide(100).format("0 0.00")}€
   </tr>
  </tbody>
 </table>`;
-
   // 2. append to the DOM
   content.insertAdjacentHTML("afterBegin", produit);
   select.insertAdjacentHTML("beforeEnd", selectOptions);

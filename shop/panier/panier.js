@@ -1,19 +1,14 @@
-//////////////////////////////////////////////////////////
-//                DOM VARIABLES
-/////////////////////////////////////////////////////////
-
+// DOM VARIABLES
 const recapContainer = document.querySelector(".recap");
 const recapContent = document.querySelector(".recap-content");
 const recapHeader = document.querySelector("thead");
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 const finalPriceStorage = JSON.parse(localStorage.getItem("finalPriceStorage"));
+let storageCopy = finalCartStorage && [...finalCartStorage];
 let number = cartNumberStorage;
 
-//////////////////////////////////////////////////////////
-//                DYNAMIC CART RECAP
-//////////////////////////////////////////////////////////
-
+// AFFICHE CHAQUE LIGNE PRODUIT DANS LE PANIER
 const displayRecapRow = () => {
   if (!finalCartStorage) return;
   else {
@@ -21,40 +16,40 @@ const displayRecapRow = () => {
       const recapRow =
         finalCartStorage &&
         `<tr class="modal-row align-middle border text-center">
-            <td class="d-flex align-items-center border-0 justify-content-start ms-5" style="width:40%"><img class="img" width="150" src="${
-              finalCartStorage[i][1].imageUrl
-            }"/><span class="item-name" style="display:block; padding-left:1rem; white-space:nowrap; text-transform:uppercase; font-weight:600">${
+      <td class="d-flex align-items-center border-0 justify-content-start ms-5" style="width:40%"><img class="img" width="150" src="${
+        finalCartStorage[i][1].imageUrl
+      }"/><span class="item-name" style="display:block; padding-left:1rem; white-space:nowrap; text-transform:uppercase; font-weight:600">${
           finalCartStorage[i][1].name
         }</span>
-            </td>
-            <td style="width:40%">
-              <div style="font-size:.9rem">Quantité : <span class="item-quantity">${
-                finalCartStorage[i][0]
-              }</span>
-              </div>
-              <div class="mt-1 d-flex justify-content-center align-items-center" >
-                <button class="btn btn-sm btn-dark btn-moins mx-2" style="font-size:1.25rem; width:40px; height:40px">-</button>
-                <button class="btn btn-sm btn-dark btn-plus mx-2" style="font-size:1.25rem; width:40px; height:40px">+</button>
-                <button class="btn btn-sm btn-dark btn-suppr mx-2 style="width:40px; height:40px"><i class="bi bi-trash" style="font-size:1.25rem"></i></button>
-              </div>
-            </td>
-            <td class="item-price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; width:20%">${
-              numeral(finalCartStorage[i][1].price)
-                .divide(100)
-                .format("0 0.00") * finalCartStorage[i][0]
-            } €</td>
-         </tr>`;
+      </td>
+      <td style="width:40%">
+      <div style="font-size:.9rem">Quantité : <span class="item-quantity">${
+        finalCartStorage[i][0]
+      }</span>
+      </div>
+      <div class="mt-1 d-flex justify-content-center align-items-center" >
+      <button class="btn btn-sm btn-dark btn-moins mx-2" style="font-size:1.25rem; width:40px; height:40px">-</button>
+      <button class="btn btn-sm btn-dark btn-plus mx-2" style="font-size:1.25rem; width:40px; height:40px">+</button>
+      <button class="btn btn-sm btn-dark btn-suppr mx-2 style="width:40px; height:40px"><i class="bi bi-trash" style="font-size:1.25rem"></i></button>
+      </div>
+      </td>
+      <td class="item-price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; width:20%">${
+        numeral(finalCartStorage[i][1].price).divide(100).format("0 0.00") *
+        finalCartStorage[i][0]
+      } €</td>
+      </tr>`;
       recapContent.insertAdjacentHTML("afterbegin", recapRow);
     }
   }
 };
 
+// AFFICHE LA LIGNE RECAP TOTAL DU PANIER
 const displayRecapTotal = () => {
   const recapTotal = `
-<tr class="modal-row align-middle border-0 text-center bg-dark text-white">
-    <td class="border-0">
-      <div class="recap-panier" style="font-size:1.25rem">Le panier contient 
-          <span class="total-quantity">${cartNumberStorage}</span> 
+  <tr class="modal-row align-middle border-0 text-center bg-dark text-white">
+  <td class="border-0">
+  <div class="recap-panier" style="font-size:1.25rem">Le panier contient 
+  <span class="total-quantity">${cartNumberStorage}</span> 
           <span class="msg-articles"> article${
             cartNumberStorage <= 1 ? "" : "s"
           }</span>
@@ -73,7 +68,9 @@ const displayRecapTotal = () => {
     <td class="border-0"></td>  
     <td class="border-0"></td>  
 </tr>`;
-  const btnValider = `<div class="container text-center"><button class="btn btn-md btn-primary mb-3 btn-valider-panier">valider mon panier</button></div>`;
+  const btnValider = `<div class="container text-center">
+  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md btn-primary mb-3 btn-valider-panier">valider mon panier
+  </button></div>`;
 
   if (cartNumberStorage > 0) {
     recapContent.insertAdjacentHTML("afterbegin", recapTotal);
@@ -84,22 +81,14 @@ const displayRecapTotal = () => {
   }
 };
 
-let storageCopy = finalCartStorage && [...finalCartStorage];
-
-//////////////////////////////////////////////////////////
-//         REDUCE METHOD TO CALCULATE TOTAL PRICE
-//////////////////////////////////////////////////////////
-
+// REDUCE METHOD TO CALCULATE TOTAL PRICE😎✌🏾
 const totalPrice =
   finalCartStorage &&
   storageCopy.reduce((acc, current) => {
     return acc + (current[1].price / 100) * current[0];
   }, 0);
 
-//////////////////////////////////////////////////////////
-//               INCREMENT SINGLE ITEM
-//////////////////////////////////////////////////////////
-
+// INCREMENT SINGLE ITEM
 const plus = () => {
   const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 
@@ -148,10 +137,7 @@ const plus = () => {
   });
 };
 
-//////////////////////////////////////////////////////////
-//             DECREMENT SINGLE ARTICLE
-//////////////////////////////////////////////////////////
-
+// DECREMENT SINGLE ARTICLE
 const moins = () => {
   const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 
@@ -202,10 +188,7 @@ const moins = () => {
   });
 };
 
-//////////////////////////////////////////////////////////
-//            DELETE SINGLE ARTICLE
-//////////////////////////////////////////////////////////
-
+// DELETE SINGLE ARTICLE
 const suppr = () => {
   document.querySelectorAll(".btn-suppr").forEach((btn) => {
     let item = btn.parentNode.parentNode.parentNode;
@@ -237,12 +220,9 @@ const suppr = () => {
   });
 };
 
-//////////////////////////////////////////////////////////
-//                VIDER LE PANIER
-//////////////////////////////////////////////////////////
-
+// VIDER LE PANIER
 const vider = () => {
-  cartNumberStorage >= 0 &&
+  cartNumberStorage !== null &&
     document.querySelector(".btn-vider").addEventListener("click", () => {
       localStorage.clear();
       recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
@@ -251,10 +231,7 @@ const vider = () => {
     });
 };
 
-//////////////////////////////////////////////////////////
-//                       INIT
-//////////////////////////////////////////////////////////
-
+// FONCTION GLOBAL - IIFE
 const initPage = (() => {
   displayRecapTotal();
   displayRecapRow();
