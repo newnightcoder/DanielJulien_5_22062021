@@ -1,4 +1,4 @@
-// DOM VARIABLES
+// DOM ELEMENTS
 const formSection = document.querySelector("#form-section");
 const form = document.querySelector("form");
 const gender = document.querySelector("select");
@@ -13,21 +13,16 @@ const checkbox = document.querySelector("[type=checkbox]");
 const validateCartBtn = document.querySelector(".btn-valider-panier");
 const openFormBtn = document.querySelector(".open-form");
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
+const orderStorage = JSON.parse(localStorage.getItem("orderStorage"));
 
 // VARIABLES REQUETE POST
 const POST_URL = "http://localhost:3000/api/cameras/order";
-// corps de la requete JSON (objet contact + array produits)
-const JSON_REQUEST = {
-  contact: {
-    firstName: "aaz",
-    lastName: "cdd",
-    address: "ddd",
-    city: "ess",
-    email: "a@a.com",
-  },
-  produits: ["5be1ed3f1c9d44000030b061"],
+let JSON_REQUEST = {
+  contact: orderStorage && orderStorage[0],
+  products: orderStorage && orderStorage[1],
 };
 
+// requete POST
 const requete = {
   method: "POST", // *GET, POST, PUT, DELETE...
   headers: {
@@ -43,12 +38,7 @@ const requete = {
 
 // CONFIRMATION PANIER
 const validateCart = () => {
-  validateCartBtn.addEventListener("click", () => {
-    // 1. ajoute l'array "produits" à JSON_REQUEST (l'objet envoyé au serveur)
-    if (finalCartStorage !== null) {
-    }
-  });
-  // 2. open le formulaire
+  // ouvre le formulaire
   openFormBtn.addEventListener("click", () => {
     formSection.style.display = "block";
     scroll(0, window.innerHeight - 200);
@@ -74,25 +64,28 @@ const errorMessages = {
   checkbox: "Veuillez accepter les conditions générales",
 };
 
+let isValid;
 // VALIDATION HELPER FUNCTIONS
 const setError = (input, message) => {
   const formControl = input.parentElement;
   formControl.classList.add("fail");
   const errorMsg = formControl.querySelector(".errorMsg");
   errorMsg.innerHTML = message;
+  return (isValid = false);
 };
 
 const setSuccess = (input) => {
   const formControl = input.parentElement;
   formControl.classList.remove("fail");
   formControl.classList.add("success");
+  return (isValid = true);
 };
 
 // VÉRIFICATION FORMULAIRE
 const checkFormControls = () => {
   form.addEventListener("submit", (e) => {
     // checkbox
-    if (checkbox.checked === false) {
+    if (!checkbox.checked) {
       e.preventDefault();
       setError(checkbox, errorMessages.checkbox);
     } else {
@@ -164,8 +157,47 @@ const checkFormControls = () => {
   });
 };
 
+// CONSTRUIT ET SAUVEGARDE L'OBJET JSON_REQUEST
+const saveRequestObject = () => {
+  // 1. ajoute l'array "produits" à JSON_REQUEST (l'objet à envoyer au serveur)
+  finalCartStorage &&
+    validateCartBtn.addEventListener("click", () => {
+      let productsArray = [];
+      if (finalCartStorage !== null) {
+        finalCartStorage.map((product) => productsArray.push(product[1]._id));
+      }
+      localStorage.setItem("orderStorage", JSON.stringify([productsArray]));
+    });
+  // 2. ajoute l'objet "contact" à JSON_REQUEST (l'objet à envoyer au serveur)
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const contactObject = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      address: address.value,
+      city: city.value,
+      email: email.value,
+    };
+    // seulement si le formulaire est validé:
+    console.log(isValid);
+    if (isValid) {
+      const orderStorage = JSON.parse(localStorage.getItem("orderStorage"));
+      let orderStorageCopy = [...orderStorage];
+      orderStorageCopy.unshift(contactObject);
+      localStorage.setItem("orderStorage", JSON.stringify(orderStorageCopy));
+      JSON_REQUEST = {
+        contact: orderStorage[0],
+        products: orderStorage[1],
+      };
+      console.log(JSON_REQUEST);
+      postOrder();
+    }
+  });
+};
+
 // POST REQUEST A L'API POUR VALIDER LA COMMANDE CÔTÉ SERVEUR + RECEVOIR L'ORDER ID
 const postOrder = async () => {
+  // const orderStorage = JSON.parse(localStorage.getItem("orderStorage"));
   try {
     const response = await fetch(POST_URL, requete);
     const data = await response.json();
@@ -179,7 +211,7 @@ const postOrder = async () => {
 const validateOrder = () => {
   // 1. si formulaire n'est pas bien rempli, empêcher de submit:
   form.addEventListener("submit", (e) => {
-    postOrder();
+    // postOrder();
     // if (condition) {
     //   e.preventDefault();
     // }
@@ -192,5 +224,6 @@ const validateOrder = () => {
 const validationInit = (() => {
   validateCart();
   checkFormControls();
+  saveRequestObject();
   validateOrder();
 })();

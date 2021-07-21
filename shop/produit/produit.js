@@ -1,4 +1,4 @@
-// DOM VARIABLES
+// DOM ELEMENTS
 const content = document.querySelector(".detail");
 const aside = document.querySelector("aside");
 const select = document.querySelector("select");

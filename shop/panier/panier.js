@@ -1,4 +1,4 @@
-// DOM VARIABLES
+// DOM ELEMENTS
 const recapContainer = document.querySelector(".recap");
 const recapContent = document.querySelector(".recap-content");
 const recapHeader = document.querySelector("thead");

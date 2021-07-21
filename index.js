@@ -1,4 +1,4 @@
-// DOM ELEMENTS VARIABLES
+// DOM ELEMENTS
 const content = document.querySelector(".content");
 const cart = document.querySelector(".badge");
 // GLOBAL VARIABLES
@@ -63,6 +63,5 @@ const initPage = (async () => {
   cameras = await getCameras();
   console.log("init cameras", cameras);
   displayProducts();
-  // selectProduct();
   displayCartNumberStorage();
 })();
