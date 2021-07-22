@@ -1,6 +1,37 @@
 @use "globals";
 
 .bi-check-circle-fill {
-  color: green;
+  color: globals.$cart-number-bg;
   font-size: 5rem;
+}
+.user-name {
+  text-transform: capitalize;
+}
+.order-info {
+  animation: fade-in 1500ms forwards 500ms;
+  h4 {
+    border-bottom: 1px solid globals.$cart-number-bg;
+  }
+  text-align: left;
+  &__text {
+    text-decoration: underline;
+    color: globals.$cart-number-bg;
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+  @keyframes fade-in {
+    to {
+      box-shadow: -6px 9px 36px 0px rgba(74, 74, 74, 0.75);
+      -webkit-box-shadow: -6px 9px 36px 0px rgba(74, 74, 74, 0.75);
+      -moz-box-shadow: -6px 9px 36px 0px rgba(74, 74, 74, 0.75);
+    }
+  }
+}
+.order-id {
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 }

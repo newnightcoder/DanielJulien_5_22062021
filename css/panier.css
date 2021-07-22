@@ -10792,7 +10792,7 @@ a {
 
 .progres {
   width: 100%;
-  height: 50px;
+  height: 110px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10800,16 +10800,15 @@ a {
   list-style-type: none;
   position: relative;
 }
-.progres .progres-done::before, .progres .progres-done::after {
-  background-color: grey;
-}
-.progres .progres-active::after {
-  background-color: grey;
-}
 .progres li {
   position: relative;
   text-transform: uppercase;
+  color: #d8d9da;
   font-size: 0.9rem;
+  transform: translateY(-20px);
+  border: 2px solid #d8d9da;
+  border-radius: 5px;
+  padding: 2px 7px;
 }
 .progres li::before {
   content: "";
@@ -10818,18 +10817,18 @@ a {
   position: absolute;
   bottom: -75%;
   left: 50%;
-  background-color: #edeff0;
+  background-color: #d8d9da;
 }
 .progres li::after {
   content: "";
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background-color: #edeff0;
+  background-color: #d8d9da;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 75%);
+  transform: translate(-50%, 95%);
   z-index: 2;
 }
 .progres li:nth-child(4)::before {
@@ -10837,11 +10836,34 @@ a {
   z-index: 1;
   height: 4px;
 }
+.progres .progres-done {
+  color: #212529;
+  font-weight: 600;
+  border: 2px solid #212529;
+}
+.progres .progres-done::before, .progres .progres-done::after {
+  background-color: #9059ff;
+}
+.progres .progres-active {
+  color: #212529;
+  font-weight: 600;
+  border: 2px solid #212529;
+}
+.progres .progres-active::after {
+  background-color: #9059ff;
+}
+.progres .confirmation {
+  color: #9059ff;
+  border: 2px solid #9059ff;
+  font-weight: 600;
+}
+.progres .confirmation::after {
+  background-color: #9059ff;
+}
 
 footer {
   height: 100px;
   width: 100%;
-  background-color: #7c747c;
   position: relative;
   bottom: 0;
 }
@@ -21607,7 +21629,7 @@ textarea.form-control-lg {
 }
 
 main {
-  padding-bottom: 90px;
+  padding-bottom: 75px;
 }
 
 .link-achats {

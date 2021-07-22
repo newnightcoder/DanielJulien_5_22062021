@@ -6,6 +6,9 @@ $body-bg: lightgray;
 $header-bg: #281826;
 $footer-bg: #7c747c;
 $cart-number-bg: #9059ff;
+$disabled-color: #d8d9da;
+$active-color: $dark;
+$done-color: $dark;
 $color-text: #000000;
 $main-height: max-content;
 $footer-height: 100px;
@@ -53,28 +56,23 @@ a {
 
 .progres {
   width: 100%;
-  height: 50px;
+  height: 110px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
   list-style-type: none;
   position: relative;
-  .progres-done {
-    &::before,
-    &::after {
-      background-color: grey;
-    }
-  }
-  .progres-active {
-    &::after {
-      background-color: grey;
-    }
-  }
+
   li {
     position: relative;
     text-transform: uppercase;
+    color: $disabled-color;
     font-size: 0.9rem;
+    transform: translateY(-20px);
+    border: 2px solid $disabled-color;
+    border-radius: 5px;
+    padding: 2px 7px;
     &::before {
       content: "";
       height: 3px;
@@ -82,18 +80,18 @@ a {
       position: absolute;
       bottom: -75%;
       left: 50%;
-      background-color: #edeff0;
+      background-color: $disabled-color;
     }
     &::after {
       content: "";
       height: 20px;
       width: 20px;
       border-radius: 50%;
-      background-color: #edeff0;
+      background-color: $disabled-color;
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, 75%);
+      transform: translate(-50%, 95%);
       z-index: 2;
     }
     &:nth-child(4)::before {
@@ -102,12 +100,36 @@ a {
       height: 4px;
     }
   }
+  .progres-done {
+    color: $active-color;
+    font-weight: 600;
+    border: 2px solid $done-color;
+    &::before,
+    &::after {
+      background-color: $cart-number-bg;
+    }
+  }
+  .progres-active {
+    color: $active-color;
+    font-weight: 600;
+    border: 2px solid $active-color;
+    &::after {
+      background-color: $cart-number-bg;
+    }
+  }
+  .confirmation {
+    color: $cart-number-bg;
+    border: 2px solid $cart-number-bg;
+    font-weight: 600;
+    &::after {
+      background-color: $cart-number-bg;
+    }
+  }
 }
 
 footer {
   height: $footer-height;
   width: 100%;
-  background-color: $footer-bg;
   position: relative;
   bottom: 0;
 }

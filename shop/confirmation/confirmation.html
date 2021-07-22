@@ -12,7 +12,7 @@
       defer
       src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"
     ></script>
-    <!-- <script src="confirmation.js" type="module" defer></script> -->
+    <script src="confirmation.js" type="module" defer></script>
     <link rel="stylesheet" href="../../css/confirmation.css" />
     <title>Confirmation | Orinoco</title>
   </head>
@@ -30,28 +30,29 @@
           </div>
         </div>
       </nav>
-      <ul class="progres mt-3 mb-4">
+      <ul class="progres bg-white shadow d-flex align-items-center">
         <li class="progres-done">Mon panier</li>
         <li class="progres-done">Mes infos</li>
         <li class="progres-done">Paiement</li>
-        <li class="progres-active">Confirmation</li>
+        <li class="progres-active confirmation">Confirmation</li>
       </ul>
     </header>
     <section
       class="
-        container
         d-flex
         flex-column
-        align-items-center
         justify-content-center
+        align-items-center
+        info
+        text-center
         mt-5
       "
     >
       <h1>Votre commande est validée&excl;</h1>
+      <h2>Merci d'avoir fait confiance à Orinoco</h2>
       <i class="bi bi-check-circle-fill"></i>
-      <p class="text-center">
-        Vous allez recevoir un e-mail de confirmation très prochainement. <br />
-        Merci d'avoir fait confiance à Orinoco
+      <p class="fs-5 text-left">
+        Vous allez recevoir un e-mail de confirmation très prochainement<br />
       </p>
     </section>
   </body>

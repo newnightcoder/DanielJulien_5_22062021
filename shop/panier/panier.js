@@ -8,7 +8,14 @@ const finalPriceStorage = JSON.parse(localStorage.getItem("finalPriceStorage"));
 let storageCopy = finalCartStorage && [...finalCartStorage];
 let number = cartNumberStorage;
 
-// AFFICHE CHAQUE LIGNE PRODUIT DANS LE PANIER
+// REDUCE METHOD TO CALCULATE TOTAL PRICE😎✌🏾
+const totalPrice =
+  finalCartStorage &&
+  storageCopy.reduce((acc, current) => {
+    return acc + (current[1].price / 100) * current[0];
+  }, 0);
+
+// AFFICHE TABLEAU RECAP
 const displayRecapRow = () => {
   if (!finalCartStorage) return;
   else {
@@ -42,8 +49,6 @@ const displayRecapRow = () => {
     }
   }
 };
-
-// AFFICHE LA LIGNE RECAP TOTAL DU PANIER
 const displayRecapTotal = () => {
   const recapTotal = `
   <tr class="modal-row align-middle border-0 text-center bg-dark text-white">
@@ -81,14 +86,7 @@ const displayRecapTotal = () => {
   }
 };
 
-// REDUCE METHOD TO CALCULATE TOTAL PRICE😎✌🏾
-const totalPrice =
-  finalCartStorage &&
-  storageCopy.reduce((acc, current) => {
-    return acc + (current[1].price / 100) * current[0];
-  }, 0);
-
-// INCREMENT SINGLE ITEM
+// CART BUTTONS USER
 const plus = () => {
   const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 
@@ -101,8 +99,6 @@ const plus = () => {
     btn.addEventListener("click", () => {
       for (let i = 0; i < finalCartStorage.length; i++) {
         if (finalCartStorage[i][1].name === itemName) {
-          console.log(itemName, itemQuantity, itemPrice);
-
           // augmente la quantité du produit concerné dans storageCopy:
           storageCopy[i][0]++;
           // update du DOM:
@@ -114,7 +110,6 @@ const plus = () => {
           localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
         }
       }
-      console.log(itemName);
       //augmente le chiffre du cart global
       cartNumberStorage !== null && number++;
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
@@ -136,8 +131,6 @@ const plus = () => {
     });
   });
 };
-
-// DECREMENT SINGLE ARTICLE
 const moins = () => {
   const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 
@@ -187,8 +180,6 @@ const moins = () => {
     });
   });
 };
-
-// DELETE SINGLE ARTICLE
 const suppr = () => {
   document.querySelectorAll(".btn-suppr").forEach((btn) => {
     let item = btn.parentNode.parentNode.parentNode;
@@ -219,8 +210,6 @@ const suppr = () => {
     });
   });
 };
-
-// VIDER LE PANIER
 const vider = () => {
   cartNumberStorage !== null &&
     document.querySelector(".btn-vider").addEventListener("click", () => {
@@ -231,7 +220,7 @@ const vider = () => {
     });
 };
 
-// FONCTION GLOBAL - IIFE
+// FONCTION GLOBALE - IIFE
 const initPage = (() => {
   displayRecapTotal();
   displayRecapRow();

@@ -61,7 +61,6 @@ const displayCartNumberStorage = () => {
 // FONCTION GLOBALE - IIFE
 const initPage = (async () => {
   cameras = await getCameras();
-  console.log("init cameras", cameras);
   displayProducts();
   displayCartNumberStorage();
 })();
