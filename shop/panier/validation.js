@@ -89,7 +89,7 @@ const validateForm = () => {
   } else {
     setSuccess(city);
   }
-  // INTEGERS / EMAIL
+  // CHIFFRES / EMAIL
   const zipRegex = /^[0-9]{5}$/;
   if (zip.value.trim() === "") {
     setError(zip, errorMessages.zip);

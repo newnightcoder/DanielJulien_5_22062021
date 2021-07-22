@@ -21,6 +21,7 @@ const getCameras = async () => {
 
 // AFFICHE LES PRODUITS À L'ÉCRAN
 const displayProducts = () => {
+  const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
   cameras.map((item) => {
     const product = `
   <div class="product card mb-3">
@@ -36,7 +37,8 @@ const displayProducts = () => {
             item.price
           )
             .divide(100)
-            .format("0 0.00")}€ </p>
+            .format("0 0.00")
+            .replace(priceFormatRegex, "$1 ")}€ </p>
           <p class="card-text">${item.description}</p>
           <div class="text-end">
           <a href="/shop/produit/produit.html?${

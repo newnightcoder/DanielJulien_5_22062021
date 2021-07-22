@@ -35,7 +35,7 @@ const getProduct = async () => {
 // DISPLAY PRODUCT
 const displayProduct = async () => {
   const product = await getProduct();
-  console.log(product);
+  const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
   // 1. dynamic DOM elements (hydrated):
   const produit = `<div class="col-lg-8">
 <h3 class="">${product.name}</h3>
@@ -48,8 +48,11 @@ const displayProduct = async () => {
 </div>`;
 
   const prix = `<div class="row align-items-center justify-content-between">
-<span class="price col-4" style="color:red;font-size:1.75rem">
-${numeral(product.price).divide(100).format("0 0.00")}€
+<span class="price col-4" style="color:red;font-size:1.75rem; white-space:nowrap">
+${numeral(product.price)
+  .divide(100)
+  .format("0 0.00")
+  .replace(priceFormatRegex, "$1 ")}€
 </span>
 <span class="dispo col-4" style="white-space:nowrap"> <i class="bi bi-check2"></i>disponible</span>
 </div>`;
@@ -62,8 +65,15 @@ ${numeral(product.price).divide(100).format("0 0.00")}€
  <tbody>
   <tr class="modal-row align-middle">
   <td><img class="img-fluid" width="150" src="${product.imageUrl}"/></td>
-  <td><span style="white-space:nowrap; text-transform:uppercase; font-weight:600">${product.name}</span><br><span style="font-size:.75rem; text-align:left">vendu et exp&eacute;di&eacute; par Orinico</span></td>
-  <td style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${product.price}€</td>
+  <td><span style="white-space:nowrap; text-transform:uppercase; font-weight:600">${
+    product.name
+  }</span><br><span style="font-size:.75rem; text-align:left">vendu et exp&eacute;di&eacute; par Orinico</span></td>
+  <td style="white-space:nowrap; text-transform:uppercase; font-weight:600; color:red">${numeral(
+    product.price
+  )
+    .divide(100)
+    .format("0 0.00")
+    .replace(priceFormatRegex, "$1 ")}€</td>
   </tr>
  </tbody>
 </table>`;

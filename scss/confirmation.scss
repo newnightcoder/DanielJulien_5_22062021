@@ -8,11 +8,14 @@
   text-transform: capitalize;
 }
 .order-info {
-  animation: fade-in 1500ms forwards 500ms;
+  animation: fade-in 2000ms forwards 1000ms;
+  text-align: left;
+  &:hover {
+    cursor: pointer;
+  }
   h4 {
     border-bottom: 1px solid globals.$cart-number-bg;
   }
-  text-align: left;
   &__text {
     text-decoration: underline;
     color: globals.$cart-number-bg;
@@ -20,6 +23,9 @@
       text-decoration: none;
       cursor: pointer;
     }
+  }
+  .date-capitalize {
+    text-transform: capitalize;
   }
   @keyframes fade-in {
     to {

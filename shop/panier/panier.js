@@ -7,6 +7,7 @@ const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 const finalPriceStorage = JSON.parse(localStorage.getItem("finalPriceStorage"));
 let storageCopy = finalCartStorage && [...finalCartStorage];
 let number = cartNumberStorage;
+const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
 
 // REDUCE METHOD TO CALCULATE TOTAL PRICE😎✌🏾
 const totalPrice =
@@ -40,10 +41,12 @@ const displayRecapRow = () => {
       <button class="btn btn-sm btn-dark btn-suppr mx-2 style="width:40px; height:40px"><i class="bi bi-trash" style="font-size:1.25rem"></i></button>
       </div>
       </td>
-      <td class="item-price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; width:20%">${
-        numeral(finalCartStorage[i][1].price).divide(100).format("0 0.00") *
-        finalCartStorage[i][0]
-      } €</td>
+      <td class="item-price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; width:20%">${numeral(
+        finalCartStorage[i][1].price * finalCartStorage[i][0]
+      )
+        .divide(100)
+        .format("0 0.00")
+        .replace(priceFormatRegex, "$1 ")}€</td>
       </tr>`;
       recapContent.insertAdjacentHTML("afterbegin", recapRow);
     }
@@ -66,7 +69,9 @@ const displayRecapTotal = () => {
     <td class="border-0">
         <span class="prix-total" style="white-space:nowrap; text-transform:uppercase; text-decoration:underline; font-size:1.15rem; font-weight:700; color:white">TOTAL :&nbsp;&nbsp;${numeral(
           totalPrice
-        ).format("0 0.00")} €</span>
+        )
+          .format("0 0.00")
+          .replace(priceFormatRegex, "$1 ")}€</span>
     </td>
 </tr>
 <tr  class=" align-middle border-0 text-center mt-1 ms-auto modal-row">
@@ -104,9 +109,10 @@ const plus = () => {
           // update du DOM:
           itemQuantity.innerHTML = storageCopy[i][0];
           itemPrice.innerHTML =
-            numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
-              storageCopy[i][0] +
-            "€";
+            numeral(storageCopy[i][1].price * storageCopy[i][0])
+              .divide(100)
+              .format("0 0.00")
+              .replace(priceFormatRegex, "$1 ") + "€";
           localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
         }
       }
@@ -125,9 +131,9 @@ const plus = () => {
       localStorage.setItem("finalPriceStorage", JSON.stringify(totalPrice));
       document.querySelector(
         ".prix-total"
-      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice).format(
-        "0 0.00"
-      )} €`;
+      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice)
+        .format("0 0.00")
+        .replace(priceFormatRegex, "$1 ")}€`;
     });
   });
 };
@@ -150,9 +156,10 @@ const moins = () => {
           // update du DOM
           itemQuantity.innerHTML = storageCopy[i][0];
           itemPrice.innerHTML =
-            numeral(storageCopy[i][1].price).divide(100).format("0 0.00") *
-              storageCopy[i][0] +
-            " €";
+            numeral(storageCopy[i][1].price * storageCopy[i][0])
+              .divide(100)
+              .format("0 0.00")
+              .replace(priceFormatRegex, "$1 ") + " €";
         }
       }
       // update du cartStorage:
@@ -174,9 +181,9 @@ const moins = () => {
       localStorage.setItem("finalPriceStorage", JSON.stringify(totalPrice));
       document.querySelector(
         ".prix-total"
-      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice).format(
-        "0 0.00"
-      )} €`;
+      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice)
+        .format("0 0.00")
+        .replace(priceFormatRegex, "$1 ")} €`;
     });
   });
 };

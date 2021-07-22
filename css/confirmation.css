@@ -10878,8 +10878,11 @@ footer {
 }
 
 .order-info {
-  animation: fade-in 1500ms forwards 500ms;
+  animation: fade-in 2000ms forwards 1000ms;
   text-align: left;
+}
+.order-info:hover {
+  cursor: pointer;
 }
 .order-info h4 {
   border-bottom: 1px solid #9059ff;
@@ -10891,6 +10894,9 @@ footer {
 .order-info__text:hover {
   text-decoration: none;
   cursor: pointer;
+}
+.order-info .date-capitalize {
+  text-transform: capitalize;
 }
 @keyframes fade-in {
   to {
