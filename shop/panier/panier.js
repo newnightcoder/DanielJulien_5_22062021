@@ -66,12 +66,10 @@ const displayRecapTotal = () => {
     <td class="border-0">
         <button class="btn btn-sm btn-secondary my-1 btn-vider">vider le panier</button>
     </td>
-    <td class="border-0">
-        <span class="prix-total" style="white-space:nowrap; text-transform:uppercase; text-decoration:underline; font-size:1.15rem; font-weight:700; color:white">TOTAL :&nbsp;&nbsp;${numeral(
-          totalPrice
-        )
+    <td class="border-0 prix-total">
+        <span ">TOTAL</span>:&nbsp;&nbsp;${numeral(totalPrice)
           .format("0 0.00")
-          .replace(priceFormatRegex, "$1 ")}€</span>
+          .replace(priceFormatRegex, "$1 ")}€
     </td>
 </tr>
 <tr  class=" align-middle border-0 text-center mt-1 ms-auto modal-row">
@@ -79,7 +77,7 @@ const displayRecapTotal = () => {
     <td class="border-0"></td>  
 </tr>`;
   const btnValider = `<div class="container text-center">
-  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md btn-primary mb-3 btn-valider-panier">valider mon panier
+  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md mb-3 btn-valider-panier">valider mon panier
   </button></div>`;
 
   if (cartNumberStorage > 0) {

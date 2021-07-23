@@ -20,8 +20,9 @@
   <body>
     <header class="fixed-top">
       <nav class="navbar navbar-expand bg-dark navbar-dark text-light">
-        <a href="../../index.html" class="navbar-brand h1 mb-0 ms-5">Orinoco</a>
-        <div class="container">
+        <a href="../../index.html" class="navbar-brand h1 mb-0 ms-5 text-center"
+        >ORINOCO <br /><span>Home</span></a
+      >        <div class="container">
           <div class="navbar-nav justify-content-evenly">
             <i class="i-nav bi bi-credit-card"></i>
             <i class="i-nav bi bi-box-seam"></i>
@@ -36,12 +37,12 @@
         <li>Confirmation</li>
       </ul>
     </header>
-    <main class="pt-5 mt-4">
+    <main>
       <section class="content row align-items-start px-5 mx-5">
         <div class="recap row mt-5">
           <h2>Mon panier</h2>
-          <a href="../../index.html">
-            <span class="link-achats">continuer mes achats</span></a
+          <a href="../../index.html" class="link-achats fw-bold">
+            Continuer mes achats</a
           >
           <table
             class="table table-borders table-bordered my-3"
@@ -159,7 +160,7 @@
               </div>
             </div>
             <div class="col-12 text-center">
-              <button type="submit" class="btn btn-primary mt-2">
+              <button type="submit" class="btn btn-commander mt-2">
                 Commander
               </button>
             </div>
@@ -167,8 +168,72 @@
         </div>
       </section>
     </main>
-    <footer class="bg-dark"></footer>
-    <div
+    <footer class="bg-dark text-white py-3">
+      <div class="list-wrapper d-flex align-items-start justify-content-evenly">
+        <div
+          class="
+            ul-container
+            d-flex
+            flex-column
+            justify-content-start
+            text-left
+          "
+        >
+          <p class="uppercase border-bottom border-1 border-light pe-5">
+            Qui sommes-nous?
+          </p>
+          <ul class="d-flex flex-column text-left">
+            <li>Notre concept</li>
+            <li>Blog Orinoco</li>
+            <li>Les rendez-vous Orinoco</li>
+            <li>Rejoingez-nous</li>
+            <li>Mentions Légales</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase border-bottom border-1 border-light pe-5">
+            Les + Orinoco
+          </p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Livraison gratuite</li>
+            <li>Garanties SAV</li>
+            <li>Bons plans Orinoco</li>
+            <li>Programme de fidélité</li>
+            <li>Cartes cadeaux</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase border-bottom border-1 border-light pe-5">
+            Orinoco & moi
+          </p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Mes favoris</li>
+            <li>Mes commandes</li>
+            <li>Mes infos perso</li>
+            <li>Mes paiements</li>
+            <li>Retours & Remboursements</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase border-bottom border-1 border-light pe-5">
+            Besoin d’aide ?
+          </p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Aide & Contact</li>
+            <li>Accessibilité</li>
+            <li>Gérer mes cookies</li>
+            <li>Prestataire de paiement</li>
+            <li>CGV Internet</li>
+          </ul>
+        </div>
+      </div>
+    </footer>    <div
       class="modal fade py-4"
       id="modal"
       tabindex="-1"

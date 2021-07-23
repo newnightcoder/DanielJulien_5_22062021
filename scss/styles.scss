@@ -16,8 +16,8 @@
 }
 
 .btn-voir {
-  background-color: $purple-500;
-  border-color: $purple-500;
+  background-color: globals.$cart-number-bg;
+  border-color: globals.$cart-number-bg;
   color: white;
   &:hover {
     background-color: $purple-600;

@@ -24,11 +24,13 @@ const displayProducts = () => {
   const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
   cameras.map((item) => {
     const product = `
-  <div class="product card mb-3">
+  <div class="product card mb-3 shadow border-0">
     <div class="row g-0">
       <div class="col-md-4">
         <img 
-        src="${item.imageUrl}" class=" img img-fluid rounded-start" alt="...">
+        src="${
+          item.imageUrl
+        }" class=" img-thumbnail border-0 rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body text-dark ">

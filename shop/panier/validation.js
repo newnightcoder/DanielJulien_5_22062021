@@ -11,7 +11,7 @@ let orderStorage = JSON.parse(localStorage.getItem("orderStorage"));
 const toInfoForm = () => {
   // 1. ouvre le formulaire:
   formSection.style.display = "block";
-  scroll(0, window.innerHeight - 215);
+  scroll(0, window.innerHeight - 180);
   // 2. update rendu de la progress-bar
   setTimeout(() => {
     document.querySelector(".progres").children[0].classList = "progres-done";

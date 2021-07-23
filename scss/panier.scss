@@ -19,22 +19,64 @@ main {
 
 .link-achats {
   position: relative;
-  color: black;
+  color: globals.$cart-number-bg;
+  text-decoration: none;
   width: min-content;
   &:hover {
     text-decoration: underline;
+    color: $purple-500;
   }
   &::before {
     content: "\00ab";
     position: absolute;
-    left: -12px;
+    left: -2px;
     top: 50%;
-    transform: translateY(-48%);
+    transform: translateY(-50%);
+  }
+}
+
+.btn-valider-panier,
+.btn-commander {
+  &:hover {
+    color: white;
+    background-color: globals.$purple-500;
+  }
+}
+.btn-valider-panier {
+  color: white;
+  background-color: globals.$cart-number-bg;
+}
+
+.btn-commander {
+  background-color: globals.$cart-number-bg;
+  color: white;
+}
+
+.prix-total {
+  color: white;
+  white-space: nowrap;
+  text-transform: uppercase;
+  font-size: 1.15rem;
+  font-weight: 700;
+  span {
+    text-decoration: underline;
   }
 }
 
 #form-section {
   display: none;
+  .form-check-input {
+    box-shadow: none !important;
+    &:checked {
+      background-color: globals.$cart-number-bg;
+      border-color: globals.$cart-number-bg;
+    }
+    &:focus,
+    &:active {
+      background-color: none;
+      border-color: globals.$cart-number-bg;
+    }
+  }
 }
 
 .errorMsg {
