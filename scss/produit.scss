@@ -1,6 +1,10 @@
 @use 'globals.scss';
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+.breadcrumb-item.active {
+  color: rgb(24, 24, 24) !important;
+}
+
 .bi-check-lg {
   color: $teal-600;
 }

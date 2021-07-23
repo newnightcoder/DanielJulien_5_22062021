@@ -65,6 +65,10 @@ main {
 
 #form-section {
   display: none;
+  input,
+  select {
+    border: 1px solid dimgray;
+  }
   .form-check-input {
     box-shadow: none !important;
     &:checked {

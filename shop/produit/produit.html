@@ -17,14 +17,12 @@
     <title>Détail Produit | Orinoco</title>
   </head>
   <body>
-    <header>
-      <nav
-        class="navbar navbar-expand-md bg-dark navbar-dark text-white fixed-top"
-      >
-        <a href="../../index.html" class="navbar-brand h1 mb-0 ms-5 text-center"
-          >ORINOCO <br /><span>Home</span></a
-        >
-        <div class="container">
+    <header class="fixed-top text-white shadow bg-white">
+      <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a href="../../index.html" class="navbar-brand h1 mb-0 mx-5 text-center"
+          >ORINOCO
+        </a>
+        <div class="navbar-container">
           <button
             class="navbar-toggler"
             type="button"
@@ -51,7 +49,14 @@
                 <i class="bi bi-search"></i>
               </button>
             </div>
-            <div class="navbar-nav ms-auto">
+            <div
+              class="
+                navbar-nav
+                d-flex
+                align-items-center
+                justify-content-evenly
+              "
+            >
               <a
                 class="
                   nav-link
@@ -123,20 +128,51 @@
         </div>
       </nav>
       <nav
-        class="ms-5 mt-3"
+        class="
+          nav-fav
+          text-white
+          d-flex
+          align-items-center
+          justify-content-center
+        "
+      >
+        <div
+          class="
+            nav-fav__container
+            d-flex
+            justify-content-center
+            align-items-center
+          "
+        >
+          <p class="m-0 me-4">ORI les plus populaires :</p>
+          <ul class="d-flex align-items-center justify-content-between p-0 m-0">
+            <li class="text-uppercase">OriBook</li>
+            |
+            <li class="text-uppercase">OriFashion</li>
+            |
+            <li class="text-uppercase">OriGaming</li>
+            |
+            <li class="text-uppercase">OriDeco</li>
+            |
+            <li class="text-uppercase">OriSport</li>
+            |
+            <li class="text-uppercase">OriKids</li>
+            |
+            <li class="text-uppercase">OriVegan</li>
+          </ul>
+        </div>
+      </nav>
+      <nav
+        class="ms-5 pt-3"
         style="--bs-breadcrumb-divider: '&gg;'"
         aria-label="breadcrumb"
       >
         <ol class="breadcrumb pb-0" style="font-size: 0.8rem">
           <li class="breadcrumb-item">
-            <a href="../../index.html" class="link-secondary"
-              >Accueil Orinoco</a
-            >
+            <a href="../../index.html" class="link-dark">Accueil Orinoco</a>
           </li>
           <li class="breadcrumb-item">
-            <a href="../../index.html" class="link-secondary"
-              >Appareils photos</a
-            >
+            <a href="../../index.html" class="link-dark">Appareils photos</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page"></li>
         </ol>
@@ -154,7 +190,7 @@
             </select>
             <button
               type="button"
-              class="btn order-btn"
+              class="btn order-btn shadow"
               data-bs-toggle="modal"
               data-bs-target="#modal"
             >

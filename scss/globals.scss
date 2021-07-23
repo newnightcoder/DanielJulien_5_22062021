@@ -18,7 +18,7 @@ body {
   overflow-x: hidden;
   &::before {
     content: "";
-    height: 180px;
+    height: 160px;
     display: block;
   }
 }
@@ -26,6 +26,9 @@ body {
   position: absolute;
   top: 5px;
   right: 10px;
+}
+.navbar-container {
+  width: 100%;
 }
 
 .bi-cart3 {
@@ -50,7 +53,9 @@ a {
   white-space: nowrap;
   text-decoration: none;
 }
-
+ul {
+  list-style-type: none;
+}
 .i-nav {
   font-size: 2rem;
   position: relative;
@@ -58,6 +63,26 @@ a {
 
 .navbar-nav {
   width: 100%;
+}
+
+.nav-fav {
+  height: 25px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  background-color: $cart-number-bg;
+  &__container {
+    width: 80%;
+    max-width: 1000px;
+    // border: 1px solid yellow;
+    p {
+      margin: 0 0 0 30px;
+      // border: 1px solid red;
+    }
+    ul {
+      // border: 1px solid red;
+      width: 90%;
+    }
+  }
 }
 
 main {
@@ -71,7 +96,6 @@ main {
   flex-direction: row;
   align-items: center;
   justify-content: space-evenly;
-  list-style-type: none;
   position: relative;
 
   li {
@@ -140,9 +164,12 @@ main {
 footer {
   height: $footer-height;
   width: 100%;
-  list-style-type: none;
-  ul {
-    list-style-type: none;
-    padding-left: 0 !important;
+  .ul-container {
+    .uppercase {
+      border-bottom: 1px solid $cart-number-bg;
+    }
+    ul {
+      padding-left: 0 !important;
+    }
   }
 }
