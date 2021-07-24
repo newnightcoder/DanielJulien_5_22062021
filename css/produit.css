@@ -10757,16 +10757,6 @@ body::before {
   display: block;
 }
 
-.navbar-toggler {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-
-.navbar-container {
-  width: 100%;
-}
-
 .bi-cart3 {
   z-index: 2;
 }
@@ -10798,25 +10788,11 @@ ul {
   position: relative;
 }
 
-.navbar-nav {
-  width: 100%;
-}
-
 .nav-fav {
-  height: 25px;
-  font-size: 0.85rem;
+  font-size: 1rem;
   white-space: nowrap;
   background-color: #9059ff;
-}
-.nav-fav__container {
-  width: 80%;
-  max-width: 1000px;
-}
-.nav-fav__container p {
-  margin: 0 0 0 30px;
-}
-.nav-fav__container ul {
-  width: 90%;
+  letter-spacing: 0.15ch;
 }
 
 main {

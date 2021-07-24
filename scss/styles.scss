@@ -1,14 +1,25 @@
 @use "globals.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
-h3 {
-  letter-spacing: 1ch;
+// hamburger
+.navbar-toggler {
+  border: none;
+  &:active,
+  &:focus,
+  &:visited {
+    box-shadow: none;
+  }
+}
+// titres
+.navbar-brand,
+.h5 {
+  letter-spacing: 0.5ch;
 }
 
+// contenu
 .content {
   max-width: 900px;
 }
-
 .product {
   transition: transform 500ms;
   &:hover {
@@ -16,7 +27,6 @@ h3 {
     cursor: default;
   }
 }
-
 .link-product {
   text-decoration: none;
 
@@ -26,7 +36,6 @@ h3 {
     object-fit: cover;
   }
 }
-
 .btn-voir {
   background-color: globals.$cart-number-bg;
   border-color: globals.$cart-number-bg;

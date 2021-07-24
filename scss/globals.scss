@@ -22,18 +22,13 @@ body {
     display: block;
   }
 }
-.navbar-toggler {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-}
-.navbar-container {
-  width: 100%;
-}
-
+// .navbar-toggler {
+//   transform: translateY(-50%);
+// }
 .bi-cart3 {
   z-index: 2;
 }
+
 .badge {
   z-index: -1;
   background-color: $cart-number-bg !important;
@@ -61,28 +56,25 @@ ul {
   position: relative;
 }
 
-.navbar-nav {
-  width: 100%;
-}
-
 .nav-fav {
-  height: 25px;
-  font-size: 0.85rem;
+  font-size: 1rem;
   white-space: nowrap;
   background-color: $cart-number-bg;
-  &__container {
-    width: 80%;
-    max-width: 1000px;
-    // border: 1px solid yellow;
-    p {
-      margin: 0 0 0 30px;
-      // border: 1px solid red;
-    }
-    ul {
-      // border: 1px solid red;
-      width: 90%;
-    }
-  }
+  letter-spacing: 0.15ch;
+
+  // &__container {
+  //   width: 80%;
+  //   max-width: 1000px;
+  //   // border: 1px solid yellow;
+  //   p {
+  //     margin: 0 0 0 30px;
+  //     // border: 1px solid red;
+  //   }
+  //   ul {
+  //     // border: 1px solid red;
+  //     width: 90%;
+  //   }
+  // }
 }
 
 main {
@@ -173,3 +165,16 @@ footer {
     }
   }
 }
+
+// bootstrap scss customization snippet to breakpoint position property!
+// @each $breakpoint in map-keys($grid-breakpoints) {
+//   @include media-breakpoint-up($breakpoint) {
+//     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+//     // Common values
+//     @each $position in $positions {
+//       .position#{$infix}-#{$position} {
+//         position: $position !important;
+//       }
+//     }
+//   }
+// }
