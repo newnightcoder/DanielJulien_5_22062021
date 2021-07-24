@@ -10753,8 +10753,13 @@ body {
 }
 body::before {
   content: "";
-  height: 160px;
+  height: 140px;
   display: block;
+}
+@media screen and (min-width: 768px) {
+  body::before {
+    height: 220px;
+  }
 }
 
 .bi-cart3 {
@@ -10793,10 +10798,6 @@ ul {
   white-space: nowrap;
   background-color: #9059ff;
   letter-spacing: 0.15ch;
-}
-
-main {
-  min-height: calc(100vh - 150px);
 }
 
 .progres {
