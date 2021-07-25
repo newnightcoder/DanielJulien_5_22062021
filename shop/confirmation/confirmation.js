@@ -20,17 +20,27 @@ const dateOptions = {
   minute: "numeric",
 };
 const orderInfo = `
-<div class="order-info text-left py-3 px-5">
-<h4 class="text-center order-title">R&eacute;sum&eacute; de votre commande</h4>
-    <span class="order-info__text">Identifiant de votre commande</span>&colon;&nbsp;<span class="order-id">${
-      storage.id
-    }</span><br />
-    <span class="order-info__text">Date de votre achat</span><span class="date-capitalize">&colon;&nbsp;${new Date(
-      storage.date
-    ).toLocaleDateString("fr-FR", dateOptions)}</span><br />
-    <span class="order-info__text">Montant de votre achat</span>&colon;&nbsp;<span>${JSON.stringify(
-      priceStorage
-    ).replace(priceFormatRegex, "$1 ")}€</span>
+<div class="container order-info text-left py-3 ps-4 d-flex flex-column align-items-start">
+   <p class="h4 text-center order-title">R&eacute;sum&eacute; de votre commande</p>
+    <div class="d-flex flex-column">
+      <span class="order-info__text text-nowrap">Identifiant de votre commande</span>
+      <span class="order-id">${storage.id}</span>
+    </div>
+    <div class="d-flex flex-column">
+      <span class="order-info__text text-nowrap">Date de votre achat</span>
+      <span class="date-capitalize">${new Date(storage.date).toLocaleDateString(
+        "fr-FR",
+        dateOptions
+      )}</span>
+    </div>
+    <div class="d-flex flex-column">
+      <span class="order-info__text text-nowrap">Montant de votre achat</span>
+      <span>${JSON.stringify(priceStorage).replace(
+        priceFormatRegex,
+        "$1 "
+      )}€</span>    
+    </div>
+
 </div>`;
 const confirmationMsg = document
   .querySelector(".info")

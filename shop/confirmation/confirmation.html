@@ -17,20 +17,22 @@
     <title>Confirmation | Orinoco</title>
   </head>
   <body>
-    <header class="fixed-top">
+    <header class="fixed-top shadow">
       <nav class="navbar navbar-expand bg-dark navbar-dark text-light">
-        <a href="../../index.html" class="navbar-brand h1 mb-0 mx-5 text-center"
-          >ORINOCO <br /><span>Home</span></a
-        >
         <div class="container">
-          <div class="navbar-nav justify-content-evenly">
+          <a href="../../index.html" class="navbar-brand h1 mb-0"
+            >ORINOCO <br
+          /></a>
+          <div class="container d-flex justify-content-evenly">
             <i class="i-nav bi bi-credit-card"></i>
             <i class="i-nav bi bi-box-seam"></i>
             <i class="i-nav bi bi-truck"></i>
           </div>
         </div>
       </nav>
-      <ul class="progres bg-white shadow d-flex align-items-center">
+      <ul
+        class="progres bg-white shadow d-none d-md-flex align-items-md-center"
+      >
         <li class="progres-done">Mon panier</li>
         <li class="progres-done">Mes infos</li>
         <li class="progres-done">Paiement</li>
@@ -39,13 +41,14 @@
     </header>
     <section
       class="
+        container
         d-flex
         flex-column
         justify-content-center
         align-items-center
         info
         text-center
-        py-5
+        pb-5
       "
     >
       <h1>Votre commande est validée&excl;</h1>
@@ -55,7 +58,7 @@
         Vous allez recevoir un e-mail de confirmation très prochainement<br />
       </p>
     </section>
-    <footer class="bg-dark text-white py-3 shadow">
+    <!-- <footer class="bg-dark text-white py-3 shadow">
       <div class="list-wrapper d-flex align-items-start justify-content-evenly">
         <div
           class="
@@ -120,6 +123,6 @@
           </ul>
         </div>
       </div>
-    </footer>
+    </footer> -->
   </body>
 </html>

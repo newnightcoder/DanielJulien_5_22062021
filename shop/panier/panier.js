@@ -1,13 +1,13 @@
 // DOM ELEMENTS
-const recapContainer = document.querySelector(".recap");
-const recapContent = document.querySelector(".recap-content");
-const recapHeader = document.querySelector("thead");
+const recapContainer = document.querySelector(".content");
+const recapContent = document.querySelector(".recap");
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 const finalPriceStorage = JSON.parse(localStorage.getItem("finalPriceStorage"));
 let storageCopy = finalCartStorage && [...finalCartStorage];
 let number = cartNumberStorage;
 const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
+const panierVide = `<div class="d-flex flex-column justify-content-center align-items-center fw-bold text-uppercase border panier-vide" >Panier vide...</div>`;
 
 // REDUCE METHOD TO CALCULATE TOTAL PRICE😎✌🏾
 const totalPrice =
@@ -23,69 +23,85 @@ const displayRecapRow = () => {
     for (let i = 0; i < finalCartStorage.length; i++) {
       const recapRow =
         finalCartStorage &&
-        `<tr class="modal-row align-middle border text-center">
-      <td class="d-flex align-items-center border-0 justify-content-start ms-5" style="width:40%"><img class="img" width="150" src="${
-        finalCartStorage[i][1].imageUrl
-      }"/><span class="item-name" style="display:block; padding-left:1rem; white-space:nowrap; text-transform:uppercase; font-weight:600">${
-          finalCartStorage[i][1].name
-        }</span>
-      </td>
-      <td style="width:40%">
-      <div style="font-size:.9rem">Quantité : <span class="item-quantity">${
-        finalCartStorage[i][0]
-      }</span>
-      </div>
-      <div class="mt-1 d-flex justify-content-center align-items-center" >
-      <button class="btn btn-sm btn-dark btn-moins mx-2" style="font-size:1.25rem; width:40px; height:40px">-</button>
-      <button class="btn btn-sm btn-dark btn-plus mx-2" style="font-size:1.25rem; width:40px; height:40px">+</button>
-      <button class="btn btn-sm btn-dark btn-suppr mx-2 style="width:40px; height:40px"><i class="bi bi-trash" style="font-size:1.25rem"></i></button>
-      </div>
-      </td>
-      <td class="item-price" style="white-space:nowrap; text-transform:uppercase; font-weight:600; width:20%">${numeral(
-        finalCartStorage[i][1].price * finalCartStorage[i][0]
-      )
-        .divide(100)
-        .format("0 0.00")
-        .replace(priceFormatRegex, "$1 ")}€</td>
-      </tr>`;
-      recapContent.insertAdjacentHTML("afterbegin", recapRow);
+        `<div class="container-fluid d-flex rounded px-0 mb-4 pb-3 border-bottom">
+          <div class="col-6 pe-2">
+            <img width="250" height="180"
+            src="${
+              finalCartStorage[i][1].imageUrl
+            }" class="rounded-start border-0 p-0"> 
+          </div> 
+          <div class="col-6 d-flex flex-column justify-content-evenly align-items-center position-relative pt-2">
+            <div class="container d-flex flex-column align-items-start justify-content-between pe-0">
+             <h3 class="fs-5 text-nowrap mb-1 item-name">${
+               finalCartStorage[i][1].name
+             }</h3>
+              <div class="container d-flex align-items-center justify-content-between px-0">
+                <span class="d-block pb-1">${numeral(
+                  finalCartStorage[i][1].price
+                )
+                  .divide(100)
+                  .format("0 0.00")
+                  .replace(priceFormatRegex, "$1 ")}€</span>
+                <button class="btn btn-sm btn-secondary text-white btn-suppr" ><i class="bi bi-trash" style="font-size:1.25rem"></i></button>
+              </div>
+            </div>
+            <div class="container  d-flex flex-column align-items-start px-0">
+              <span class="container-fluid text-start d-block pt-1 ">Quantité: <span class="item-quantity">${
+                finalCartStorage[i][0]
+              }</span></span>
+              <div class="container-fluid d-flex align-items-center justify-content-start gap-3 mt-1 mb-2">
+                <button class="btn btn-sm text-white btn-moins">-</button>
+                <button class="btn btn-sm text-white btn-plus">+</button>
+              </div>
+            </div>
+            <div class="container d-flex justify-content-between pt-1"><span >Total:&nbsp;</span><span class="item-price">${numeral(
+              finalCartStorage[i][1].price * finalCartStorage[i][0]
+            )
+              .divide(100)
+              .format("0 0.00")
+              .replace(priceFormatRegex, "$1 ")}€</span></div>
+          </div>
+      </div>`;
+      recapContent.insertAdjacentHTML("beforeend", recapRow);
     }
   }
 };
 const displayRecapTotal = () => {
-  const recapTotal = `
-  <tr class="modal-row align-middle border-0 text-center bg-dark text-white">
-  <td class="border-0">
-  <div class="recap-panier" style="font-size:1.25rem">Le panier contient 
-  <span class="total-quantity">${cartNumberStorage}</span> 
-          <span class="msg-articles"> article${
-            cartNumberStorage <= 1 ? "" : "s"
-          }</span>
-      </div>
-    </td>
-    <td class="border-0">
-        <button class="btn btn-sm btn-secondary my-1 btn-vider">vider le panier</button>
-    </td>
-    <td class="border-0 prix-total">
-        <span ">TOTAL</span>:&nbsp;&nbsp;${numeral(totalPrice)
-          .format("0 0.00")
-          .replace(priceFormatRegex, "$1 ")}€
-    </td>
-</tr>
-<tr  class=" align-middle border-0 text-center mt-1 ms-auto modal-row">
-    <td class="border-0"></td>  
-    <td class="border-0"></td>  
-</tr>`;
-  const btnValider = `<div class="container text-center">
-  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md mb-3 btn-valider-panier">valider mon panier
-  </button></div>`;
+  const recapTotal = `  
+<div>
+  <button class="btn btn-sm btn-secondary d-block ms-auto me-2 mb-3 btn-vider">vider le panier</button>   
+  <div class="container d-flex justify-content-between border-top pt-2">
+    <div class="col-9 ">Nombre d'articles&colon;</div>
+    <div class="col-3 text-end total-quantity">${cartNumberStorage}</div>
+  </div>
+  <div class="container d-flex justify-content-between pt-1">
+    <div class="col-9">Montant de la commande&colon;</div>
+    <div class="col-3 text-end text-nowrap prix-total">${numeral(totalPrice)
+      .format("0 0.00")
+      .replace(priceFormatRegex, "$1 ")}€</div>
+  </div>
+  <div class="container d-flex justify-content-between py-1">
+    <div class="col-9">Livraison&colon;</div>
+    <div class="col-3 text-end">offerte</div>
+  </div>
+  <div class="container d-flex justify-content-between fw-bold border-top py-1 total-row">
+    <div class="col-9">TOTAL</div>
+    <div class="col-3 text-end text-nowrap prix-total-2">${numeral(totalPrice)
+      .format("0 0.00")
+      .replace(priceFormatRegex, "$1 ")}€</div>
+  </div>
+</div>`;
+
+  const btnValider = ` <div class="container text-center">
+  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md mt-3 mb-4 btn-valider-panier shadow">valider mon panier
+  </button>
+</div>`;
 
   if (cartNumberStorage > 0) {
-    recapContent.insertAdjacentHTML("afterbegin", recapTotal);
+    recapContainer.insertAdjacentHTML("beforeend", recapTotal);
     recapContainer.insertAdjacentHTML("beforeend", btnValider);
   } else {
-    recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
-    recapHeader.style.display = "none";
+    recapContainer.innerHTML = panierVide;
   }
 };
 
@@ -119,17 +135,16 @@ const plus = () => {
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
       // update quantité globale à l'écran
       document.querySelector(".total-quantity").innerHTML = number;
-      document.querySelector(".msg-articles").innerHTML = `article${
-        number <= 1 ? "" : "s"
-      }`;
       // update le prix global:
       const totalPrice = storageCopy.reduce((acc, current) => {
         return acc + (current[1].price / 100) * current[0];
       }, 0);
+      // sauvegarde du prix global dans le localstorage
       localStorage.setItem("finalPriceStorage", JSON.stringify(totalPrice));
-      document.querySelector(
-        ".prix-total"
-      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice)
+      document.querySelector(".prix-total").innerHTML = `${numeral(totalPrice)
+        .format("0 0.00")
+        .replace(priceFormatRegex, "$1 ")}€`;
+      document.querySelector(".prix-total-2").innerHTML = `${numeral(totalPrice)
         .format("0 0.00")
         .replace(priceFormatRegex, "$1 ")}€`;
     });
@@ -170,16 +185,14 @@ const moins = () => {
       localStorage.setItem("cartNumberStorage", JSON.stringify(number));
       // update DOM quantité totale:
       document.querySelector(".total-quantity").innerHTML = number;
-      document.querySelector(".msg-articles").innerHTML = `article${
-        number <= 1 ? "" : "s"
-      }`;
       const totalPrice = storageCopy.reduce((acc, current) => {
         return acc + (current[1].price / 100) * current[0];
       }, 0);
       localStorage.setItem("finalPriceStorage", JSON.stringify(totalPrice));
-      document.querySelector(
-        ".prix-total"
-      ).innerHTML = `TOTAL :&nbsp;&nbsp;${numeral(totalPrice)
+      document.querySelector(".prix-total").innerHTML = `${numeral(totalPrice)
+        .format("0 0.00")
+        .replace(priceFormatRegex, "$1 ")} €`;
+      document.querySelector(".prix-total-2").innerHTML = `${numeral(totalPrice)
         .format("0 0.00")
         .replace(priceFormatRegex, "$1 ")} €`;
     });
@@ -187,7 +200,7 @@ const moins = () => {
 };
 const suppr = () => {
   document.querySelectorAll(".btn-suppr").forEach((btn) => {
-    let item = btn.parentNode.parentNode.parentNode;
+    let item = btn.parentNode.parentNode.parentNode.parentNode;
     let itemName = item.querySelector(".item-name").innerHTML;
 
     btn.addEventListener("click", () => {
@@ -199,8 +212,7 @@ const suppr = () => {
           storageCopy.splice(i, 1);
           if (storageCopy[i] == null && storageCopy.length < 1) {
             console.log("yay nullll!!");
-            recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
-            recapHeader.style.display = "none";
+            recapContainer.innerHTML = panierVide;
             document.querySelector(".btn-valider-panier").style.display =
               "none";
           }
@@ -219,9 +231,9 @@ const vider = () => {
   cartNumberStorage !== null &&
     document.querySelector(".btn-vider").addEventListener("click", () => {
       localStorage.clear();
-      recapContent.innerHTML = `<div class="d-flex flex-column justify-content-center align-items-center" style="border:1px solid lightgray; min-height:calc(100vh - 300px); text-transform:uppercase; font-weight:bold; text-align:center">Panier vide...</div>`;
-      recapHeader.style.display = "none";
-      document.querySelector(".btn-valider-panier").style.display = "none";
+      recapContainer.innerHTML = panierVide;
+      // recapHeader.style.display = "none";
+      // document.querySelector(".btn-valider-panier").style.display = "none";
     });
 };
 

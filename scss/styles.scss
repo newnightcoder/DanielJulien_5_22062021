@@ -1,6 +1,15 @@
 @use "globals.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+body::before {
+  content: "";
+  height: 140px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    height: 220px;
+  }
+}
+
 // hamburger
 .navbar-toggler {
   border: none;
@@ -17,32 +26,34 @@
 }
 
 // contenu
-// .content {
-//   max-width: 900px;
-// }
+.content {
+  max-width: 900px;
+}
 .product {
   transition: transform 500ms;
+  & > .container {
+    min-height: 100px;
+  }
   &:hover {
     transform: scale(0.99);
     cursor: default;
   }
-}
-.link-product {
-  text-decoration: none;
 
-  .img {
-    width: 100%;
+  img {
     height: 100%;
+    width: 100%;
     object-fit: cover;
   }
 }
+// .link-product {
+//   text-decoration: none;
+// }
 .btn-voir {
-  background-color: globals.$cart-number-bg;
-  border-color: globals.$cart-number-bg;
-  color: white;
+  background-color: $indigo-400;
+  border-color: $indigo-400;
   &:hover {
-    background-color: $purple-600;
-    border-color: $purple-600;
+    background-color: $indigo-600;
+    border-color: $indigo-600;
     color: white;
   }
 }

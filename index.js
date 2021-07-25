@@ -24,33 +24,31 @@ const displayProducts = () => {
   const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
   cameras.map((item) => {
     const product = `
-  <div class="product card mb-3 shadow border-0">
-    <div class="row g-0">
-      <div class="col-md-4">
-        <img 
-        src="${
-          item.imageUrl
-        }" class=" img-thumbnail border-0 rounded-start" alt="...">
-      </div>
-      <div class="col-md-8">
-        <div class="card-body text-dark ">
-          <h5 class="card-title">${item.name}</h5>
-          <p class="card-text text-end" style="font-weight:700">${numeral(
-            item.price
-          )
+    <div class="product container-fluid ps-0 rounded mb-3 shadow pe-0">
+      <div class="container d-flex flex-row ps-0 pe-3">
+        <div class="col-6 pe-3">
+          <img 
+          src="${item.imageUrl}" class="rounded-start border-0 p-0" alt="${
+      item.name
+    }"> 
+        </div>
+        <div class="col-6 d-flex flex-column justify-content-start align-items-start position-relative pt-2">
+          <div class="d-flex flex-column justify-content-start align-items-start">
+          <h3 class="fs-5 text-nowrap mb-1">${item.name}</h3>
+          <span class="">${numeral(item.price)
             .divide(100)
             .format("0 0.00")
-            .replace(priceFormatRegex, "$1 ")}€ </p>
-          <p class="card-text">${item.description}</p>
-          <div class="text-end">
-          <a href="/shop/produit/produit.html?${
-            item._id
-          }" class="btn btn-sm btn-voir" type="button">Voir ce produit</a>
+            .replace(priceFormatRegex, "$1 ")}€ </span>
+           </div>
+          <div class="container position-absolute bottom-0 mb-1 px-0 mx-0">
+            <a class="btn btn-sm text-white btn-voir d-block" href="/shop/produit/produit.html?${
+              item._id
+            }">Voir ce produit</a>
           </div>
         </div>
       </div>
-    </div>
-  </div>`;
+    </div>`;
+
     content.insertAdjacentHTML("beforeend", product);
   });
 };

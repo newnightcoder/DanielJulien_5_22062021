@@ -1,8 +1,8 @@
 // DOM ELEMENTS
-const content = document.querySelector(".detail");
+const content = document.querySelector(".content");
 const aside = document.querySelector("aside");
 const select = document.querySelector("select");
-const orderBtn = document.querySelector(".order-btn");
+const orderBtn = document.querySelector(".btn-commander");
 const cart = document.querySelector(".badge");
 const breadcrumb = document.querySelector("[aria-current=page]");
 const modal = document.querySelector(".modal-body");
@@ -37,14 +37,27 @@ const displayProduct = async () => {
   const product = await getProduct();
   const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
   // 1. dynamic DOM elements (hydrated):
-  const produit = `<div class="col-lg-8">
-<h3 class="">${product.name}</h3>
-<div class="">
-<img height="350"  width="500" src="${product.imageUrl}"/>
-</div>
-<div class="">
-<p style="width:80%" class="py-4">${product.description} </p>
-</div>
+  const produit = `
+  <div class="container px-0">
+  <div
+    class="d-flex align-items-start justify-content-between pt-2 pb-3"
+  >
+    <span class="h4 d-block text-nowrap my-0">${product.name}</span>
+    <span class="prix d-block text-nowrap fw-bold">${numeral(product.price)
+      .divide(100)
+      .format("0 0.00")
+      .replace(priceFormatRegex, "$1 ")}€</span>
+  </div>
+  <div class="container px-0">
+    <img class="img-fluid border" height="350" width="500" src="${
+      product.imageUrl
+    }" alt="${product.name}">
+  </div>
+  <div class="">
+    <p class="description pt-3 ps-1">
+      ${product.description}
+    </p>
+  </div>
 </div>`;
 
   const prix = `<div class="row align-items-center justify-content-between">
@@ -80,7 +93,7 @@ ${numeral(product.price)
   // 2. append to the DOM
   content.insertAdjacentHTML("afterBegin", produit);
   select.insertAdjacentHTML("beforeEnd", selectOptions);
-  aside.insertAdjacentHTML("afterbegin", prix);
+  // aside.insertAdjacentHTML("afterbegin", prix);
   breadcrumb.textContent = product.name;
   modal.insertAdjacentHTML("afterbegin", modalContent);
 };

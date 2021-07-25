@@ -1,5 +1,14 @@
 @use "globals";
 
+body::before {
+  content: "";
+  height: 100px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    height: 220px;
+  }
+}
+
 .bi-check-circle-fill {
   color: globals.$cart-number-bg;
   font-size: 5rem;

@@ -1,6 +1,15 @@
 @use "globals.scss";
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
 
+body::before {
+  content: "";
+  height: 100px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    height: 220px;
+  }
+}
+
 .bi-cart-check {
   color: $teal-600;
   font-size: 2rem;
@@ -14,24 +23,49 @@
 }
 
 main {
-  padding-bottom: 75px;
-}
-
-.link-achats {
-  position: relative;
-  color: globals.$cart-number-bg;
-  text-decoration: none;
-  width: min-content;
-  &:hover {
-    text-decoration: underline;
-    color: $purple-500;
+  min-height: calc(100vh - 200px);
+  .link-achats {
+    color: $indigo-400;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $indigo-600;
+    }
+    &::before {
+      content: "\00ab";
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-85%);
+    }
   }
-  &::before {
-    content: "\00ab";
-    position: absolute;
-    left: -2px;
-    top: 50%;
-    transform: translateY(-50%);
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .content {
+    min-height: calc(100vh - 90px);
+    .btn-moins,
+    .btn-plus {
+      background-color: $indigo-400;
+    }
+    .btn-plus,
+    .btn-moins,
+    .btn-suppr {
+      font-size: 1.25rem;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+    }
+
+    .recap {
+      min-height: 45vh;
+    }
+    .total-row {
+      border-color: $indigo-400 !important;
+    }
   }
 }
 
@@ -39,27 +73,38 @@ main {
 .btn-commander {
   &:hover {
     color: white;
-    background-color: globals.$purple-500;
+    background-color: $indigo-600;
   }
 }
 .btn-valider-panier {
   color: white;
-  background-color: globals.$cart-number-bg;
+  background-color: $indigo-400;
 }
 
 .btn-commander {
-  background-color: globals.$cart-number-bg;
+  background-color: $indigo-400;
   color: white;
 }
 
-.prix-total {
-  color: white;
-  white-space: nowrap;
-  text-transform: uppercase;
-  font-size: 1.15rem;
-  font-weight: 700;
-  span {
-    text-decoration: underline;
+// .prix-total {
+//   color: white;
+//   white-space: nowrap;
+//   text-transform: uppercase;
+//   font-size: 1.15rem;
+//   font-weight: 700;
+//   span {
+//     text-decoration: underline;
+//   }
+// }
+
+.btn-suppr {
+  transform: translateY(50%);
+}
+
+.panier-vide {
+  height: calc(100vh - 120px);
+  @media screen and (min-width: 768px) {
+    height: calc(100vh - 220px);
   }
 }
 
@@ -72,13 +117,13 @@ main {
   .form-check-input {
     box-shadow: none !important;
     &:checked {
-      background-color: globals.$cart-number-bg;
-      border-color: globals.$cart-number-bg;
+      background-color: $indigo-400;
+      border-color: $indigo-400;
     }
     &:focus,
     &:active {
       background-color: none;
-      border-color: globals.$cart-number-bg;
+      border-color: $indigo-600;
     }
   }
 }

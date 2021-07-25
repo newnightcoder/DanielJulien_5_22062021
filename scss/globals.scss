@@ -5,7 +5,7 @@ $body-bg: #f3ebf3;
 $body-bg: lightgray;
 $header-bg: #281826;
 $footer-bg: #7c747c;
-$cart-number-bg: #9059ff;
+$cart-number-bg: $indigo-400;
 $disabled-color: #d8d9da;
 $active-color: $dark;
 $done-color: $dark;
@@ -16,25 +16,15 @@ $footer-height: 100%;
 body {
   height: 100%;
   overflow-x: hidden;
-  &::before {
-    content: "";
-    height: 140px;
-    display: block;
-    @media screen and (min-width: 768px) {
-      height: 220px;
-    }
-  }
 }
-// .navbar-toggler {
-//   transform: translateY(-50%);
-// }
+
 .bi-cart3 {
   z-index: 2;
 }
 
 .badge {
   z-index: -1;
-  background-color: $cart-number-bg !important;
+  background-color: $indigo-400;
 }
 
 .btn {

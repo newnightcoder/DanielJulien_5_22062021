@@ -10751,16 +10751,6 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
-body::before {
-  content: "";
-  height: 140px;
-  display: block;
-}
-@media screen and (min-width: 768px) {
-  body::before {
-    height: 220px;
-  }
-}
 
 .bi-cart3 {
   z-index: 2;
@@ -10768,7 +10758,7 @@ body::before {
 
 .badge {
   z-index: -1;
-  background-color: #9059ff !important;
+  background-color: #8540f5;
 }
 
 .btn {
@@ -10796,7 +10786,7 @@ ul {
 .nav-fav {
   font-size: 1rem;
   white-space: nowrap;
-  background-color: #9059ff;
+  background-color: #8540f5;
   letter-spacing: 0.15ch;
 }
 
@@ -10851,7 +10841,7 @@ ul {
   border: 2px solid #212529;
 }
 .progres .progres-done::before, .progres .progres-done::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 .progres .progres-active {
   color: #212529;
@@ -10859,15 +10849,15 @@ ul {
   border: 2px solid #212529;
 }
 .progres .progres-active::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 .progres .confirmation {
-  color: #9059ff;
-  border: 2px solid #9059ff;
+  color: #8540f5;
+  border: 2px solid #8540f5;
   font-weight: 600;
 }
 .progres .confirmation::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 
 footer {
@@ -10875,7 +10865,7 @@ footer {
   width: 100%;
 }
 footer .ul-container .uppercase {
-  border-bottom: 1px solid #9059ff;
+  border-bottom: 1px solid #8540f5;
 }
 footer .ul-container ul {
   padding-left: 0 !important;
@@ -21628,6 +21618,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body::before {
+  content: "";
+  height: 140px;
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  body::before {
+    height: 220px;
+  }
+}
+
 .navbar-toggler {
   border: none;
 }
@@ -21640,31 +21641,33 @@ textarea.form-control-lg {
   letter-spacing: 0.5ch;
 }
 
+.content {
+  max-width: 900px;
+}
+
 .product {
   transition: transform 500ms;
+}
+.product > .container {
+  min-height: 100px;
 }
 .product:hover {
   transform: scale(0.99);
   cursor: default;
 }
-
-.link-product {
-  text-decoration: none;
-}
-.link-product .img {
-  width: 100%;
+.product img {
   height: 100%;
+  width: 100%;
   object-fit: cover;
 }
 
 .btn-voir {
-  background-color: #9059ff;
-  border-color: #9059ff;
-  color: white;
+  background-color: #8540f5;
+  border-color: #8540f5;
 }
 .btn-voir:hover {
-  background-color: #59359a;
-  border-color: #59359a;
+  background-color: #520dc2;
+  border-color: #520dc2;
   color: white;
 }
 

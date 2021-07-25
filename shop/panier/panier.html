@@ -18,157 +18,144 @@
     <title>Mon panier | Orinoco</title>
   </head>
   <body>
-    <header class="fixed-top">
+    <header class="fixed-top shadow">
       <nav class="navbar navbar-expand bg-dark navbar-dark text-light">
-        <a href="../../index.html" class="navbar-brand h1 mb-0 mx-5 text-center"
-        >ORINOCO <br /><span>Home</span></a
-      >        <div class="container">
-          <div class="navbar-nav justify-content-evenly">
+        <div class="container">
+          <a href="../../index.html" class="navbar-brand h1 mb-0"
+            >ORINOCO <br
+          /></a>
+          <div class="container d-flex justify-content-evenly">
             <i class="i-nav bi bi-credit-card"></i>
             <i class="i-nav bi bi-box-seam"></i>
             <i class="i-nav bi bi-truck"></i>
           </div>
         </div>
       </nav>
-      <ul class="progres bg-white shadow d-flex align-items-center">
-        <li class="progres-active">Mon panier</li>
-        <li>Mes infos</li>
-        <li>Paiement</li>
-        <li>Confirmation</li>
+      <ul
+        class="progres bg-white shadow d-none d-md-flex align-items-md-center"
+      >
+        <li class="progres-done">Mon panier</li>
+        <li class="progres-done">Mes infos</li>
+        <li class="progres-done">Paiement</li>
+        <li class="progres-active confirmation">Confirmation</li>
       </ul>
     </header>
-    <main>
-      <section class="content row align-items-start px-5 mx-5">
-        <div class="recap row mt-5">
-          <h2>Mon panier</h2>
-          <a href="../../index.html" class="link-achats fw-bold">
-            Continuer mes achats</a
-          >
-          <table
-            class="table table-borders table-bordered my-3"
-            style="min-height: 20vh"
-          >
-            <thead class="table-dark text-center text-uppercase">
-              <tr>
-                <th scope="col">Mes articles</th>
-                <th scope="col">Quantit&eacute;</th>
-                <th scope="col">Montant</th>
-              </tr>
-            </thead>
-            <tbody class="recap-content"></tbody>
-          </table>
-        </div>
 
-        <div
-          id="form-section"
-          class="container border-top row align-items-center pt-4 mt-5"
-        >
-          <h2>Mes infos</h2>
-          <form class="row g-3" action="/shop/confirmation/confirmation.html">
-            <div class="col-md-2">
-              <label for="inputState" class="form-label">Civilit&eacute;</label>
-              <select id="inputState" class="form-select">
-                <option default>S&eacute;lectionnez</option>
-                <option>Madame</option>
-                <option>Monsieur</option>
-                <option>Autre</option>
-              </select>
-            </div>
-            <div class="col-md-5">
-              <label for="last-name" class="form-label">Nom de famille</label>
-              <input
-                type="text"
-                class="form-control last-name"
-                id="last-name"
-                placeholder="Votre nom de famille"
-              />
-              <span class="errorMsg"></span>
-            </div>
-            <div class="col-md-5">
-              <label for="first-name" class="form-label">Prénom</label>
-              <input
-                type="text"
-                class="form-control first-name"
-                id="first-name"
-                placeholder="Votre prénom"
-              />
-              <span class="errorMsg"></span>
-            </div>
-            <div class="col-md-7">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="text"
-                class="form-control email"
-                id="email"
-                placeholder="exemple@mail.com"
-              />
-              <span class="errorMsg"></span>
-            </div>
-            <div class="col-md-5">
-              <label for="phone" class="form-label"
-                >Téléphone fixe ou mobile</label
-              >
-              <input
-                type="phone"
-                class="form-control phone"
-                id="phone"
-                placeholder="ex: 06123456"
-              />
-              <span class="errorMsg"></span>
-            </div>
-            <div class="col-12">
-              <label for="inputAddress" class="form-label">Adresse</label>
-              <input
-                type="text"
-                class="form-control address"
-                id="inputAddress"
-                placeholder="Votre adresse"
-              />
-              <span class="errorMsg"></span>
-            </div>
-            <div class="col-md-8">
-              <label for="inputCity" class="form-label">Ville</label>
-              <input
-                type="text"
-                class="form-control city"
-                id="inputCity"
-                placeholder="Votre ville"
-              />
-              <span class="errorMsg"></span>
-            </div>
-            <div class="col-md-4">
-              <label for="code-postal" class="form-label">Code Postal</label>
-              <input
-                class="form-control zip"
-                type="text"
-                id="code-postal"
-                placeholder="ex: 59200"
-              />
-              <span class="errorMsg"></span>
-            </div>
-            <div class="col-12">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  id="gridCheck"
-                />
-                <label class="form-check-label" for="gridCheck">
-                  J'ai lu et j'accepte les conditions générales de vente.
-                </label>
-                <span class="errorMsg"></span>
-              </div>
-            </div>
-            <div class="col-12 text-center">
-              <button type="submit" class="btn btn-commander mt-2">
-                Commander
-              </button>
-            </div>
-          </form>
+    <main>
+      <section class="container content">
+        <div class="container">
+          <h2 class="mb-1">Mon panier</h2>
+          <a
+            href="../../index.html"
+            class="d-block position-relative link-achats pb-3"
+            >Continuer mes achats</a
+          >
+          <div class="container px-0 mt-2 recap"></div>
         </div>
       </section>
+
+      <section id="form-section" class="container border-top pt-4">
+        <h2>Mes infos</h2>
+        <form class="row g-3" action="/shop/confirmation/confirmation.html">
+          <div class="col-md-2">
+            <label for="inputState" class="form-label">Civilit&eacute;</label>
+            <select id="inputState" class="form-select">
+              <option default>S&eacute;lectionnez</option>
+              <option>Madame</option>
+              <option>Monsieur</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="col-md-5">
+            <label for="last-name" class="form-label">Nom de famille</label>
+            <input
+              type="text"
+              class="form-control last-name"
+              id="last-name"
+              placeholder="Votre nom de famille"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-5">
+            <label for="first-name" class="form-label">Prénom</label>
+            <input
+              type="text"
+              class="form-control first-name"
+              id="first-name"
+              placeholder="Votre prénom"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-7">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="text"
+              class="form-control email"
+              id="email"
+              placeholder="exemple@mail.com"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-5">
+            <label for="phone" class="form-label"
+              >Téléphone fixe ou mobile</label
+            >
+            <input
+              type="phone"
+              class="form-control phone"
+              id="phone"
+              placeholder="ex: 06123456"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Adresse</label>
+            <input
+              type="text"
+              class="form-control address"
+              id="inputAddress"
+              placeholder="Votre adresse"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-8">
+            <label for="inputCity" class="form-label">Ville</label>
+            <input
+              type="text"
+              class="form-control city"
+              id="inputCity"
+              placeholder="Votre ville"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-4">
+            <label for="code-postal" class="form-label">Code Postal</label>
+            <input
+              class="form-control zip"
+              type="text"
+              id="code-postal"
+              placeholder="ex: 59200"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" />
+              <label class="form-check-label" for="gridCheck">
+                J'ai lu et j'accepte les conditions générales de vente.
+              </label>
+              <span class="errorMsg"></span>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-commander mt-2">
+              Commander
+            </button>
+          </div>
+        </form>
+      </section>
     </main>
-    <footer class="bg-dark text-white py-3">
+    <!-- <footer class="bg-dark text-white py-3">
       <div class="list-wrapper d-flex align-items-start justify-content-evenly">
         <div
           class="
@@ -233,20 +220,25 @@
           </ul>
         </div>
       </div>
-    </footer>    <div
+    </footer>     -->
+    <div
       class="modal fade py-4"
       id="modal"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
     >
-      <div class="modal-dialog modal-dialog-centered ">
+      <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center">
           <div class="modal-header flex-column">
-            <h4 class="modal-title" id="exampleModalLabel">Votre panier est validé!</h4>
+            <h4 class="modal-title" id="exampleModalLabel">
+              Votre panier est validé!
+            </h4>
             <i class="bi bi-cart-check mt-3"></i>
           </div>
-          <div class="modal-body text-center fw-bold fs-5">Vous n'avez plus qu'à nous fournir <br>vos infos  pour la livraison.
+          <div class="modal-body text-center fw-bold fs-5">
+            Vous n'avez plus qu'à nous fournir <br />vos infos pour la
+            livraison.
           </div>
           <div class="modal-footer justify-content-center">
             <button
@@ -254,7 +246,7 @@
               class="btn btn-md btn-secondary ps-2 fw-bold open-form-btn"
               data-bs-dismiss="modal"
             >
-            <i class="bi bi-house-door-fill"></i></i>&nbsp;Mes infos livraison
+              <i class="bi bi-house-door-fill"></i>&nbsp;Mes infos livraison
             </button>
           </div>
         </div>

@@ -10751,16 +10751,6 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
-body::before {
-  content: "";
-  height: 140px;
-  display: block;
-}
-@media screen and (min-width: 768px) {
-  body::before {
-    height: 220px;
-  }
-}
 
 .bi-cart3 {
   z-index: 2;
@@ -10768,7 +10758,7 @@ body::before {
 
 .badge {
   z-index: -1;
-  background-color: #9059ff !important;
+  background-color: #8540f5;
 }
 
 .btn {
@@ -10796,7 +10786,7 @@ ul {
 .nav-fav {
   font-size: 1rem;
   white-space: nowrap;
-  background-color: #9059ff;
+  background-color: #8540f5;
   letter-spacing: 0.15ch;
 }
 
@@ -10851,7 +10841,7 @@ ul {
   border: 2px solid #212529;
 }
 .progres .progres-done::before, .progres .progres-done::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 .progres .progres-active {
   color: #212529;
@@ -10859,15 +10849,15 @@ ul {
   border: 2px solid #212529;
 }
 .progres .progres-active::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 .progres .confirmation {
-  color: #9059ff;
-  border: 2px solid #9059ff;
+  color: #8540f5;
+  border: 2px solid #8540f5;
   font-weight: 600;
 }
 .progres .confirmation::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 
 footer {
@@ -10875,7 +10865,7 @@ footer {
   width: 100%;
 }
 footer .ul-container .uppercase {
-  border-bottom: 1px solid #9059ff;
+  border-bottom: 1px solid #8540f5;
 }
 footer .ul-container ul {
   padding-left: 0 !important;
@@ -21628,49 +21618,81 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body::before {
+  content: "";
+  height: 100px;
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  body::before {
+    height: 220px;
+  }
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+}
+
 .breadcrumb-item.active {
   color: #181818 !important;
+}
+
+.dispo {
+  color: #20c997;
+}
+
+main {
+  min-height: calc(100vh - 140px);
+}
+@media screen and (min-width: 768px) {
+  main {
+    min-height: calc(100vh - 220px);
+  }
+}
+main select {
+  width: 100%;
+  max-width: 400px;
+}
+main select:active, main select:focus, main select:visited {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: #8540f5 !important;
+}
+main .btn-commander {
+  width: 100%;
+  max-width: 400px;
+  background-color: #8540f5;
+  border-color: #8540f5;
+}
+main .btn-commander:hover {
+  background-color: #520dc2;
+  border-color: #520dc2;
+  color: white;
+}
+main .btn-commander:hover:active {
+  outline-color: #520dc2;
 }
 
 .bi-check-lg {
   color: #1aa179;
 }
 
-.dispo {
-  color: #198754;
+.bi-chevron-left {
+  font-weight: 600;
 }
 
-main {
-  height: calc(100vh - 90px);
-}
-
-.order-btn {
-  background-color: #9059ff;
-  border-color: #9059ff;
-  color: white;
-  font-size: 1rem;
-}
-.order-btn:hover {
-  background-color: #59359a;
-  border-color: #59359a;
-  color: white;
-}
-.order-btn:hover:active {
-  outline-color: #6f42c1;
-}
-
-table {
-  border: none;
+.btn-continuer {
+  transform: translateX(-25%);
 }
 
 .btn-terminer {
-  background-color: #9059ff;
-  border-color: #9059ff;
-  color: white;
+  transform: translateX(25%);
+  background-color: #8540f5;
+  border-color: #8540f5;
 }
 .btn-terminer:hover {
-  background-color: #59359a;
-  border-color: #59359a;
+  background-color: #520dc2;
+  border-color: #520dc2;
   color: white;
 }
 

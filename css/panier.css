@@ -10751,16 +10751,6 @@ body {
   height: 100%;
   overflow-x: hidden;
 }
-body::before {
-  content: "";
-  height: 140px;
-  display: block;
-}
-@media screen and (min-width: 768px) {
-  body::before {
-    height: 220px;
-  }
-}
 
 .bi-cart3 {
   z-index: 2;
@@ -10768,7 +10758,7 @@ body::before {
 
 .badge {
   z-index: -1;
-  background-color: #9059ff !important;
+  background-color: #8540f5;
 }
 
 .btn {
@@ -10796,7 +10786,7 @@ ul {
 .nav-fav {
   font-size: 1rem;
   white-space: nowrap;
-  background-color: #9059ff;
+  background-color: #8540f5;
   letter-spacing: 0.15ch;
 }
 
@@ -10851,7 +10841,7 @@ ul {
   border: 2px solid #212529;
 }
 .progres .progres-done::before, .progres .progres-done::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 .progres .progres-active {
   color: #212529;
@@ -10859,15 +10849,15 @@ ul {
   border: 2px solid #212529;
 }
 .progres .progres-active::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 .progres .confirmation {
-  color: #9059ff;
-  border: 2px solid #9059ff;
+  color: #8540f5;
+  border: 2px solid #8540f5;
   font-weight: 600;
 }
 .progres .confirmation::after {
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 
 footer {
@@ -10875,7 +10865,7 @@ footer {
   width: 100%;
 }
 footer .ul-container .uppercase {
-  border-bottom: 1px solid #9059ff;
+  border-bottom: 1px solid #8540f5;
 }
 footer .ul-container ul {
   padding-left: 0 !important;
@@ -21628,6 +21618,17 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+body::before {
+  content: "";
+  height: 100px;
+  display: block;
+}
+@media screen and (min-width: 768px) {
+  body::before {
+    height: 220px;
+  }
+}
+
 .bi-cart-check {
   color: #1aa179;
   font-size: 2rem;
@@ -21642,52 +21643,77 @@ textarea.form-control-lg {
 }
 
 main {
-  padding-bottom: 75px;
+  min-height: calc(100vh - 200px);
 }
-
-.link-achats {
-  position: relative;
-  color: #9059ff;
+main .link-achats {
+  color: #8540f5;
   text-decoration: none;
-  width: min-content;
 }
-.link-achats:hover {
+main .link-achats:hover {
   text-decoration: underline;
-  color: #6f42c1;
+  color: #520dc2;
 }
-.link-achats::before {
+main .link-achats::before {
   content: "«";
   position: absolute;
-  left: -2px;
+  left: -12px;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-85%);
+}
+main img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+main .content {
+  min-height: calc(100vh - 90px);
+}
+main .content .btn-moins,
+main .content .btn-plus {
+  background-color: #8540f5;
+}
+main .content .btn-plus,
+main .content .btn-moins,
+main .content .btn-suppr {
+  font-size: 1.25rem;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+main .content .recap {
+  min-height: 45vh;
+}
+main .content .total-row {
+  border-color: #8540f5 !important;
 }
 
 .btn-valider-panier:hover,
 .btn-commander:hover {
   color: white;
-  background-color: #6f42c1;
+  background-color: #520dc2;
 }
 
 .btn-valider-panier {
   color: white;
-  background-color: #9059ff;
+  background-color: #8540f5;
 }
 
 .btn-commander {
-  background-color: #9059ff;
+  background-color: #8540f5;
   color: white;
 }
 
-.prix-total {
-  color: white;
-  white-space: nowrap;
-  text-transform: uppercase;
-  font-size: 1.15rem;
-  font-weight: 700;
+.btn-suppr {
+  transform: translateY(50%);
 }
-.prix-total span {
-  text-decoration: underline;
+
+.panier-vide {
+  height: calc(100vh - 120px);
+}
+@media screen and (min-width: 768px) {
+  .panier-vide {
+    height: calc(100vh - 220px);
+  }
 }
 
 #form-section {
@@ -21701,12 +21727,12 @@ main {
   box-shadow: none !important;
 }
 #form-section .form-check-input:checked {
-  background-color: #9059ff;
-  border-color: #9059ff;
+  background-color: #8540f5;
+  border-color: #8540f5;
 }
 #form-section .form-check-input:focus, #form-section .form-check-input:active {
   background-color: none;
-  border-color: #9059ff;
+  border-color: #520dc2;
 }
 
 .errorMsg {
