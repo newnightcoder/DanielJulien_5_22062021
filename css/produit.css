@@ -21625,7 +21625,7 @@ body::before {
 }
 @media screen and (min-width: 768px) {
   body::before {
-    height: 170px;
+    height: 200px;
   }
 }
 
@@ -21751,6 +21751,13 @@ main .btn-commander:hover:active {
   background-color: #520dc2;
   border-color: #520dc2;
   color: white;
+}
+
+@media screen and (min-width: 500px) {
+  .btn-terminer,
+.btn-continuer {
+    transform: translateX(0);
+  }
 }
 
 /*# sourceMappingURL=produit.css.map */

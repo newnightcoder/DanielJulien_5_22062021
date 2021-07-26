@@ -21620,7 +21620,7 @@ textarea.form-control-lg {
 }
 body::before {
   content: "";
-  height: 100px;
+  height: 70px;
   display: block;
 }
 @media screen and (min-width: 768px) {
@@ -21660,17 +21660,28 @@ main .link-achats::before {
   top: 50%;
   transform: translateY(-85%);
 }
-main img {
+main .content {
+  min-height: calc(100vh - 90px);
+}
+main .content .recap-row {
+  max-width: 800px;
+  max-height: 220px;
+}
+main .content .recap-total {
+  max-width: 800px;
+}
+main .content img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
-main .content {
-  min-height: calc(100vh - 90px);
-}
 main .content .btn-moins,
 main .content .btn-plus {
   background-color: #8540f5;
+}
+main .content .btn-moins:hover,
+main .content .btn-plus:hover {
+  background-color: #520dc2;
 }
 main .content .btn-plus,
 main .content .btn-moins,
@@ -21715,9 +21726,16 @@ main .content .total-row {
     height: calc(100vh - 220px);
   }
 }
+.panier-vide .retour {
+  color: #8540f5;
+}
+.panier-vide .retour:hover {
+  color: #520dc2;
+}
 
 #form-section {
   display: none;
+  max-width: 800px;
 }
 #form-section input,
 #form-section select {

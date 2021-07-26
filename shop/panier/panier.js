@@ -7,7 +7,7 @@ const finalPriceStorage = JSON.parse(localStorage.getItem("finalPriceStorage"));
 let storageCopy = finalCartStorage && [...finalCartStorage];
 let number = cartNumberStorage;
 const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
-const panierVide = `<div class="d-flex flex-column justify-content-center align-items-center fw-bold text-uppercase border panier-vide" >Panier vide...</div>`;
+const panierVide = `<div class="d-flex flex-column justify-content-center align-items-center fw-bold text-uppercase border panier-vide" >Panier vide...<br> <a class="retour" href="../../index.html">Retour à l'accueil</a></div>`;
 
 // REDUCE METHOD TO CALCULATE TOTAL PRICE😎✌🏾
 const totalPrice =
@@ -23,14 +23,14 @@ const displayRecapRow = () => {
     for (let i = 0; i < finalCartStorage.length; i++) {
       const recapRow =
         finalCartStorage &&
-        `<div class="container-fluid  d-flex rounded px-0 px-md-5 mb-4 pb-3 border-bottom">
-          <div class="col-6 pe-2">
+        `<div class="container-fluid d-flex align-items-md-center justify-content-md-center gap-md-5 rounded px-0 mb-4 pb-3 border-bottom mx-md-auto recap-row">
+          <div class="col-6 col-md-5 pe-2">
             <img width="250" height="180"
             src="${
               finalCartStorage[i][1].imageUrl
             }" class="rounded-start border-0 p-0"> 
           </div> 
-          <div class="col-6 d-flex flex-column justify-content-evenly align-items-center position-relative pt-2">
+          <div class="col-6 col-md-4 d-flex flex-column justify-content-evenly align-items-center position-relative pt-2">
             <div class="container d-flex flex-column align-items-start justify-content-between pe-0">
              <h3 class="fs-5 text-nowrap mb-1 item-name">${
                finalCartStorage[i][1].name
@@ -46,7 +46,7 @@ const displayRecapRow = () => {
               </div>
             </div>
             <div class="container  d-flex flex-column align-items-start px-0">
-              <span class="container-fluid text-start d-block pt-1 ">Quantité: <span class="item-quantity">${
+              <span class="container-fluid text-start d-block pt-1"><u>Quantité</u>: <span class="item-quantity">${
                 finalCartStorage[i][0]
               }</span></span>
               <div class="container-fluid d-flex align-items-center justify-content-start gap-3 mt-1 mb-2">
@@ -54,7 +54,7 @@ const displayRecapRow = () => {
                 <button class="btn btn-sm text-white btn-plus">+</button>
               </div>
             </div>
-            <div class="container d-flex justify-content-between pt-1"><span >Total:&nbsp;</span><span class="item-price">${numeral(
+            <div class="container d-flex justify-content-between pt-1"><span><u>Total</u>:&nbsp;</span><span class="item-price">${numeral(
               finalCartStorage[i][1].price * finalCartStorage[i][0]
             )
               .divide(100)
@@ -68,32 +68,32 @@ const displayRecapRow = () => {
 };
 const displayRecapTotal = () => {
   const recapTotal = `  
-<div class="px-md-5">
+<div class="recap-total mx-auto">
   <button class="btn btn-sm btn-secondary d-block ms-auto me-2 mb-3 btn-vider">vider le panier</button>   
-  <div class="container d-flex justify-content-between border-top pt-2">
+  <div class="container d-flex justify-content-between border-top pb-1 pt-2">
     <div class="col-9 ">Nombre d'articles&colon;</div>
     <div class="col-3 text-end total-quantity">${cartNumberStorage}</div>
   </div>
-  <div class="container d-flex justify-content-between pt-1">
+  <div class="container d-flex justify-content-between pb-1">
     <div class="col-9">Montant de la commande&colon;</div>
     <div class="col-3 text-end text-nowrap prix-total">${numeral(totalPrice)
       .format("0 0.00")
       .replace(priceFormatRegex, "$1 ")}€</div>
   </div>
-  <div class="container d-flex justify-content-between py-1">
+  <div class="container d-flex justify-content-between pb-2">
     <div class="col-9">Livraison&colon;</div>
     <div class="col-3 text-end">offerte</div>
   </div>
-  <div class="container d-flex justify-content-between fw-bold border-top py-1 total-row">
-    <div class="col-9">TOTAL</div>
+  <div class="container d-flex justify-content-between fw-bold border-top py-2 total-row">
+    <div class="col-9"><u>TOTAL</u></div>
     <div class="col-3 text-end text-nowrap prix-total-2">${numeral(totalPrice)
       .format("0 0.00")
       .replace(priceFormatRegex, "$1 ")}€</div>
   </div>
 </div>`;
 
-  const btnValider = ` <div class="container text-center">
-  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md mt-3 mb-4 btn-valider-panier shadow">valider mon panier
+  const btnValider = ` <div class="container text-center mt-4 mb-4 mt-lg-5">
+  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md btn-valider-panier shadow">valider mon panier
   </button>
 </div>`;
 

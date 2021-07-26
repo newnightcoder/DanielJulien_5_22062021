@@ -10871,40 +10871,45 @@ footer .ul-container ul {
   padding-left: 0 !important;
 }
 
-@media screen and (min-width: 768px) {
-  .nav-item {
-    border: none !important;
-  }
-}
-
-.cart {
-  position: relative !important;
-  left: 0 !important;
-}
-
 body::before {
   content: "";
-  height: 100px;
+  height: 70px;
   display: block;
 }
 @media screen and (min-width: 768px) {
   body::before {
-    height: 220px;
+    height: 180px;
+  }
+}
+
+.info {
+  min-height: calc(100vh - 70px);
+  margin-top: 0 !important;
+}
+.info__title {
+  max-width: 80%;
+}
+@media screen and (min-width: 768px) {
+  .info {
+    min-height: calc(100vh - 180px);
   }
 }
 
 .bi-check-circle-fill {
+  display: block;
   color: #8540f5;
   font-size: 5rem;
+  margin-top: -10px !important;
 }
 
-.user-name {
+.user-name,
+.date {
   text-transform: capitalize;
 }
 
 .order-info {
   animation: fade-in 2000ms forwards 1000ms;
-  text-align: left;
+  max-width: 500px;
 }
 .order-info:hover {
   cursor: pointer;
@@ -10919,9 +10924,6 @@ body::before {
 .order-info__text:hover {
   text-decoration: none;
   cursor: pointer;
-}
-.order-info .date-capitalize {
-  text-transform: capitalize;
 }
 @keyframes fade-in {
   to {

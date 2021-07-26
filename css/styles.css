@@ -21650,7 +21650,8 @@ body::before {
     position: relative !important;
     left: 0 !important;
   }
-
+}
+@media screen and (min-width: 992px) {
   .product:nth-child(odd) {
     margin-right: 10px;
     margin-left: -10px;

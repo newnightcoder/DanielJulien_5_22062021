@@ -2,23 +2,37 @@
 
 body::before {
   content: "";
-  height: 100px;
+  height: 70px;
   display: block;
   @media screen and (min-width: 768px) {
-    height: 220px;
+    height: 180px;
+  }
+}
+
+.info {
+  min-height: calc(100vh - 70px);
+  margin-top: 0 !important;
+  &__title {
+    max-width: 80%;
+  }
+  @media screen and (min-width: 768px) {
+    min-height: calc(100vh - 180px);
   }
 }
 
 .bi-check-circle-fill {
+  display: block;
   color: globals.$cart-number-bg;
   font-size: 5rem;
+  margin-top: -10px !important;
 }
-.user-name {
+.user-name,
+.date {
   text-transform: capitalize;
 }
 .order-info {
   animation: fade-in 2000ms forwards 1000ms;
-  text-align: left;
+  max-width: 500px;
   &:hover {
     cursor: pointer;
   }
@@ -33,9 +47,7 @@ body::before {
       cursor: pointer;
     }
   }
-  .date-capitalize {
-    text-transform: capitalize;
-  }
+
   @keyframes fade-in {
     to {
       box-shadow: 0px 2px 20px 0px rgba(155, 155, 155, 0.75);

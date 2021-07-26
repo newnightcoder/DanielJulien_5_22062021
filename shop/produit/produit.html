@@ -174,7 +174,7 @@
         style="--bs-breadcrumb-divider: '&gg;'"
         aria-label="breadcrumb"
       >
-        <ol class="container breadcrumb mb-0">
+        <ol class="container-fluid breadcrumb mb-0 ps-2 ps-md-4">
           <li class="breadcrumb-item">
             <a href="../../index.html" class="link-dark">Orinoco</a>
           </li>
@@ -186,7 +186,16 @@
       </div>
     </header>
 
-    <main class="container pt-3">
+    <main
+      class="
+        container
+        d-flex
+        flex-column
+        align-items-center
+        justify-content-center
+        pb-4
+      "
+    >
       <!-- contenu / produit -->
       <div
         class="
@@ -194,7 +203,6 @@
           container
           position-relative
           pt-4 pt-md-2
-          pb-4
           d-flex
           flex-column flex-md-row
           align-items-md-center
@@ -233,8 +241,18 @@
       </div>
     </main>
     <!-- FOOTER  -->
-    <!-- <footer class="bg-dark text-white py-3">
-      <div class="list-wrapper d-flex align-items-start justify-content-evenly">
+    <footer class="container-fluid bg-dark text-white py-3">
+      <div
+        class="
+          list-wrapper
+          d-flex
+          flex-column flex-md-row
+          align-items-start
+          justify-content-evenly
+          ps-5 ps-md-0
+          pt-2
+        "
+      >
         <div
           class="
             ul-container
@@ -244,9 +262,7 @@
             text-left
           "
         >
-          <p class="uppercase border-bottom border-1 border-light pe-5">
-            Qui sommes-nous?
-          </p>
+          <p class="uppercase pe-5">Qui sommes-nous?</p>
           <ul class="d-flex flex-column text-left">
             <li>Notre concept</li>
             <li>Blog Orinoco</li>
@@ -256,9 +272,7 @@
           </ul>
         </div>
         <div class="ul-container d-flex flex-column">
-          <p class="uppercase border-bottom border-1 border-light pe-5">
-            Les + Orinoco
-          </p>
+          <p class="uppercase pe-5">Les + Orinoco</p>
           <ul
             class="d-flex flex-column align-items-start justify-content-center"
           >
@@ -270,9 +284,7 @@
           </ul>
         </div>
         <div class="ul-container d-flex flex-column">
-          <p class="uppercase border-bottom border-1 border-light pe-5">
-            Orinoco & moi
-          </p>
+          <p class="uppercase pe-5">Orinoco & moi</p>
           <ul
             class="d-flex flex-column align-items-start justify-content-center"
           >
@@ -284,9 +296,7 @@
           </ul>
         </div>
         <div class="ul-container d-flex flex-column">
-          <p class="uppercase border-bottom border-1 border-light pe-5">
-            Besoin d’aide ?
-          </p>
+          <p class="uppercase pe-5">Besoin d’aide ?</p>
           <ul
             class="d-flex flex-column align-items-start justify-content-center"
           >
@@ -298,7 +308,7 @@
           </ul>
         </div>
       </div>
-    </footer> -->
+    </footer>
     <!-- modal panier  -->
     <div
       class="modal fade"
@@ -344,7 +354,7 @@
             </button>
             <a
               href="../panier/panier.html"
-              class="btn btn-sm btn-terminer text-white fw-bold ps-md-1 py-2"
+              class="btn btn-sm btn-terminer text-white fw-bold ps-md-2 py-2"
               >Terminer ma commande&nbsp;<i class="bi bi-chevron-right"></i
             ></a>
           </div>

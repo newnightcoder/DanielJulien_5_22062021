@@ -4,7 +4,7 @@ const priceStorage = JSON.parse(localStorage.getItem("finalPriceStorage"));
 const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
 
 // affiche le prénom de l'utilisateur
-const userName = `<span class="user-name">${storage.name}, <span/>`;
+const userName = `<span class="user-name">${storage.name}, <span/><br>`;
 const title = document
   .querySelector("h1")
   .insertAdjacentHTML("afterbegin", userName);
@@ -20,15 +20,15 @@ const dateOptions = {
   minute: "numeric",
 };
 const orderInfo = `
-<div class="container order-info text-left py-3 ps-4 d-flex flex-column align-items-start">
-   <p class="h4 text-center order-title">R&eacute;sum&eacute; de votre commande</p>
-    <div class="d-flex flex-column">
+<div class="order-info container d-flex flex-column align-items-center ps-4 py-3">
+    <p class="h4 order-title">R&eacute;sum&eacute; de votre commande</p>
+    <div><div class="d-flex flex-column">
       <span class="order-info__text text-nowrap">Identifiant de votre commande</span>
       <span class="order-id">${storage.id}</span>
     </div>
     <div class="d-flex flex-column">
       <span class="order-info__text text-nowrap">Date de votre achat</span>
-      <span class="date-capitalize">${new Date(storage.date).toLocaleDateString(
+      <span class="date">${new Date(storage.date).toLocaleDateString(
         "fr-FR",
         dateOptions
       )}</span>
@@ -39,6 +39,7 @@ const orderInfo = `
         priceFormatRegex,
         "$1 "
       )}€</span>    
+    </div>
     </div>
 
 </div>`;

@@ -6,7 +6,7 @@ body::before {
   height: 100px;
   display: block;
   @media screen and (min-width: 768px) {
-    height: 170px;
+    height: 200px;
   }
 }
 
@@ -129,5 +129,12 @@ main {
     background-color: $indigo-600;
     border-color: $indigo-600;
     color: white;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .btn-terminer,
+  .btn-continuer {
+    transform: translateX(0);
   }
 }
