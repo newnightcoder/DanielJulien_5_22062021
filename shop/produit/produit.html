@@ -19,9 +19,9 @@
   <body>
     <!-- header -->
     <header class="fixed-top shadow bg-dark py-0 my-0">
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid container-md">
-          <a href="#" class="navbar-brand text-white mt-0">ORINOCO</a>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark px-md-4">
+        <div class="container-fluid pe-md-0">
+          <a href="#" class="navbar-brand text-white mt-0 mt-md-3">ORINOCO</a>
           <!-- hamburger -->
           <button
             class="navbar-toggler"
@@ -53,7 +53,7 @@
             </div>
             <!-- liens navbar -->
             <ul class="navbar-nav gap-3 mt-3">
-              <li class="nav-item border rounded purple">
+              <li class="nav-item border rounded border-md-0 purple">
                 <a
                   class="
                     nav-link
@@ -91,38 +91,38 @@
               </li>
             </ul>
           </div>
-          <!-- icône cart -->
-          <div class="cart position-absolute top-0 start-50">
-            <a
-              class="
-                nav-link
-                cart-link
-                text-white
-                d-flex
-                justify-content-center
-                align-items-center
-              "
-              href="/shop/panier/panier.html"
-            >
-              <i
-                class="bi bi-cart3 position-relative align-middle"
-                style="font-size: 1.5rem"
-              >
-                <span
-                  class="
-                    badge
-                    rounded-pill
-                    position-absolute
-                    top-0
-                    start-50
-                    translate-middle-y
-                  "
-                  style="font-size: 0.75rem"
-                ></span
-              ></i>
-            </a>
-          </div>
         </div>
+        <!-- icône cart -->
+        <a
+          class="
+            cart
+            nav-link
+            text-white
+            d-flex
+            justify-content-center
+            align-items-center
+            pb-0
+            mt-1 mt-md-2
+            position-absolute
+            top-0
+            start-50
+          "
+          href="/shop/panier/panier.html"
+        >
+          <i class="bi bi-cart3 position-relative fs-4">
+            <span
+              class="
+                badge
+                rounded-pill
+                position-absolute
+                top-0
+                start-50
+                translate-middle-y
+              "
+              style="font-size: 0.75rem"
+            ></span
+          ></i>
+        </a>
       </nav>
       <!-- nav populaires -->
       <nav class="navbar nav-fav text-white d-none d-md-flex">
@@ -174,7 +174,7 @@
         style="--bs-breadcrumb-divider: '&gg;'"
         aria-label="breadcrumb"
       >
-        <ol class="breadcrumb mb-0">
+        <ol class="container breadcrumb mb-0">
           <li class="breadcrumb-item">
             <a href="../../index.html" class="link-dark">Orinoco</a>
           </li>
@@ -188,7 +188,18 @@
 
     <main class="container pt-3">
       <!-- contenu / produit -->
-      <div class="container py-4 content border border-2 border-warning">
+      <div
+        class="
+          content
+          container
+          position-relative
+          pt-4 pt-md-2
+          pb-4
+          d-flex
+          flex-column flex-md-row
+          align-items-md-center
+        "
+      >
         <div
           class="
             container
@@ -197,11 +208,12 @@
             align-items-end
             gap-2
             border-md-start
-            px-0
+            pe-0
+            ps-0 ps-md-3
             pt-2
           "
         >
-          <span class="dispo d-block text-nowrap"
+          <span class="dispo d-block text-nowrap me-2 mt-md-4"
             ><i class="bi bi-check2"></i>&nbsp;En stock</span
           >
           <select name="options" class="form-select" id="select-options">

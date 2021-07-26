@@ -23,7 +23,7 @@ const displayRecapRow = () => {
     for (let i = 0; i < finalCartStorage.length; i++) {
       const recapRow =
         finalCartStorage &&
-        `<div class="container-fluid d-flex rounded px-0 mb-4 pb-3 border-bottom">
+        `<div class="container-fluid  d-flex rounded px-0 px-md-5 mb-4 pb-3 border-bottom">
           <div class="col-6 pe-2">
             <img width="250" height="180"
             src="${
@@ -68,7 +68,7 @@ const displayRecapRow = () => {
 };
 const displayRecapTotal = () => {
   const recapTotal = `  
-<div>
+<div class="px-md-5">
   <button class="btn btn-sm btn-secondary d-block ms-auto me-2 mb-3 btn-vider">vider le panier</button>   
   <div class="container d-flex justify-content-between border-top pt-2">
     <div class="col-9 ">Nombre d'articles&colon;</div>

@@ -40,7 +40,7 @@ const displayProduct = async () => {
   const produit = `
   <div class="container px-0">
   <div
-    class="d-flex align-items-start justify-content-between pt-2 pb-3"
+    class="d-flex align-items-start justify-content-between flex-md-colum pt-2 pb-3 titre"
   >
     <span class="h4 d-block text-nowrap my-0">${product.name}</span>
     <span class="prix d-block text-nowrap fw-bold">${numeral(product.price)
@@ -48,26 +48,15 @@ const displayProduct = async () => {
       .format("0 0.00")
       .replace(priceFormatRegex, "$1 ")}€</span>
   </div>
-  <div class="container px-0">
+  <div class="container px-0 colonne-gauche">
     <img class="img-fluid border" height="350" width="500" src="${
       product.imageUrl
     }" alt="${product.name}">
-  </div>
-  <div class="">
+  
     <p class="description pt-3 ps-1">
       ${product.description}
     </p>
   </div>
-</div>`;
-
-  const prix = `<div class="row align-items-center justify-content-between">
-<span class="price col-4" style="color:red;font-size:1.75rem; white-space:nowrap">
-${numeral(product.price)
-  .divide(100)
-  .format("0 0.00")
-  .replace(priceFormatRegex, "$1 ")}€
-</span>
-<span class="dispo col-4" style="white-space:nowrap"> <i class="bi bi-check2"></i>disponible</span>
 </div>`;
 
   const selectOptions = product.lenses.map(

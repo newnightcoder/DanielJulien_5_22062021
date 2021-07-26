@@ -25,10 +25,22 @@ body::before {
   letter-spacing: 0.5ch;
 }
 
-// contenu
-.content {
-  max-width: 900px;
+@media screen and (min-width: 768px) {
+  .nav-item {
+    border: none !important;
+  }
+  .cart {
+    position: relative !important;
+    left: 0 !important;
+  }
+  .product:nth-child(odd) {
+    margin-right: 10px;
+    margin-left: -10px;
+  }
 }
+
+// contenu
+
 .product {
   transition: transform 500ms;
   & > .container {
@@ -45,9 +57,7 @@ body::before {
     object-fit: cover;
   }
 }
-// .link-product {
-//   text-decoration: none;
-// }
+
 .btn-voir {
   background-color: $indigo-400;
   border-color: $indigo-400;

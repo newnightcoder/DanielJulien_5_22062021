@@ -20,9 +20,9 @@
   <body>
     <!-- NAVBARS/HEADER -->
     <header class="fixed-top shadow bg-dark py-0 my-0">
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <div class="container-fluid container-md">
-          <a href="#" class="navbar-brand text-white mt-0">ORINOCO</a>
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark px-md-4">
+        <div class="container-fluid pe-md-0">
+          <a href="#" class="navbar-brand text-white mt-0 mt-md-3">ORINOCO</a>
           <!-- hamburger -->
           <button
             class="navbar-toggler"
@@ -54,7 +54,7 @@
             </div>
             <!-- liens navbar -->
             <ul class="navbar-nav gap-3 mt-3">
-              <li class="nav-item border rounded purple">
+              <li class="nav-item border rounded border-md-0 purple">
                 <a
                   class="
                     nav-link
@@ -92,38 +92,38 @@
               </li>
             </ul>
           </div>
-          <!-- icône cart -->
-          <div class="cart position-absolute top-0 start-50">
-            <a
-              class="
-                nav-link
-                cart-link
-                text-white
-                d-flex
-                justify-content-center
-                align-items-center
-              "
-              href="/shop/panier/panier.html"
-            >
-              <i
-                class="bi bi-cart3 position-relative align-middle"
-                style="font-size: 1.5rem"
-              >
-                <span
-                  class="
-                    badge
-                    rounded-pill
-                    position-absolute
-                    top-0
-                    start-50
-                    translate-middle-y
-                  "
-                  style="font-size: 0.75rem"
-                ></span
-              ></i>
-            </a>
-          </div>
         </div>
+        <!-- icône cart -->
+        <a
+          class="
+            cart
+            nav-link
+            text-white
+            d-flex
+            justify-content-center
+            align-items-center
+            pb-0
+            mt-1 mt-md-2
+            position-absolute
+            top-0
+            start-50
+          "
+          href="/shop/panier/panier.html"
+        >
+          <i class="bi bi-cart3 position-relative fs-4">
+            <span
+              class="
+                badge
+                rounded-pill
+                position-absolute
+                top-0
+                start-50
+                translate-middle-y
+              "
+              style="font-size: 0.75rem"
+            ></span
+          ></i>
+        </a>
       </nav>
       <!-- nav populaires -->
       <nav class="navbar nav-fav text-white d-none d-md-flex">
@@ -175,8 +175,10 @@
       </div>
     </header>
     <!-- contenu  -->
-    <main class="container pb-4">
-      <section class="content container pt-4 pb-3"></section>
+    <main class="container pb-4 pb-md-5 pe-md-0">
+      <section class="container pt-4 pb-3">
+        <div class="content row gy-3"></div>
+      </section>
       <!-- pagination  -->
       <nav class="" aria-label="Page navigation">
         <ul class="pagination justify-content-center">
