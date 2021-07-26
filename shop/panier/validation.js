@@ -5,7 +5,7 @@ const validateCartBtn = document.querySelector(".btn-valider-panier");
 const openFormBtn = document.querySelector(".open-form-btn");
 // LOCALSTORAGE
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
-let orderStorage = JSON.parse(localStorage.getItem("orderStorage"));
+// let orderStorage = JSON.parse(localStorage.getItem("orderStorage"));
 
 // modal
 const toInfoForm = () => {
@@ -194,7 +194,8 @@ const sendOrder = async (e) => {
 
 // FONCTION GLOBALE - IIFE
 const validationInit = (() => {
-  validateCartBtn.addEventListener("click", saveProductsObject);
+  validateCartBtn &&
+    validateCartBtn.addEventListener("click", saveProductsObject);
   openFormBtn.addEventListener("click", toInfoForm);
   form.addEventListener("submit", (e) => {
     validateForm();

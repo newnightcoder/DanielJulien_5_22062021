@@ -32,7 +32,7 @@ body::before {
 }
 .order-info {
   animation: fade-in 2000ms forwards 1000ms;
-  max-width: 500px;
+  max-width: 700px;
   &:hover {
     cursor: pointer;
   }
@@ -40,7 +40,6 @@ body::before {
     border-bottom: 1px solid globals.$cart-number-bg;
   }
   &__text {
-    text-decoration: underline;
     color: globals.$cart-number-bg;
     &:hover {
       text-decoration: none;

@@ -53,7 +53,7 @@ const displayProduct = async () => {
       product.imageUrl
     }" alt="${product.name}">
   
-    <p class="description pt-3 ps-1">
+    <p class="description pt-3 ps-1 mb-1">
       ${product.description}
     </p>
   </div>
@@ -95,7 +95,7 @@ const saveToStorage = async () => {
   let selectedProduct = [];
   selectedProduct.push(1, product);
   console.log(selectedProduct);
-  // create CartStorage s'il n'existe pas
+  // create cartStorage s'il n'existe pas
   !finalCartStorage &&
     localStorage.setItem("finalCartStorage", JSON.stringify(finalCartStorage));
 

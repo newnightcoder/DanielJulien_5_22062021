@@ -18,6 +18,59 @@
   </head>
 
   <body>
+    <!-- loader  -->
+    <div
+      class="
+        loader
+        container-fluid
+        position-fixed
+        d-flex
+        flex-column
+        align-items-center
+        justify-content-evenly
+        py-5
+      "
+    >
+      <h1 class="text-dark display-2 text-center">ORINOCO</h1>
+      <p class="py-0 my-0">Découvrez nos toutes nouvelles catégories</p>
+      <div class="container d-flex text-white rounded shadow my-3 ps-0">
+        <div class="col-4">
+          <img
+            class="rounded-start"
+            src="./backend/images/teddy_2.jpg"
+            alt="Teddybears"
+          />
+        </div>
+        <div class="col-8 text-center py-4 ps-3">
+          <h2>OriTeddy</h2>
+          <p>Notre sélection des teddybears les plus mignons</p>
+        </div>
+      </div>
+      <div class="container d-flex text-white rounded shadow my-3 ps-0">
+        <div class="col-4">
+          <img
+            class="rounded-start"
+            src="./backend/images/oak_1.jpg"
+            alt="Mobilier en bois"
+          />
+        </div>
+        <div class="col-8 py-4 ps-3 text-center">
+          <h2>OriBois</h2>
+          Sélection de mobilier en bois brut. Rustique!
+        </div>
+      </div>
+      <div
+        class="container d-flex text-white rounded shadow my-3 ps-0 loader-link"
+      >
+        <div class="col-4">
+          <img class="rounded-start" src="./backend/images/vcam_3.jpg" alt="" />
+        </div>
+        <div class="col-8 text-center py-4 ps-3">
+          <h2>OriPhoto</h2>
+          Nos appareils photo vintage d'exception...
+        </div>
+      </div>
+    </div>
     <!-- NAVBARS/HEADER -->
     <header class="fixed-top shadow bg-dark py-0 my-0">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark px-md-4">
@@ -36,7 +89,7 @@
           <!-- menu/navbar  -->
           <div id="menu" class="collapse navbar-collapse">
             <!-- barre de recherche  -->
-            <div class="input-group mt-3">
+            <div class="input-group mt-3 me-md-3">
               <input
                 type="text"
                 class="form-control"

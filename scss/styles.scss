@@ -10,6 +10,31 @@ body::before {
   }
 }
 
+.loader {
+  height: 100vh;
+  width: 100vw;
+  background-color: $gray-200;
+  z-index: 1050; // bootstrap fixed-top navbar has a z-index of 1030😉
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: $dark;
+  .container {
+    height: 150px !important;
+    .col-8 {
+      background-color: $indigo-400;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 // hamburger
 .navbar-toggler {
   border: none;
@@ -23,6 +48,9 @@ body::before {
 .navbar-brand,
 .h5 {
   letter-spacing: 0.5ch;
+}
+.nav-item {
+  border-color: $white !important;
 }
 
 @media screen and (min-width: 768px) {

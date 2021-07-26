@@ -21629,6 +21629,31 @@ body::before {
   }
 }
 
+.loader {
+  height: 100vh;
+  width: 100vw;
+  background-color: #e9ecef;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #212529;
+}
+.loader .container {
+  height: 150px !important;
+}
+.loader .container .col-8 {
+  background-color: #8540f5;
+}
+.loader .container img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.loader .container:hover {
+  cursor: pointer;
+}
+
 .navbar-toggler {
   border: none;
 }
@@ -21639,6 +21664,10 @@ body::before {
 .navbar-brand,
 .h5 {
   letter-spacing: 0.5ch;
+}
+
+.nav-item {
+  border-color: #fff !important;
 }
 
 @media screen and (min-width: 768px) {

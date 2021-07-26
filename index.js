@@ -1,6 +1,9 @@
 // DOM ELEMENTS
 const content = document.querySelector(".content");
 const cart = document.querySelector(".badge");
+const loader = document.querySelector(".loader");
+const link = document.querySelector(".loader-link");
+
 // GLOBAL VARIABLES
 let cameras = [];
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
@@ -62,6 +65,10 @@ const displayCartNumberStorage = () => {
 
 // FONCTION GLOBALE - IIFE
 const initPage = (async () => {
+  link.addEventListener("click", () => {
+    loader.style.visibility = "hidden";
+    console.log(loader);
+  });
   cameras = await getCameras();
   displayProducts();
   displayCartNumberStorage();

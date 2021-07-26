@@ -22,19 +22,19 @@ const dateOptions = {
 const orderInfo = `
 <div class="order-info container d-flex flex-column align-items-center ps-4 py-3">
     <p class="h4 order-title">R&eacute;sum&eacute; de votre commande</p>
-    <div><div class="d-flex flex-column">
-      <span class="order-info__text text-nowrap">Identifiant de votre commande</span>
+    <div><div class="d-flex flex-column flex-md-row">
+      <span class="order-info__text text-nowrap"><u>Identifiant de votre commande</u>&colon;&nbsp;</span>
       <span class="order-id">${storage.id}</span>
     </div>
-    <div class="d-flex flex-column">
-      <span class="order-info__text text-nowrap">Date de votre achat</span>
+    <div class="d-flex flex-column flex-md-row">
+      <span class="order-info__text text-nowrap"><u>Date de votre achat</u>&colon;&nbsp;</span>
       <span class="date">${new Date(storage.date).toLocaleDateString(
         "fr-FR",
         dateOptions
       )}</span>
     </div>
-    <div class="d-flex flex-column">
-      <span class="order-info__text text-nowrap">Montant de votre achat</span>
+    <div class="d-flex flex-column flex-md-row">
+      <span class="order-info__text text-nowrap"><u>Montant de votre achat</u>&colon;&nbsp;</span>
       <span>${JSON.stringify(priceStorage).replace(
         priceFormatRegex,
         "$1 "
@@ -46,3 +46,6 @@ const orderInfo = `
 const confirmationMsg = document
   .querySelector(".info")
   .insertAdjacentHTML("beforeend", orderInfo);
+
+localStorage.removeItem("finalCartStorage");
+localStorage.removeItem("cartNumberStorage");

@@ -15,6 +15,8 @@ const totalPrice =
   storageCopy.reduce((acc, current) => {
     return acc + (current[1].price / 100) * current[0];
   }, 0);
+// save total ptice in localStorage
+localStorage.setItem("finalPriceStorage", JSON.stringify(totalPrice));
 
 // AFFICHE TABLEAU RECAP
 const displayRecapRow = () => {
@@ -69,7 +71,7 @@ const displayRecapRow = () => {
 const displayRecapTotal = () => {
   const recapTotal = `  
 <div class="recap-total mx-auto">
-  <button class="btn btn-sm btn-secondary d-block ms-auto me-2 mb-3 btn-vider">vider le panier</button>   
+  <button id="vider" class="btn btn-sm btn-secondary d-block ms-auto me-2 mb-3 btn-vider">vider le panier</button>   
   <div class="container d-flex justify-content-between border-top pb-1 pt-2">
     <div class="col-9 ">Nombre d'articles&colon;</div>
     <div class="col-3 text-end total-quantity">${cartNumberStorage}</div>
@@ -93,7 +95,7 @@ const displayRecapTotal = () => {
 </div>`;
 
   const btnValider = ` <div class="container text-center mt-4 mb-4 mt-lg-5">
-  <button data-bs-toggle="modal" data-bs-target="#modal" class="btn btn-md btn-valider-panier shadow">valider mon panier
+  <button data-bs-toggle="modal" data-bs-target="#modal" id="valider" class="btn btn-md btn-valider-panier shadow">valider mon panier
   </button>
 </div>`;
 
@@ -199,6 +201,9 @@ const moins = () => {
   });
 };
 const suppr = () => {
+  const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
+  let storageCopy = finalCartStorage && [...finalCartStorage];
+
   document.querySelectorAll(".btn-suppr").forEach((btn) => {
     let item = btn.parentNode.parentNode.parentNode.parentNode;
     let itemName = item.querySelector(".item-name").innerHTML;
@@ -209,17 +214,15 @@ const suppr = () => {
           // supprime l'élément du DOM
           item.innerHTML = "";
           // supprime l'élément du storage
-          storageCopy.splice(i, 1);
-          if (storageCopy[i] == null && storageCopy.length < 1) {
-            console.log("yay nullll!!");
+          if (storageCopy.length === 1) {
+            localStorage.clear();
             recapContainer.innerHTML = panierVide;
-            document.querySelector(".btn-valider-panier").style.display =
-              "none";
+            return;
           }
+          storageCopy.splice(i, 1);
           //retrancher du cartNumberStorage
           number = number - finalCartStorage[i][0];
           localStorage.setItem("cartNumberStorage", JSON.stringify(number));
-
           //supprimer l'élément du finalCartStorage
           localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
         }
@@ -228,13 +231,13 @@ const suppr = () => {
   });
 };
 const vider = () => {
-  cartNumberStorage !== null &&
-    document.querySelector(".btn-vider").addEventListener("click", () => {
+  cartNumberStorage !== null;
+  document.addEventListener("click", (e) => {
+    if (e.target && e.target.id === "vider") {
       localStorage.clear();
       recapContainer.innerHTML = panierVide;
-      // recapHeader.style.display = "none";
-      // document.querySelector(".btn-valider-panier").style.display = "none";
-    });
+    }
+  });
 };
 
 // FONCTION GLOBALE - IIFE
