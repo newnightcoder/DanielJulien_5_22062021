@@ -16,6 +16,12 @@ $footer-height: 100%;
 body {
   height: 100%;
   overflow-x: hidden;
+  font-family: "Cairo", sans-serif !important;
+}
+
+.navbar-brand {
+  font-family: "Bad Script", cursive;
+  letter-spacing: 0.75ch !important;
 }
 
 .bi-cart3 {
@@ -54,24 +60,7 @@ ul {
   white-space: nowrap;
   background-color: $cart-number-bg;
   letter-spacing: 0.15ch;
-  // &__container {
-  //   width: 80%;
-  //   max-width: 1000px;
-  //   // border: 1px solid yellow;
-  //   p {
-  //     margin: 0 0 0 30px;
-  //     // border: 1px solid red;
-  //   }
-  //   ul {
-  //     // border: 1px solid red;
-  //     width: 90%;
-  //   }
-  // }
 }
-
-// main {
-//   // min-height: calc(100vh - 150px);
-// }
 
 .progres {
   width: 100%;

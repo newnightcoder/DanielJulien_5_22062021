@@ -18,9 +18,16 @@ body::before {
   top: 0;
   left: 0;
   overflow: hidden;
+  font-family: "Cairo", sans-serif !important;
   color: $dark;
-  .container {
+  h1 {
+    font-family: "Bad Script", cursive;
+    letter-spacing: 0.75ch;
+  }
+  .rubriques {
     height: 150px !important;
+    transition: transform 500ms !important;
+
     .col-8 {
       background-color: $indigo-400;
     }
@@ -30,8 +37,15 @@ body::before {
       object-fit: cover;
     }
     &:hover {
-      cursor: pointer;
+      cursor: pointer !important;
+      transform: translateX(2.5%);
     }
+  }
+}
+@keyframes fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -45,9 +59,11 @@ body::before {
   }
 }
 // titres
-.navbar-brand,
-.h5 {
+.navbar-brand {
   letter-spacing: 0.5ch;
+}
+.categorie-title {
+  letter-spacing: 0.15ch;
 }
 .nav-item {
   border-color: $white !important;

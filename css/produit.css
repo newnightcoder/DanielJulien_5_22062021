@@ -10750,6 +10750,12 @@ textarea.form-control-lg {
 body {
   height: 100%;
   overflow-x: hidden;
+  font-family: "Cairo", sans-serif !important;
+}
+
+.navbar-brand {
+  font-family: "Bad Script", cursive;
+  letter-spacing: 0.75ch !important;
 }
 
 .bi-cart3 {

@@ -66,8 +66,7 @@ const displayCartNumberStorage = () => {
 // FONCTION GLOBALE - IIFE
 const initPage = (async () => {
   link.addEventListener("click", () => {
-    loader.style.visibility = "hidden";
-    console.log(loader);
+    loader.style.animation = "fade 200ms forwards";
   });
   cameras = await getCameras();
   displayProducts();

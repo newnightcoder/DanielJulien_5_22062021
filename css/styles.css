@@ -10750,6 +10750,12 @@ textarea.form-control-lg {
 body {
   height: 100%;
   overflow-x: hidden;
+  font-family: "Cairo", sans-serif !important;
+}
+
+.navbar-brand {
+  font-family: "Bad Script", cursive;
+  letter-spacing: 0.75ch !important;
 }
 
 .bi-cart3 {
@@ -21637,23 +21643,36 @@ body::before {
   top: 0;
   left: 0;
   overflow: hidden;
+  font-family: "Cairo", sans-serif !important;
   color: #212529;
 }
-.loader .container {
-  height: 150px !important;
+.loader h1, .loader .h1 {
+  font-family: "Bad Script", cursive;
+  letter-spacing: 0.75ch;
 }
-.loader .container .col-8 {
+.loader .rubriques {
+  height: 150px !important;
+  transition: transform 500ms !important;
+}
+.loader .rubriques .col-8 {
   background-color: #8540f5;
 }
-.loader .container img {
+.loader .rubriques img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
-.loader .container:hover {
-  cursor: pointer;
+.loader .rubriques:hover {
+  cursor: pointer !important;
+  transform: translateX(2.5%);
 }
 
+@keyframes fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 .navbar-toggler {
   border: none;
 }
@@ -21661,9 +21680,12 @@ body::before {
   box-shadow: none;
 }
 
-.navbar-brand,
-.h5 {
+.navbar-brand {
   letter-spacing: 0.5ch;
+}
+
+.categorie-title {
+  letter-spacing: 0.15ch;
 }
 
 .nav-item {

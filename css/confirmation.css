@@ -10750,6 +10750,12 @@ textarea.form-control-lg {
 body {
   height: 100%;
   overflow-x: hidden;
+  font-family: "Cairo", sans-serif !important;
+}
+
+.navbar-brand {
+  font-family: "Bad Script", cursive;
+  letter-spacing: 0.75ch !important;
 }
 
 .bi-cart3 {
@@ -10893,6 +10899,13 @@ body::before {
   .info {
     min-height: calc(100vh - 180px);
   }
+}
+.info .font-logo {
+  font-family: "Bad Script", cursive;
+  letter-spacing: 0.25ch;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.25rem;
 }
 
 .bi-check-circle-fill {

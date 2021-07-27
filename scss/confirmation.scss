@@ -18,6 +18,13 @@ body::before {
   @media screen and (min-width: 768px) {
     min-height: calc(100vh - 180px);
   }
+  .font-logo {
+    font-family: "Bad Script", cursive;
+    letter-spacing: 0.25ch;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+  }
 }
 
 .bi-check-circle-fill {

@@ -13,6 +13,12 @@
       src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
     ></script>
     <script defer src="/index.js" type="module"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cairo:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/styles.css" />
     <title>Orinoco | Accueil</title>
   </head>
@@ -31,9 +37,22 @@
         py-5
       "
     >
-      <h1 class="text-dark display-2 text-center">ORINOCO</h1>
-      <p class="py-0 my-0">Découvrez nos toutes nouvelles catégories</p>
-      <div class="container d-flex text-white rounded shadow my-3 ps-0">
+      <h1 class="text-dark display-4 text-center pt-3">ORINOCO</h1>
+      <p class="h4 py-0 mt-0 mb-3 mb-xxl-0">
+        Découvrez nos toutes nouvelles catégories:
+      </p>
+      <div
+        class="
+          rubriques
+          container
+          d-flex
+          text-white
+          rounded
+          shadow
+          my-2 my-xxl-0
+          px-0
+        "
+      >
         <div class="col-4">
           <img
             class="rounded-start"
@@ -41,12 +60,23 @@
             alt="Teddybears"
           />
         </div>
-        <div class="col-8 text-center py-4 ps-3">
+        <div class="col-8 text-center rounded-end py-4 ps-3">
           <h2>OriTeddy</h2>
-          <p>Notre sélection des teddybears les plus mignons</p>
+          <p class="h5">Notre sélection des teddybears les plus mignons</p>
         </div>
       </div>
-      <div class="container d-flex text-white rounded shadow my-3 ps-0">
+      <div
+        class="
+          rubriques
+          container
+          d-flex
+          text-white
+          rounded
+          shadow
+          my-2 my-xxl-0
+          px-0
+        "
+      >
         <div class="col-4">
           <img
             class="rounded-start"
@@ -54,20 +84,30 @@
             alt="Mobilier en bois"
           />
         </div>
-        <div class="col-8 py-4 ps-3 text-center">
+        <div class="col-8 text-center rounded-end py-4 ps-3">
           <h2>OriBois</h2>
-          Sélection de mobilier en bois brut. Rustique!
+          <p class="h5">Sélection de mobilier en bois brut. Rustique!</p>
         </div>
       </div>
       <div
-        class="container d-flex text-white rounded shadow my-3 ps-0 loader-link"
+        class="
+          rubriques
+          container
+          d-flex
+          text-white
+          rounded
+          shadow
+          my-2 my-xxl-0
+          px-0
+          loader-link
+        "
       >
         <div class="col-4">
           <img class="rounded-start" src="./backend/images/vcam_3.jpg" alt="" />
         </div>
-        <div class="col-8 text-center py-4 ps-3">
-          <h2>OriPhoto</h2>
-          Nos appareils photo vintage d'exception...
+        <div class="col-8 text-center rounded-end py-4 ps-3">
+          <h3>OriPhoto</h3>
+          <p class="h5">Nos appareils photo vintage d'exception...</p>
         </div>
       </div>
     </div>
@@ -182,7 +222,7 @@
       <nav class="navbar nav-fav text-white d-none d-md-flex">
         <div class="container justify-content-center">
           <span class="text-dark fw-bold text-uppercase"
-            >ORI les plus populaires:&nbsp;&nbsp;</span
+            >Catégories les plus populaires:&nbsp;&nbsp;</span
           >
           <ul
             class="
@@ -224,12 +264,13 @@
       </nav>
       <!-- titre catégorie -->
       <div class="container-fluid bg-white text-center m-0 py-3">
-        <span class="h5">ORIPHOTO</span>
+        <span class="h3 categorie-title">ORIPHOTO</span>
       </div>
     </header>
     <!-- contenu  -->
     <main class="container pb-4 pb-md-5 pe-md-0">
-      <section class="container pt-4 pb-3">
+      <section class="container pt-0 pb-3">
+        <h2 class="pb-2">Nos produits</h2>
         <div class="content row gy-3"></div>
       </section>
       <!-- pagination  -->
