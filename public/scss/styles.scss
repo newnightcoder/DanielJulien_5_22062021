@@ -33,8 +33,11 @@ body::before {
   }
   .rubriques {
     max-height: 150px !important;
+    max-width: 900px;
     transition: transform 500ms !important;
-
+    .h5 {
+      margin-bottom: 0 !important;
+    }
     .col-8 {
       background-color: $indigo-400;
     }

@@ -21659,7 +21659,11 @@ body::before {
 }
 .loader .rubriques {
   max-height: 150px !important;
+  max-width: 900px;
   transition: transform 500ms !important;
+}
+.loader .rubriques .h5 {
+  margin-bottom: 0 !important;
 }
 .loader .rubriques .col-8 {
   background-color: #8540f5;
