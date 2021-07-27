@@ -19,6 +19,9 @@ app.use((req, res, next) => {
   );
   next();
 });
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 
 app.use("/images", express.static(path.join(__dirname, "images")));
 app.use(express.static("images"));
