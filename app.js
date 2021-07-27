@@ -30,4 +30,11 @@ app.use("/api/cameras", cameraRoutes);
 app.use("/api/teddies", teddyRoutes);
 app.use("/api/furniture", furnitureRoutes);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "build", "index.html"));
+  });
+}
+
 module.exports = app;
