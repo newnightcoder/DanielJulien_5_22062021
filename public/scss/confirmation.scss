@@ -1,0 +1,70 @@
+@use "globals";
+
+body::before {
+  content: "";
+  height: 70px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    height: 180px;
+  }
+}
+
+.info {
+  min-height: calc(100vh - 70px);
+  margin-top: 0 !important;
+  &__title {
+    max-width: 80%;
+  }
+  @media screen and (min-width: 768px) {
+    min-height: calc(100vh - 180px);
+  }
+  .font-logo {
+    font-family: "Bad Script", cursive;
+    letter-spacing: 0.25ch;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.25rem;
+  }
+}
+
+.bi-check-circle-fill {
+  display: block;
+  color: globals.$cart-number-bg;
+  font-size: 5rem;
+  margin-top: -10px !important;
+}
+.user-name,
+.date {
+  text-transform: capitalize;
+}
+.order-info {
+  animation: fade-in 2000ms forwards 1000ms;
+  max-width: 700px;
+  &:hover {
+    cursor: pointer;
+  }
+  h4 {
+    border-bottom: 1px solid globals.$cart-number-bg;
+  }
+  &__text {
+    color: globals.$cart-number-bg;
+    &:hover {
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  @keyframes fade-in {
+    to {
+      box-shadow: 0px 2px 20px 0px rgba(155, 155, 155, 0.75);
+      -webkit-box-shadow: 0px 2px 20px 0px rgba(155, 155, 155, 0.75);
+      -moz-box-shadow: 0px 2px 20px 0px rgba(155, 155, 155, 0.75);
+    }
+  }
+}
+.order-id {
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

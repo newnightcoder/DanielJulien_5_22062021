@@ -1,0 +1,155 @@
+@use "globals.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body::before {
+  content: "";
+  height: 70px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    height: 180px;
+  }
+}
+
+.bi-cart-check {
+  color: $teal-600;
+  font-size: 2rem;
+  border: 2px solid $teal-600;
+  border-radius: 50%;
+  padding: 10px 16px;
+}
+.bi-house-door-fill {
+  color: white;
+  font-size: 1rem;
+}
+
+main {
+  min-height: calc(100vh - 200px);
+  .link-achats {
+    color: $indigo-400;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      color: $indigo-600;
+    }
+    &::before {
+      content: "\00ab";
+      position: absolute;
+      left: -12px;
+      top: 50%;
+      transform: translateY(-85%);
+    }
+  }
+
+  .content {
+    min-height: calc(100vh - 90px);
+    .recap-row {
+      max-width: 800px;
+      max-height: 220px;
+    }
+    .recap-total {
+      max-width: 800px;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    .btn-moins,
+    .btn-plus {
+      background-color: $indigo-400;
+      &:hover {
+        background-color: $indigo-600;
+      }
+    }
+    .btn-plus,
+    .btn-moins,
+    .btn-suppr {
+      font-size: 1.25rem;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+    }
+    .recap {
+      min-height: 45vh;
+    }
+    .total-row {
+      border-color: $indigo-400 !important;
+    }
+  }
+}
+
+.btn-valider-panier,
+.btn-commander {
+  &:hover {
+    color: white;
+    background-color: $indigo-600;
+  }
+}
+.btn-valider-panier {
+  color: white;
+  background-color: $indigo-400;
+}
+
+.btn-commander {
+  background-color: $indigo-400;
+  color: white;
+}
+
+.btn-suppr {
+  transform: translateY(50%);
+}
+
+.panier-vide {
+  height: calc(100vh - 120px);
+  @media screen and (min-width: 768px) {
+    height: calc(100vh - 220px);
+  }
+  .retour {
+    color: $indigo-400;
+    &:hover {
+      color: $indigo-600;
+    }
+  }
+}
+
+#form-section {
+  display: none;
+  max-width: 800px;
+  input,
+  select {
+    border: 1px solid dimgray;
+  }
+  .form-check-input {
+    box-shadow: none !important;
+    &:checked {
+      background-color: $indigo-400;
+      border-color: $indigo-400;
+    }
+    &:focus,
+    &:active {
+      background-color: none;
+      border-color: $indigo-600;
+    }
+  }
+}
+
+.errorMsg {
+  display: none;
+  width: min-content;
+  white-space: nowrap;
+}
+
+.success {
+  .form-control {
+    border: 1px solid grey;
+  }
+}
+.fail {
+  .form-control {
+    border: 1px solid red;
+  }
+  .errorMsg {
+    display: block;
+    color: red;
+  }
+}

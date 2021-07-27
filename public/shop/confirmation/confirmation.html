@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
+    ></script>
+    <script
+      defer
+      src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
+    <script src="confirmation.js" type="module" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cairo:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/confirmation.css" />
+    <title>Confirmation | Orinoco</title>
+  </head>
+  <body>
+    <header class="fixed-top shadow">
+      <nav class="navbar navbar-expand bg-dark navbar-dark text-light">
+        <div class="container">
+          <a href="../../index.html" class="navbar-brand h1 mb-0"
+            >ORINOCO <br
+          /></a>
+          <div class="container d-flex justify-content-evenly">
+            <i class="i-nav bi bi-credit-card"></i>
+            <i class="i-nav bi bi-box-seam"></i>
+            <i class="i-nav bi bi-truck"></i>
+          </div>
+        </div>
+      </nav>
+      <ul
+        class="
+          progres
+          bg-white
+          shadow
+          d-none d-md-flex
+          align-items-md-center
+          mb-0
+        "
+      >
+        <li class="progres-done">Mon panier</li>
+        <li class="progres-done">Mes infos</li>
+        <li class="progres-done">Paiement</li>
+        <li class="progres-active confirmation">Confirmation</li>
+      </ul>
+    </header>
+    <main class="pb-4 pb-lg-5">
+      <section
+        class="
+          info
+          container
+          d-flex
+          flex-column
+          justify-content-evenly justify-content-md-center
+          align-items-center
+          py-3
+        "
+      >
+        <div class="container info__title text-center">
+          <h1 class="fs-3">Votre commande est validée&excl;</h1>
+          <i class="bi bi-check-circle-fill"></i>
+          <h2 class="fs-4">
+            Merci d'avoir fait confiance à&nbsp;
+            <span class="font-logo">Orinoco</span>
+          </h2>
+          <p class="fs-5 text-center">
+            Vous allez recevoir un e-mail de confirmation très prochainement<br />
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="container-fluid bg-dark text-white py-3">
+      <div
+        class="
+          list-wrapper
+          d-flex
+          flex-column flex-md-row
+          align-items-start
+          justify-content-evenly
+          ps-5 ps-md-0
+          pt-2
+        "
+      >
+        <div
+          class="
+            ul-container
+            d-flex
+            flex-column
+            justify-content-start
+            text-left
+          "
+        >
+          <p class="uppercase pe-5">Qui sommes-nous?</p>
+          <ul class="d-flex flex-column text-left">
+            <li>Notre concept</li>
+            <li>Blog Orinoco</li>
+            <li>Les rendez-vous Orinoco</li>
+            <li>Rejoingez-nous</li>
+            <li>Mentions Légales</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Les + Orinoco</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Livraison gratuite</li>
+            <li>Garanties SAV</li>
+            <li>Bons plans Orinoco</li>
+            <li>Programme de fidélité</li>
+            <li>Cartes cadeaux</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Orinoco & moi</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Mes favoris</li>
+            <li>Mes commandes</li>
+            <li>Mes infos perso</li>
+            <li>Mes paiements</li>
+            <li>Retours & Remboursements</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Besoin d’aide ?</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Aide & Contact</li>
+            <li>Accessibilité</li>
+            <li>Gérer mes cookies</li>
+            <li>Prestataire de paiement</li>
+            <li>CGV Internet</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

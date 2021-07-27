@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
+    ></script>
+    <script
+      defer
+      src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
+    <script src="panier.js" type="module" defer></script>
+    <script src="validation.js" type="module" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cairo:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/panier.css" />
+    <title>Mon panier | Orinoco</title>
+  </head>
+  <body>
+    <header class="fixed-top shadow">
+      <nav class="navbar navbar-expand bg-dark navbar-dark text-light">
+        <div class="container-fluid">
+          <a href="../../index.html" class="navbar-brand h1 mb-0 pb-0 ps-4"
+            >ORINOCO <br
+          /></a>
+          <div class="container d-flex justify-content-evenly">
+            <i class="i-nav bi bi-credit-card"></i>
+            <i class="i-nav bi bi-box-seam"></i>
+            <i class="i-nav bi bi-truck"></i>
+          </div>
+        </div>
+      </nav>
+      <ul
+        class="
+          progres
+          bg-white
+          shadow
+          d-none d-md-flex
+          align-items-md-center
+          mb-0
+        "
+      >
+        <li class="progres-active">Mon panier</li>
+        <li>Mes infos</li>
+        <li>Paiement</li>
+        <li>Confirmation</li>
+      </ul>
+    </header>
+
+    <main class="pb-3 pb-md-5">
+      <section class="container content pt-3 pt-md-4">
+        <div class="container">
+          <h2 class="mb-1">Mon panier</h2>
+          <a
+            href="../../index.html"
+            class="d-block position-relative link-achats pb-3"
+            >Continuer mes achats</a
+          >
+          <div class="container px-0 mt-2 recap"></div>
+        </div>
+      </section>
+
+      <section id="form-section" class="container border-top py-4">
+        <h2>Mes infos</h2>
+        <form class="row g-3" action="/shop/confirmation/confirmation.html">
+          <div class="col-md-2">
+            <label for="inputState" class="form-label">Civilit&eacute;</label>
+            <select id="inputState" class="form-select">
+              <option default>S&eacute;lectionnez</option>
+              <option>Madame</option>
+              <option>Monsieur</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="col-md-5">
+            <label for="last-name" class="form-label">Nom de famille</label>
+            <input
+              type="text"
+              class="form-control last-name"
+              id="last-name"
+              placeholder="Votre nom de famille"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-5">
+            <label for="first-name" class="form-label">Prénom</label>
+            <input
+              type="text"
+              class="form-control first-name"
+              id="first-name"
+              placeholder="Votre prénom"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-7">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="text"
+              class="form-control email"
+              id="email"
+              placeholder="exemple@mail.com"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-5">
+            <label for="phone" class="form-label"
+              >Téléphone fixe ou mobile</label
+            >
+            <input
+              type="phone"
+              class="form-control phone"
+              id="phone"
+              placeholder="ex: 06123456"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-12">
+            <label for="inputAddress" class="form-label">Adresse</label>
+            <input
+              type="text"
+              class="form-control address"
+              id="inputAddress"
+              placeholder="Votre adresse"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-8">
+            <label for="inputCity" class="form-label">Ville</label>
+            <input
+              type="text"
+              class="form-control city"
+              id="inputCity"
+              placeholder="Votre ville"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-md-4">
+            <label for="code-postal" class="form-label">Code Postal</label>
+            <input
+              class="form-control zip"
+              type="text"
+              id="code-postal"
+              placeholder="ex: 59200"
+            />
+            <span class="errorMsg"></span>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="gridCheck" />
+              <label class="form-check-label" for="gridCheck">
+                J'ai lu et j'accepte les conditions générales de vente.
+              </label>
+              <span class="errorMsg"></span>
+            </div>
+          </div>
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-commander mt-2 shadow">
+              Commander
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer class="container-fluid bg-dark text-white py-3">
+      <div
+        class="
+          list-wrapper
+          d-flex
+          flex-column flex-md-row
+          align-items-start
+          justify-content-evenly
+          ps-5 ps-md-0
+          pt-2
+        "
+      >
+        <div
+          class="
+            ul-container
+            d-flex
+            flex-column
+            justify-content-start
+            text-left
+          "
+        >
+          <p class="uppercase pe-5">Qui sommes-nous?</p>
+          <ul class="d-flex flex-column text-left">
+            <li>Notre concept</li>
+            <li>Blog Orinoco</li>
+            <li>Les rendez-vous Orinoco</li>
+            <li>Rejoingez-nous</li>
+            <li>Mentions Légales</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Les + Orinoco</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Livraison gratuite</li>
+            <li>Garanties SAV</li>
+            <li>Bons plans Orinoco</li>
+            <li>Programme de fidélité</li>
+            <li>Cartes cadeaux</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Orinoco & moi</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Mes favoris</li>
+            <li>Mes commandes</li>
+            <li>Mes infos perso</li>
+            <li>Mes paiements</li>
+            <li>Retours & Remboursements</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Besoin d’aide ?</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Aide & Contact</li>
+            <li>Accessibilité</li>
+            <li>Gérer mes cookies</li>
+            <li>Prestataire de paiement</li>
+            <li>CGV Internet</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- modal -->
+    <div
+      class="modal fade py-4"
+      id="modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content text-center">
+          <div class="modal-header flex-column">
+            <h4 class="modal-title" id="exampleModalLabel">
+              Votre panier est validé!
+            </h4>
+            <i class="bi bi-cart-check mt-3"></i>
+          </div>
+          <div class="modal-body text-center fw-bold fs-5">
+            Vous n'avez plus qu'à nous fournir <br />vos infos pour la
+            livraison.
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="btn btn-md btn-secondary ps-2 fw-bold open-form-btn"
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-house-door-fill"></i>&nbsp;Mes infos livraison
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

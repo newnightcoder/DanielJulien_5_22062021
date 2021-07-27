@@ -1,0 +1,140 @@
+@use 'globals.scss';
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body::before {
+  content: "";
+  height: 100px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    height: 200px;
+  }
+}
+
+.breadcrumb {
+  font-size: 0.9rem;
+}
+
+.breadcrumb-item.active {
+  color: rgb(24, 24, 24) !important;
+}
+
+.dispo {
+  color: $teal-500;
+}
+@media screen and (min-width: 768px) {
+  .nav-item {
+    border: none !important;
+  }
+  .cart {
+    position: relative !important;
+    left: 0 !important;
+  }
+  .titre {
+    position: absolute;
+    right: 0;
+    margin-right: 1em;
+    padding-top: 0 !important;
+    flex-direction: column;
+    align-items: flex-end !important;
+    justify-content: space-around !important;
+    span {
+      &:nth-child(1) {
+        margin-top: 1em !important;
+        font-size: 2rem !important;
+      }
+      &:nth-child(2) {
+        font-size: 1.25rem !important;
+        margin-top: 0.5em !important;
+      }
+    }
+  }
+  .colonne-gauche {
+    position: relative !important;
+    &::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 1px;
+      background-color: lightgray;
+      position: absolute !important;
+      right: -3%;
+      top: 0;
+    }
+  }
+}
+@media screen and (min-width: 992px) {
+  .colonne-gauche::after {
+    right: -10%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .colonne-gauche::after {
+    right: -18%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .colonne-gauche::after {
+    right: -25%;
+  }
+}
+main {
+  min-height: calc(100vh - 140px);
+  @media screen and (min-width: 768px) {
+    min-height: calc(100vh - 220px);
+  }
+
+  select {
+    width: 100%;
+    max-width: 400px;
+    &:active,
+    &:focus,
+    &:visited {
+      box-shadow: none !important;
+      outline: none !important;
+      border-color: $indigo-400 !important;
+    }
+  }
+  .btn-commander {
+    width: 100%;
+    max-width: 400px;
+    background-color: $indigo-400;
+    border-color: $indigo-400;
+    &:hover {
+      background-color: $indigo-600;
+      border-color: $indigo-600;
+      color: white;
+      &:active {
+        outline-color: $indigo-600;
+      }
+    }
+  }
+}
+
+.bi-check-lg {
+  color: $teal-600;
+}
+
+.bi-chevron-left {
+  font-weight: 600;
+}
+
+.btn-continuer {
+  transform: translateX(-25%);
+}
+.btn-terminer {
+  transform: translateX(25%);
+  background-color: $indigo-400;
+  border-color: $indigo-400;
+  &:hover {
+    background-color: $indigo-600;
+    border-color: $indigo-600;
+    color: white;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .btn-terminer,
+  .btn-continuer {
+    transform: translateX(0);
+  }
+}

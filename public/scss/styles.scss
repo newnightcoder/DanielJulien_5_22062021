@@ -1,0 +1,116 @@
+@use "globals.scss";
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+body::before {
+  content: "";
+  height: 140px;
+  display: block;
+  @media screen and (min-width: 768px) {
+    height: 220px;
+  }
+}
+
+.loader {
+  height: 100vh;
+  width: 100vw;
+  background-color: $gray-200;
+  z-index: 1050; // bootstrap fixed-top navbar has a z-index of 1030😉
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  font-family: "Cairo", sans-serif !important;
+  color: $dark;
+  h1 {
+    font-family: "Bad Script", cursive;
+    letter-spacing: 0.75ch;
+  }
+  .rubriques {
+    height: 150px !important;
+    transition: transform 500ms !important;
+
+    .col-8 {
+      background-color: $indigo-400;
+    }
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    &:hover {
+      cursor: pointer !important;
+      transform: translateX(2.5%);
+    }
+  }
+}
+@keyframes fade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// hamburger
+.navbar-toggler {
+  border: none;
+  &:active,
+  &:focus,
+  &:visited {
+    box-shadow: none;
+  }
+}
+// titres
+.navbar-brand {
+  letter-spacing: 0.5ch;
+}
+.categorie-title {
+  letter-spacing: 0.15ch;
+}
+.nav-item {
+  border-color: $white !important;
+}
+
+@media screen and (min-width: 768px) {
+  .nav-item {
+    border: none !important;
+  }
+  .cart {
+    position: relative !important;
+    left: 0 !important;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .product:nth-child(odd) {
+    margin-right: 10px;
+    margin-left: -10px;
+  }
+}
+
+// contenu
+
+.product {
+  transition: transform 500ms;
+  & > .container {
+    min-height: 100px;
+  }
+  &:hover {
+    transform: scale(0.99);
+    cursor: default;
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.btn-voir {
+  background-color: $indigo-400;
+  border-color: $indigo-400;
+  &:hover {
+    background-color: $indigo-600;
+    border-color: $indigo-600;
+    color: white;
+  }
+}

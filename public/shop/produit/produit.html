@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      defer
+      src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
+    ></script>
+    <script src="produit.js" type="module" defer></script>
+    <script
+      defer
+      src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cairo:wght@200;300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/produit.css" />
+    <title>Détail Produit | Orinoco</title>
+  </head>
+  <body>
+    <!-- header -->
+    <header class="fixed-top shadow bg-dark py-0 my-0">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark px-md-4">
+        <div class="container-fluid pe-md-0">
+          <a href="#" class="navbar-brand text-white mt-0 mt-md-3">ORINOCO</a>
+          <!-- hamburger -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu"
+          >
+            <i class="navbar-toggler-icon"></i>
+          </button>
+
+          <!-- menu/navbar  -->
+          <div id="menu" class="collapse navbar-collapse">
+            <!-- barre de recherche  -->
+            <div class="input-group mt-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Rechercher un produit..."
+                aria-label="Rechercher un produit"
+                aria-describedby="button-addon2"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                <i class="bi bi-search"></i>
+              </button>
+            </div>
+            <!-- liens navbar -->
+            <ul class="navbar-nav gap-3 mt-3">
+              <li class="nav-item border rounded border-md-0 purple">
+                <a
+                  class="
+                    nav-link
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                  "
+                  href="#"
+                  >Catégories</a
+                >
+              </li>
+              <li class="nav-item border rounded purple">
+                <a
+                  class="
+                    nav-link
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                  "
+                  href="#"
+                  >Produits</a
+                >
+              </li>
+              <li class="nav-item border rounded purple">
+                <a
+                  class="
+                    nav-link
+                    d-flex
+                    justify-content-center
+                    align-items-center
+                  "
+                  href="#"
+                  >Mon compte</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- icône cart -->
+        <a
+          class="
+            cart
+            nav-link
+            text-white
+            d-flex
+            justify-content-center
+            align-items-center
+            pb-0
+            mt-1 mt-md-2
+            position-absolute
+            top-0
+            start-50
+          "
+          href="/shop/panier/panier.html"
+        >
+          <i class="bi bi-cart3 position-relative fs-4">
+            <span
+              class="
+                badge
+                rounded-pill
+                position-absolute
+                top-0
+                start-50
+                translate-middle-y
+              "
+              style="font-size: 0.75rem"
+            ></span
+          ></i>
+        </a>
+      </nav>
+      <!-- nav populaires -->
+      <nav class="navbar nav-fav text-white d-none d-md-flex">
+        <div class="container justify-content-center">
+          <span class="text-dark fw-bold text-uppercase"
+            >ORI les plus populaires:&nbsp;&nbsp;</span
+          >
+          <ul
+            class="
+              navbar-nav
+              flex-row
+              justify-content-center
+              align-items-center
+            "
+          >
+            <li class="nav-item text-uppercase">
+              <a class="nav-link text-white" href="#">OriBooks</a>
+            </li>
+            <li>&nbsp;|&nbsp;</li>
+            <li class="nav-item text-uppercase">
+              <a class="nav-link text-white" href="#">Oristyle</a>
+            </li>
+            <li>&nbsp;|&nbsp;</li>
+            <li class="nav-item text-uppercase">
+              <a class="nav-link text-white" href="#">OriGaming</a>
+            </li>
+            <li class="d-none d-md-block">&nbsp;|&nbsp;</li>
+            <li class="nav-item text-uppercase d-none d-md-block">
+              <a class="nav-link text-white" href="#"> OriDeco</a>
+            </li>
+            <li class="d-none d-lg-block">&nbsp;|&nbsp;</li>
+            <li class="nav-item text-uppercase d-none d-lg-block">
+              <a class="nav-link text-white" href="#"> OriSport</a>
+            </li>
+            <li class="d-none d-lg-block">&nbsp;|&nbsp;</li>
+            <li class="nav-item text-uppercase d-none d-lg-block">
+              <a class="nav-link text-white" href="#"> OriKids</a>
+            </li>
+            <li class="d-none d-xl-block">&nbsp;|&nbsp;</li>
+            <li class="nav-item text-uppercase d-none d-xl-block">
+              <a class="nav-link text-white" href="#">OriVegan</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <!-- breadcrumb  -->
+      <div
+        class="bg-white ps-2 py-3"
+        style="--bs-breadcrumb-divider: '&gg;'"
+        aria-label="breadcrumb"
+      >
+        <ol class="container-fluid breadcrumb mb-0 ps-2 ps-md-4">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="link-dark">Orinoco</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="link-dark">Ori-Photo</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
+      </div>
+    </header>
+    <main
+      class="
+        container
+        d-flex
+        flex-column
+        align-items-center
+        justify-content-center
+        pb-5
+      "
+    >
+      <!-- contenu / produit -->
+      <div
+        class="
+          content
+          container
+          position-relative
+          pt-4 pt-md-2
+          d-flex
+          flex-column flex-md-row
+          align-items-md-center
+        "
+      >
+        <div
+          class="
+            container
+            d-flex
+            flex-column
+            align-items-end
+            gap-2
+            border-md-start
+            pe-0
+            ps-0 ps-md-3
+            pt-2
+          "
+        >
+          <span class="dispo d-block text-nowrap me-2 mt-md-4"
+            ><i class="bi bi-check2"></i>&nbsp;En stock</span
+          >
+          <select name="options" class="form-select" id="select-options">
+            <option selected disabled value="Choisir un objectif">
+              Choisir l'objectif
+            </option>
+          </select>
+          <button
+            type="button"
+            class="btn text-white shadow btn-commander"
+            data-bs-toggle="modal"
+            data-bs-target="#modal"
+          >
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- FOOTER  -->
+    <footer class="container-fluid bg-dark text-white py-3">
+      <div
+        class="
+          list-wrapper
+          d-flex
+          flex-column flex-md-row
+          align-items-start
+          justify-content-evenly
+          ps-5 ps-md-0
+          pt-2
+        "
+      >
+        <div
+          class="
+            ul-container
+            d-flex
+            flex-column
+            justify-content-start
+            text-left
+          "
+        >
+          <p class="uppercase pe-5">Qui sommes-nous?</p>
+          <ul class="d-flex flex-column text-left">
+            <li>Notre concept</li>
+            <li>Blog Orinoco</li>
+            <li>Les rendez-vous Orinoco</li>
+            <li>Rejoingez-nous</li>
+            <li>Mentions Légales</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Les + Orinoco</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Livraison gratuite</li>
+            <li>Garanties SAV</li>
+            <li>Bons plans Orinoco</li>
+            <li>Programme de fidélité</li>
+            <li>Cartes cadeaux</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Orinoco & moi</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Mes favoris</li>
+            <li>Mes commandes</li>
+            <li>Mes infos perso</li>
+            <li>Mes paiements</li>
+            <li>Retours & Remboursements</li>
+          </ul>
+        </div>
+        <div class="ul-container d-flex flex-column">
+          <p class="uppercase pe-5">Besoin d’aide ?</p>
+          <ul
+            class="d-flex flex-column align-items-start justify-content-center"
+          >
+            <li>Aide & Contact</li>
+            <li>Accessibilité</li>
+            <li>Gérer mes cookies</li>
+            <li>Prestataire de paiement</li>
+            <li>CGV Internet</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- modal panier  -->
+    <div
+      class="modal fade"
+      id="modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <i class="bi bi-check-lg">&nbsp;</i>Votre article a été ajouté au
+              panier
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div
+            class="
+              modal-footer
+              border
+              justify-content-center justify-content-md-between
+            "
+          >
+            <button
+              type="button"
+              class="
+                btn btn-sm btn-secondary
+                fw-bold
+                ps-md-1
+                py-2
+                btn-continuer
+              "
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-chevron-left"></i>&nbsp;Continuer mes achats
+            </button>
+            <a
+              href="../panier/panier.html"
+              class="btn btn-sm btn-terminer text-white fw-bold ps-md-2 py-2"
+              >Terminer ma commande&nbsp;<i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
