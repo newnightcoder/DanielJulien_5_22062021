@@ -54,6 +54,7 @@ main {
       width: 100%;
       object-fit: cover;
     }
+
     .btn-moins,
     .btn-plus {
       background-color: $indigo-400;
@@ -68,6 +69,10 @@ main {
       width: 30px;
       height: 30px;
       padding: 0;
+    }
+
+    .btn-suppr > i {
+      pointer-events: none;
     }
     .recap {
       min-height: 45vh;

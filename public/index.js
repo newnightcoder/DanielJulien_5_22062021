@@ -8,7 +8,7 @@ const link = document.querySelector(".loader-link");
 let cameras = [];
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 
-export const API_URL = "http://localhost:3000/api/cameras";
+const API_URL = "http://localhost:3000/api/cameras";
 
 // REQUÊTE GET LISTE DES PRODUITS + SAUVEGARDE DANS UN ARRAY "CAMERAS"
 const getCameras = async () => {
@@ -51,7 +51,6 @@ const displayProducts = () => {
         </div>
       </div>
     </div>`;
-
     content.insertAdjacentHTML("beforeend", product);
   });
 };

@@ -21712,6 +21712,9 @@ main {
     min-height: calc(100vh - 220px);
   }
 }
+main .select-gap > * + * {
+  margin-bottom: 0.75em;
+}
 main select {
   width: 100%;
   max-width: 400px;
