@@ -22,7 +22,6 @@ const getProduct = async () => {
   let selectedProduct;
   try {
     const productId = grabProductID();
-    console.log(productId);
     const fetchedData = await fetch(`${API_URL}/${productId}`);
     const productData = await fetchedData.json();
     selectedProduct = productData;
@@ -91,62 +90,54 @@ const displayProduct = async () => {
 const saveToStorage = async () => {
   // get product
   const product = await getProduct();
-  // store it in a cartStorage ready format
+  // store it in as an array [quantity, item]
   let selectedProduct = [];
   selectedProduct.push(1, product);
-  console.log(selectedProduct);
-  // create cartStorage s'il n'existe pas
-  !finalCartStorage &&
-    localStorage.setItem("finalCartStorage", JSON.stringify(finalCartStorage));
-
-  orderBtn.addEventListener("click", () => {
-    const finalCartStorage = JSON.parse(
-      localStorage.getItem("finalCartStorage")
-    );
-    // création du CartStorage s'il n'existe pas
-    if (!finalCartStorage) {
-      localStorage.setItem(
-        "finalCartStorage",
-        JSON.stringify([selectedProduct])
-      );
-    } else {
-      // sinon création d'une copie locale du CartStorage
-      let storageCopy = [...finalCartStorage];
-      // vérifier si le produit n'est pas déjà dans le cartStorage:
-      // 1. création d'une variable de stockage de l'index au cas où l'article est DÉJÀ dans le panier
-      let idFound = null;
-      for (let i = 0; i < storageCopy.length; i++) {
-        // si les id matchent...
-        if (selectedProduct[1]._id === storageCopy[i][1]._id) {
-          // ...on donne à la variable la valeur de l'index
-          idFound = i;
-          break;
-        }
-      }
-      // donc si la valeur de l'index existe déjà, on ajoute l'article à lui-même
-      // ❌ idFound !== NULL ===> pour éviter l'index 0 qui renvoit une falsy value!
-      if (idFound !== null) {
-        storageCopy[idFound][0]++;
-        localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
-      } else {
-        // sinon si la valeur de l'index n'existe pas, on ajoute l'article au cartStorage
-        let storageCopy = [...finalCartStorage, selectedProduct];
-        localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+  // create storage panier (finalCartStorage) s'il n'existe pas
+  // !finalCartStorage &&
+  //   localStorage.setItem("finalCartStorage", JSON.stringify(finalCartStorage));
+  const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
+  // création du CartStorage s'il n'existe pas
+  if (!finalCartStorage) {
+    localStorage.setItem("finalCartStorage", JSON.stringify([selectedProduct]));
+  } else {
+    // sinon création d'une copie locale du CartStorage
+    let storageCopy = [...finalCartStorage];
+    // vérifier si le produit n'est pas déjà dans le cartStorage:
+    // 1. création d'une variable de stockage de l'index au cas où l'article est DÉJÀ dans le panier
+    let idFound = null;
+    for (let i = 0; i < storageCopy.length; i++) {
+      // si les id matchent...
+      if (selectedProduct[1]._id === storageCopy[i][1]._id) {
+        // ...on donne à la variable la valeur de l'index
+        idFound = i;
+        break;
       }
     }
-  });
+    // donc si la valeur de l'index existe déjà, on ajoute l'article à lui-même
+    // ❌ idFound !== NULL ===> pour éviter l'index 0 qui renvoit une falsy value!
+    if (idFound !== null) {
+      storageCopy[idFound][0]++;
+      localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+    } else {
+      // sinon si la valeur de l'index n'existe pas, on ajoute l'article au cartStorage
+      let storageCopy = [...finalCartStorage, selectedProduct];
+      localStorage.setItem("finalCartStorage", JSON.stringify(storageCopy));
+    }
+  }
 };
 
 // UPDATE VIEW PASTILLE PANIER + SAUVEGARDE DANS LE LOCALSTORAGE (NOMBRE D'ARTICLES AJOUTÉS PANIER)
 const updateCartCount = () => {
-  let cartNumber = cartNumberStorage;
-  orderBtn.addEventListener("click", () => {
-    cartNumber++;
-    //ajouter au nombre total d'items dans le cart (localStorage + view)
-    localStorage.setItem("cartNumberStorage", JSON.stringify(cartNumber));
-    cart.innerHTML = cartNumber;
-    cart.style.display = "block";
-  });
+  const cartNumberStorage = JSON.parse(
+    localStorage.getItem("cartNumberStorage")
+  );
+  let cartNumber = cartNumberStorage + 1;
+  // cartNumber++;
+  //ajouter au nombre total d'items dans le cart (localStorage + view)
+  localStorage.setItem("cartNumberStorage", JSON.stringify(cartNumber));
+  cart.innerHTML = cartNumber;
+  cart.style.display = "block";
 };
 
 // UPDATE VIEW PASTILLE PANIER AU LANCEMENT/RAFRAICHISSEMENT DE LA PAGE
@@ -161,7 +152,9 @@ const initPage = (() => {
   grabProductID();
   getProduct();
   displayProduct();
-  updateCartCount();
-  saveToStorage();
   displayCartNumberStorage();
+  orderBtn.addEventListener("click", () => {
+    saveToStorage();
+    updateCartCount();
+  });
 })();

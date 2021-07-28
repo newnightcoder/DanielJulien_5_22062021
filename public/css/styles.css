@@ -21657,6 +21657,9 @@ body::before {
   letter-spacing: 0.75ch;
   font-size: 2.5rem;
 }
+.loader .rubriques-gap > * + * {
+  margin-bottom: 1em;
+}
 .loader .rubriques {
   max-height: 150px !important;
   max-width: 900px;
