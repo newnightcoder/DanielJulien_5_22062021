@@ -1,4 +1,4 @@
-// DOM ELEMENTS
+// éléments DOM
 const content = document.querySelector(".content");
 const aside = document.querySelector("aside");
 const select = document.querySelector("select");
@@ -6,18 +6,30 @@ const orderBtn = document.querySelector(".btn-commander");
 const cart = document.querySelector(".badge");
 const breadcrumb = document.querySelector("[aria-current=page]");
 const modal = document.querySelector(".modal-body");
-// GLOBAL VARIABLES
+// variables globales
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
 let API_URL = "http://localhost:3000/api/cameras";
 
-// GET THE ID PART OF THE URL😉
+// fonction globale
+const initPage = () => {
+  grabProductID();
+  getProduct();
+  displayProduct();
+  displayCartNumberStorage();
+  orderBtn.addEventListener("click", () => {
+    saveToStorage();
+    updateCartCount();
+  });
+};
+
+// récupération de l'ID du produit dans l'url😉
 const grabProductID = () => {
   const productId = location.search.split("").slice(1).join("");
   return productId;
 };
 
-// FETCH THE PRODUCT FROM SERVER API
+// fetch produit depuis l'API
 const getProduct = async () => {
   let selectedProduct;
   try {
@@ -31,7 +43,7 @@ const getProduct = async () => {
   return selectedProduct;
 };
 
-// DISPLAY PRODUCT
+// affiche le produit
 const displayProduct = async () => {
   const product = await getProduct();
   const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
@@ -86,7 +98,7 @@ const displayProduct = async () => {
   modal.insertAdjacentHTML("afterbegin", modalContent);
 };
 
-// SAUVEGARDE DU PRODUIT DANS LE STORAGE DU PANIER
+// sauvegarde du produit dans le storage du panier
 const saveToStorage = async () => {
   // get product
   const product = await getProduct();
@@ -127,7 +139,7 @@ const saveToStorage = async () => {
   }
 };
 
-// UPDATE VIEW PASTILLE PANIER + SAUVEGARDE DANS LE LOCALSTORAGE (NOMBRE D'ARTICLES AJOUTÉS PANIER)
+// update cartNumberStorage (nb d'articles ajoutés dans le panier) + pastille
 const updateCartCount = () => {
   const cartNumberStorage = JSON.parse(
     localStorage.getItem("cartNumberStorage")
@@ -140,21 +152,11 @@ const updateCartCount = () => {
   cart.style.display = "block";
 };
 
-// UPDATE VIEW PASTILLE PANIER AU LANCEMENT/RAFRAICHISSEMENT DE LA PAGE
+// update pastille panier au lancement/rafraichissemet de la page
 const displayCartNumberStorage = () => {
   cartNumberStorage
     ? ((cart.innerHTML = cartNumberStorage), (cart.style.display = "block"))
     : (cart.style.display = "none");
 };
 
-// FONCTION GLOBALE - IIFE
-const initPage = (() => {
-  grabProductID();
-  getProduct();
-  displayProduct();
-  displayCartNumberStorage();
-  orderBtn.addEventListener("click", () => {
-    saveToStorage();
-    updateCartCount();
-  });
-})();
+initPage();

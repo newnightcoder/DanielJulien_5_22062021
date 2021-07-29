@@ -1,11 +1,10 @@
-// DOM ELEMENTS
+// éléments DOM
 const form = document.querySelector("form");
 const formSection = document.querySelector("#form-section");
 const validateCartBtn = document.querySelector(".btn-valider-panier");
 const openFormBtn = document.querySelector(".open-form-btn");
-// LOCALSTORAGE
+// localStorage
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
-// let orderStorage = JSON.parse(localStorage.getItem("orderStorage"));
 
 // modal
 const toInfoForm = () => {
@@ -152,17 +151,6 @@ const saveContactObject = () => {
   let storage = JSON.parse(localStorage.getItem("orderStorage"));
   console.log(storage);
 };
-const saveOrderConfirmation = (data) => {
-  const orderConfirmation = {
-    name: data.contact.firstName,
-    id: data.orderId,
-    date: new Date(),
-  };
-  console.log("orderConfirmation", orderConfirmation);
-  localStorage.setItem("orderStorage", JSON.stringify(orderConfirmation));
-  let storage = JSON.parse(localStorage.getItem("orderStorage"));
-  console.log("orderConfirmation sauvegardée dans le storage ✌🏾", storage);
-};
 // 2. envoi requête à L'API (pour valider la commande + get l'order ID)
 const sendOrder = async (e) => {
   // fonctionne uniquement si le formulaire est validé
@@ -191,8 +179,18 @@ const sendOrder = async (e) => {
     console.log(error);
   }
 };
+// 3. sauvegarde de la confirmation serveur
+const saveOrderConfirmation = (data) => {
+  const orderConfirmation = {
+    name: data.contact.firstName,
+    id: data.orderId,
+    date: new Date(),
+  };
+  localStorage.setItem("orderStorage", JSON.stringify(orderConfirmation));
+  let storage = JSON.parse(localStorage.getItem("orderStorage"));
+};
 
-// FONCTION GLOBALE - IIFE
+// fonction globale - IIFE
 const validationInit = (() => {
   validateCartBtn &&
     validateCartBtn.addEventListener("click", saveProductsObject);
