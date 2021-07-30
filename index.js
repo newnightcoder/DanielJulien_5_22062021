@@ -1,16 +1,15 @@
-// DOM ELEMENTS
+// éléments DOM
 const content = document.querySelector(".content");
 const cart = document.querySelector(".badge");
 const loader = document.querySelector(".loader");
 const link = document.querySelector(".loader-link");
 
-// GLOBAL VARIABLES
+// variables globales
 let cameras = [];
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
+const API_URL = "http://localhost:3000/api/cameras";
 
-export const API_URL = "http://localhost:3000/api/cameras";
-
-// REQUÊTE GET LISTE DES PRODUITS + SAUVEGARDE DANS UN ARRAY "CAMERAS"
+// fetch liste des produits depuis l'API + sauvegarde dans un tableau global [cameras]
 const getCameras = async () => {
   try {
     const results = await fetch(API_URL);
@@ -22,7 +21,7 @@ const getCameras = async () => {
   return cameras;
 };
 
-// AFFICHE LES PRODUITS À L'ÉCRAN
+// affiche les produits à l'écran
 const displayProducts = () => {
   const priceFormatRegex = /(\d)(?=(\d{3})+(?!\d))/g;
   cameras.map((item) => {
@@ -51,19 +50,18 @@ const displayProducts = () => {
         </div>
       </div>
     </div>`;
-
     content.insertAdjacentHTML("beforeend", product);
   });
 };
 
-// AFFICHE LE BADGE NOMBRE D'ARTICLES DANS LE PANIER (AU CAS OÙ LE PANIER CONTIENT DES ARTICLES)
+// affiche la pastille cart (si le panier contient des articles)
 const displayCartNumberStorage = () => {
   cartNumberStorage
     ? ((cart.innerHTML = cartNumberStorage), (cart.style.display = "block"))
     : (cart.style.display = "none");
 };
 
-// FONCTION GLOBALE - IIFE
+// fonction globale - IIFE
 const initPage = (async () => {
   link.addEventListener("click", () => {
     loader.style.animation = "fade 200ms forwards";

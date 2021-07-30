@@ -21697,6 +21697,9 @@ main .content .btn-suppr {
   height: 30px;
   padding: 0;
 }
+main .content .btn-suppr > i {
+  pointer-events: none;
+}
 main .content .recap {
   min-height: 45vh;
 }

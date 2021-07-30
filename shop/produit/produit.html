@@ -6,112 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       defer
-      src="/node_modules/bootstrap/dist/js/bootstrap.min.js"
-    ></script>
-    <script
-      defer
       src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"
     ></script>
-    <script defer src="/index.js" type="module"></script>
+    <script src="produit.js" type="module" defer></script>
+    <script
+      defer
+      src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bad+Script&family=Cairo:wght@200;300;400;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <title>Orinoco | Accueil</title>
+    <link rel="stylesheet" href="../../css/produit.css" />
+    <title>Détail Produit | Orinoco</title>
   </head>
-
   <body>
-    <!-- loader  -->
-    <div
-      class="
-        loader
-        container-fluid
-        position-fixed
-        d-flex
-        flex-column
-        align-items-center
-        justify-content-evenly
-        py-5
-      "
-    >
-      <h1 class="text-dark display-4 text-center pt-3">ORINOCO</h1>
-      <p class="h4 py-0 mt-0 mb-3 mb-xxl-0">
-        Découvrez nos toutes nouvelles catégories:
-      </p>
-      <div
-        class="
-          rubriques
-          container
-          d-flex
-          text-white
-          rounded
-          shadow
-          my-2 my-xxl-0
-          px-0
-        "
-      >
-        <div class="col-4">
-          <img
-            class="rounded-start"
-            src="images/teddy_2.jpg"
-            alt="Teddybears"
-          />
-        </div>
-        <div class="col-8 text-center rounded-end py-4 ps-3">
-          <h2>OriTeddy</h2>
-          <p class="h5">Notre sélection des teddybears les plus mignons</p>
-        </div>
-      </div>
-      <div
-        class="
-          rubriques
-          container
-          d-flex
-          text-white
-          rounded
-          shadow
-          my-2 my-xxl-0
-          px-0
-        "
-      >
-        <div class="col-4">
-          <img
-            class="rounded-start"
-            src="images/oak_1.jpg"
-            alt="Mobilier en bois"
-          />
-        </div>
-        <div class="col-8 text-center rounded-end py-4 ps-3">
-          <h2>OriBois</h2>
-          <p class="h5">Sélection de mobilier en bois brut. Rustique!</p>
-        </div>
-      </div>
-      <div
-        class="
-          rubriques
-          container
-          d-flex
-          text-white
-          rounded
-          shadow
-          my-2 my-xxl-0
-          px-0
-          loader-link
-        "
-      >
-        <div class="col-4">
-          <img class="rounded-start" src="images/vcam_3.jpg" alt="" />
-        </div>
-        <div class="col-8 text-center rounded-end py-4 ps-3">
-          <h3>OriPhoto</h3>
-          <p class="h5">Nos appareils photo vintage d'exception...</p>
-        </div>
-      </div>
-    </div>
-    <!-- NAVBARS/HEADER -->
+    <!-- header -->
     <header class="fixed-top shadow bg-dark py-0 my-0">
       <nav class="navbar navbar-expand-md navbar-dark bg-dark px-md-4">
         <div class="container-fluid pe-md-0">
@@ -129,7 +41,7 @@
           <!-- menu/navbar  -->
           <div id="menu" class="collapse navbar-collapse">
             <!-- barre de recherche  -->
-            <div class="input-group mt-3 me-md-3">
+            <div class="input-group mt-3">
               <input
                 type="text"
                 class="form-control"
@@ -222,7 +134,7 @@
       <nav class="navbar nav-fav text-white d-none d-md-flex">
         <div class="container justify-content-center">
           <span class="text-dark fw-bold text-uppercase"
-            >Catégories les plus populaires:&nbsp;&nbsp;</span
+            >ORI les plus populaires:&nbsp;&nbsp;</span
           >
           <ul
             class="
@@ -262,42 +174,78 @@
           </ul>
         </div>
       </nav>
-      <!-- titre catégorie -->
-      <div class="container-fluid bg-white text-center m-0 py-3">
-        <span class="h3 categorie-title">ORIPHOTO</span>
+      <!-- breadcrumb  -->
+      <div
+        class="bg-white ps-2 py-3"
+        style="--bs-breadcrumb-divider: '&gg;'"
+        aria-label="breadcrumb"
+      >
+        <ol class="container-fluid breadcrumb mb-0 ps-2 ps-md-4">
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="link-dark">Orinoco</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="../../index.html" class="link-dark">Ori-Photo</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page"></li>
+        </ol>
       </div>
     </header>
-    <!-- contenu  -->
-    <main class="container pb-4 pb-md-5 pe-md-0">
-      <section class="container pt-0 pb-3">
-        <h2 class="pb-2">Nos produits</h2>
-        <div class="content row gy-3"></div>
-      </section>
-      <!-- pagination  -->
-      <nav class="mt-4" aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="page-link link-dark" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link link-dark" href="#">1</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link link-dark" href="#">2</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link link-dark" href="#">3</a>
-          </li>
-          <li class="page-item">
-            <a class="page-link link-dark" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+    <main
+      class="
+        container
+        d-flex
+        flex-column
+        align-items-center
+        justify-content-center
+        pb-5
+      "
+    >
+      <!-- contenu / produit -->
+      <div
+        class="
+          content
+          container
+          position-relative
+          pt-4 pt-md-2
+          d-flex
+          flex-column flex-md-row
+          align-items-md-center
+        "
+      >
+        <div
+          class="
+            container
+            d-flex
+            flex-column
+            align-items-end
+            border-md-start
+            pe-0
+            ps-0 ps-md-3
+            pt-2
+            select-gap
+          "
+        >
+          <span class="dispo d-block text-nowrap me-2 mb-2 mt-md-4"
+            ><i class="bi bi-check2"></i>&nbsp;En stock</span
+          >
+          <select name="options" class="form-select" id="select-options">
+            <option selected disabled value="Choisir un objectif">
+              Choisir l'objectif
+            </option>
+          </select>
+          <button
+            type="button"
+            class="btn text-white shadow btn-commander"
+            data-bs-toggle="modal"
+            data-bs-target="#modal"
+          >
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
     </main>
+    <!-- FOOTER  -->
     <footer class="container-fluid bg-dark text-white py-3">
       <div
         class="
@@ -366,5 +314,57 @@
         </div>
       </div>
     </footer>
+    <!-- modal panier  -->
+    <div
+      class="modal fade"
+      id="modal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              <i class="bi bi-check-lg">&nbsp;</i>Votre article a été ajouté au
+              panier
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body"></div>
+          <div
+            class="
+              modal-footer
+              border
+              justify-content-center justify-content-md-between
+            "
+          >
+            <button
+              type="button"
+              class="
+                btn btn-sm btn-secondary
+                fw-bold
+                ps-md-1
+                py-2
+                btn-continuer
+              "
+              data-bs-dismiss="modal"
+            >
+              <i class="bi bi-chevron-left"></i>&nbsp;Continuer mes achats
+            </button>
+            <a
+              href="../panier/panier.html"
+              class="btn btn-sm btn-terminer text-white fw-bold ps-md-2 py-2"
+              >Terminer ma commande&nbsp;<i class="bi bi-chevron-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
