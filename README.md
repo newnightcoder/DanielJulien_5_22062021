@@ -1,7 +1,7 @@
 # Orinoco
 
 This project is the front-end of Orinoco, a new online shopping site.
-The backend/API was provided and the goal here was to make the hole front-end from scatch.
+The backend/API was provided and the goal here was to make the whole front-end from scatch, according to the MVP specs.
 
 ## 📌 <u>Funtionalities required for the MVP</u>:
 
@@ -30,8 +30,7 @@ You will need to have Node and `npm` or `yarn` installed locally on your machine
 You should now have all the dependencies installed (+ node_modules folder)
 
 **3.** Launch the server with the command `node server`.  
-The server should now be running on `localhost` with default port `3000`.
-
+The server should now be running on `localhost` with default port `3000`.  
 If the server runs on another port for any reason, this is printed to the console when the server starts, e.g. `Listening on port 3001`.
 
 **4.** Open the `index.html` file with Live Server or the way you prefer.
