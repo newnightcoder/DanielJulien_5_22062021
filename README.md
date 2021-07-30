@@ -8,8 +8,8 @@ The backend/API was provided and the goal here was to make the whole front-end f
 <ins>4 pages as follows</ins>:
 
 - [x] 1 "list" view of all available products
-- [x] 1 “product” view, dynamically displaying the item selected by the user, with options to select from + "add to cart functionality"
-- [x] 1 "cart" view, with the whole recap of the items in the cart + total price + form.
+- [x] 1 “product” view, dynamically displaying the item selected by the user, with options to select from + "add to cart" functionality
+- [x] 1 "cart" view, with the whole recap of the items in the cart + total price + form.  
       The form has to be validated before getting sent to the back-end (i.e. no empty fields, invalid email etc...)
 - [x] 1 "confirmation" view displaying a thank you message + total price + order ID sent back from the backend.
 
