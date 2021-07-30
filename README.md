@@ -11,7 +11,7 @@ The backend/API was provided and the goal here was to make the whole front-end f
 - [x] 1 “product” view, dynamically displaying the item selected by the user, with options to select from + "add to cart functionality"
 - [x] 1 "cart" view, with the whole recap of the items in the cart + total price + form.
       The form has to be validated before getting sent to the back-end (i.e. no empty fields, invalid email etc...)
-- [x] 1 "confirmation" view displaying a thank you message + total price + order ID sent back by the backend.
+- [x] 1 "confirmation" view displaying a thank you message + total price + order ID sent back from the backend.
 
 <ins>1 plan for test cases/unit tests (must cover 80% of the code base)</ins>
 <br/>
