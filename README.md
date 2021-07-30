@@ -18,11 +18,11 @@ The backend/API was provided and the goal here was to make the hole front-end fr
 
 ## 💻 <u>To see the project on your machine</u>:
 
-### Prerequisites:
+### <ins>Prerequisites</ins>:
 
 You will need to have Node and `npm` or `yarn` installed locally on your machine.
 
-### To see the project on your machine:
+### <ins>Steps</ins>:
 
 **1.** Clone this repo.
 
