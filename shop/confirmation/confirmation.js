@@ -19,6 +19,7 @@ const dateOptions = {
   hour: "2-digit",
   minute: "numeric",
 };
+
 const orderInfo = `
 <div class="order-info container d-flex flex-column align-items-center ps-4 py-3">
     <p class="h4 order-title">R&eacute;sum&eacute; de votre commande</p>
@@ -43,6 +44,7 @@ const orderInfo = `
     </div>
 
 </div>`;
+
 const confirmationMsg = document
   .querySelector(".info")
   .insertAdjacentHTML("beforeend", orderInfo);
