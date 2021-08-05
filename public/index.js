@@ -7,7 +7,7 @@ const link = document.querySelector(".loader-link");
 // variables globales
 let cameras = [];
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
-const API_URL = "http://localhost:3000/api/cameras";
+const API_URL = "https://orinoco-shop.herokuapp.com/api/cameras";
 
 // fetch liste des produits depuis l'API + sauvegarde dans un tableau global [cameras]
 const getCameras = async () => {
