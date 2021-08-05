@@ -124,7 +124,7 @@ const validateForm = () => {
 };
 
 // POST REQUEST
-const POST_URL = "http://localhost:3000/api/cameras/order";
+const POST_URL = "/api/cameras/order";
 // 1. construction + sauvegarde de l'objet requete
 const saveProductsObject = () => {
   // 1. crée + sauvegarde l'objet "products" de la requete POST à envoyer plus tard:
