@@ -9,7 +9,7 @@ const modal = document.querySelector(".modal-body");
 // variables globales
 const cartNumberStorage = JSON.parse(localStorage.getItem("cartNumberStorage"));
 const finalCartStorage = JSON.parse(localStorage.getItem("finalCartStorage"));
-let API_URL = "https://orinoco-shop.herokuapp.com/api/cameras";
+let API_URL = "/api/cameras";
 
 // fonction globale
 const initPage = () => {
